@@ -1,0 +1,30 @@
+{
+  "name": "CloudInAppMessaging",
+  "version": "0.1.0",
+  "summary": "A short description of CloudInAppMessaging.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Andrew Podkovyrin/CloudInAppMessaging",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Andrew Podkovyrin": "podkovyrin@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Andrew Podkovyrin/CloudInAppMessaging.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/podkovyr",
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "CloudInAppMessaging/**/*",
+  "public_header_files": "CloudInAppMessaging/*.h",
+  "private_header_files": "CloudInAppMessaging/Private/*.h",
+  "frameworks": [
+    "UIKit",
+    "Foundation",
+    "CloudKit"
+  ]
+}
