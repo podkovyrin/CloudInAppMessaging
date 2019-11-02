@@ -281,7 +281,10 @@ class AddAlertCampaignViewController: UIViewController {
         delegate?.addAlertCampaignViewController(self, didFinishWith: model.alertCampaign)
     }
 
-    private func showButtonsController() {}
+    private func showButtonsController() {
+        let controller = AlertCamaignButtonsViewController(alertCampaign: model.alertCampaign)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     private func showDefaultLangCodeSelector() {}
 
@@ -292,12 +295,25 @@ class AddAlertCampaignViewController: UIViewController {
     private func showLanguagesController() {}
 
     private func showTriggerSelector() {
+        let trigger = model.alertCampaign.trigger
+
         let alert = UIAlertController(title: "Select Trigger",
                                       message: "Or input custom trigger event string",
                                       preferredStyle: .alert)
         alert.addTextField { textField in
             textField.autocorrectionType = .no
             textField.autocapitalizationType = .none
+
+            if let trigger = trigger {
+                switch trigger {
+                case .onForeground:
+                    break
+                case .onAppLaunch:
+                    break
+                default:
+                    textField.text = trigger.rawValue
+                }
+            }
         }
 
         let defaultTriggers = [CLMAlertCampaignTrigger.onForeground, .onAppLaunch]
@@ -334,15 +350,5 @@ class AddAlertCampaignViewController: UIViewController {
 
     private func reloadData() {
         formController.setSections(formSections)
-    }
-}
-
-extension CLMAlertCampaignTrigger: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .onForeground: return "On Foreground"
-        case .onAppLaunch: return "On App Launch"
-        default: return rawValue
-        }
     }
 }

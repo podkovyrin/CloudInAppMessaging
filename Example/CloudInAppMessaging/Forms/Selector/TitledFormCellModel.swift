@@ -11,6 +11,7 @@ import Foundation
 enum TitleStyle {
     case `default`
     case tinted
+    case destructive
 }
 
 class TitledFormCellModel: FormCellModel {

@@ -27,7 +27,7 @@ class TextInputFormCellModel: FormCellModel {
     }
 
     var showsInputAccessoryView: Bool {
-        returnKeyType != .next
+        returnKeyType != .next && returnKeyType != .done
     }
 
     var didChangeText: ((TextInputFormCellModel) -> Void)?

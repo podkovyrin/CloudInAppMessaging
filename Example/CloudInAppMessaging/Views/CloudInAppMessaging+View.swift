@@ -15,27 +15,26 @@
 //  limitations under the License.
 //
 
-import UIKit
+import CloudInAppMessaging
+import Foundation
 
-// swiftlint:disable force_unwrapping
-
-enum Styles {
-    enum Colors {
-        static let tintColor = UIColor(named: "TintColor")!
-        static var textColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return UIColor.label
-            }
-            else {
-                return UIColor.black
-            }
+extension CLMAlertCampaignTrigger: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .onForeground: return "On Foreground"
+        case .onAppLaunch: return "On App Launch"
+        default: return rawValue
         }
-
-        static let redColor = UIColor.systemRed
     }
+}
 
-    enum Sizes {
-        static let minPadding: CGFloat = 8.0
-        static let padding: CGFloat = 16.0
+extension CLMAlertCampaign {
+    var isButtonsValid: Bool {
+        if let titles = buttonTitles, let urls = buttonActionURLs {
+            return titles.count == urls.count
+        }
+        else {
+            return true
+        }
     }
 }

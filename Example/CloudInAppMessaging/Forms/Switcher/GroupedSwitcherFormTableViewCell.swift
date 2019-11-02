@@ -16,7 +16,16 @@ class GroupedSwitcherFormTableViewCell: UITableViewCell, SwitcherFormTableViewCe
             switcher?.isOn = model?.isOn ?? false
 
             if let model = model {
-                textLabel?.textColor = model.titleStyle == .default ? Styles.Colors.textColor : Styles.Colors.tintColor
+                let textColor: UIColor
+                switch model.titleStyle {
+                case .default:
+                    textColor = Styles.Colors.textColor
+                case .tinted:
+                    textColor = Styles.Colors.tintColor
+                case .destructive:
+                    textColor = Styles.Colors.redColor
+                }
+                textLabel?.textColor = textColor
             }
         }
     }

@@ -31,6 +31,9 @@
 		2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EA236C02E60052A486 /* UIView+Animations.swift */; };
 		2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */; };
 		2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */; };
+		2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */; };
+		2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */; };
+		2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */; };
 		2A6AB23F236CAC3000165A6E /* DatePickerFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23C236CAC3000165A6E /* DatePickerFormCellModel.swift */; };
 		2A6AB240236CAC3000165A6E /* DatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23D236CAC3000165A6E /* DatePickerFormTableViewCell.swift */; };
 		2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */; };
@@ -84,6 +87,9 @@
 		2A2318EA236C02E60052A486 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTextViewFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChildControllers.swift"; sourceTree = "<group>"; };
+		2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCamaignButtonsViewController.swift; sourceTree = "<group>"; };
+		2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignButtonsModel.swift; sourceTree = "<group>"; };
+		2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudInAppMessaging+View.swift"; sourceTree = "<group>"; };
 		2A6AB23C236CAC3000165A6E /* DatePickerFormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFormCellModel.swift; sourceTree = "<group>"; };
 		2A6AB23D236CAC3000165A6E /* DatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedDatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 		2A2318E4236BFDBA0052A486 /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				2A54450A236CE01B00390B9A /* Buttons */,
 				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
 				2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */,
 			);
@@ -228,8 +235,18 @@
 				2A2318EA236C02E60052A486 /* UIView+Animations.swift */,
 				2A2318E8236C01F70052A486 /* Styles.swift */,
 				2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */,
+				2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2A54450A236CE01B00390B9A /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */,
+				2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		2A6AB233236CABF000165A6E /* DatePicker */ = {
@@ -487,16 +504,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */,
 				2A2318E2236BFD290052A486 /* GroupedFormTableViewController.swift in Sources */,
 				2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */,
 				2A23189A236BF6A10052A486 /* ViewController.swift in Sources */,
 				2ADF56A9236C4CA4009917D1 /* TextFieldFormCellModel.swift in Sources */,
+				2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */,
 				2A2318D7236BFD290052A486 /* FormTableViewController.swift in Sources */,
 				2A2318D1236BFD290052A486 /* FormCellModel.swift in Sources */,
 				2A2318D6236BFD290052A486 /* SelectorFormTableViewCell.swift in Sources */,
 				2A2318E3236BFD290052A486 /* FormSectionModel.swift in Sources */,
 				2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */,
 				2A6AB240236CAC3000165A6E /* DatePickerFormTableViewCell.swift in Sources */,
+				2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */,
 				2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */,
 				2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */,
 				2A2318DF236BFD290052A486 /* TextViewFormCellModel.swift in Sources */,
