@@ -31,6 +31,7 @@
 		2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EA236C02E60052A486 /* UIView+Animations.swift */; };
 		2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */; };
 		2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */; };
+		2A26CBDD236DC8CE009EAC52 /* LanguagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */; };
 		2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */; };
 		2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */; };
 		2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */; };
@@ -39,6 +40,8 @@
 		2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */; };
 		2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB242236CC31500165A6E /* TextInputFormTableViewCell.swift */; };
 		2A6AB245236CC5F900165A6E /* TextFieldFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB244236CC5F900165A6E /* TextFieldFormTableViewCell.swift */; };
+		2A9140A3236DBD0600A9E616 /* SearchSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */; };
+		2A9140A7236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A6236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m */; };
 		2ADF56A3236C1370009917D1 /* AddAlertCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */; };
 		2ADF56A9236C4CA4009917D1 /* TextFieldFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A6236C4CA4009917D1 /* TextFieldFormCellModel.swift */; };
 		2ADF56AA236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A7236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift */; };
@@ -87,6 +90,7 @@
 		2A2318EA236C02E60052A486 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTextViewFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChildControllers.swift"; sourceTree = "<group>"; };
+		2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesModel.swift; sourceTree = "<group>"; };
 		2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCamaignButtonsViewController.swift; sourceTree = "<group>"; };
 		2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignButtonsModel.swift; sourceTree = "<group>"; };
 		2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudInAppMessaging+View.swift"; sourceTree = "<group>"; };
@@ -95,6 +99,10 @@
 		2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedDatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB242236CC31500165A6E /* TextInputFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB244236CC5F900165A6E /* TextFieldFormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormTableViewCell.swift; sourceTree = "<group>"; };
+		2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSelectorViewController.swift; sourceTree = "<group>"; };
+		2A9140A4236DC3B200A9E616 /* CloudInAppMessaging_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudInAppMessaging_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		2A9140A5236DC3B300A9E616 /* NSAttributedString+DWHighlightText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+DWHighlightText.h"; sourceTree = "<group>"; };
+		2A9140A6236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+DWHighlightText.m"; sourceTree = "<group>"; };
 		2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertCampaignModel.swift; sourceTree = "<group>"; };
 		2ADF56A6236C4CA4009917D1 /* TextFieldFormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormCellModel.swift; sourceTree = "<group>"; };
 		2ADF56A7236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTextFieldFormTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +166,7 @@
 				2A23189E236BF6A20052A486 /* Assets.xcassets */,
 				2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */,
 				2A2318A3236BF6A20052A486 /* Info.plist */,
+				2A9140A4236DC3B200A9E616 /* CloudInAppMessaging_Example-Bridging-Header.h */,
 			);
 			path = CloudInAppMessaging;
 			sourceTree = "<group>";
@@ -222,9 +231,11 @@
 		2A2318E4236BFDBA0052A486 /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				2A9140A1236DBCC100A9E616 /* SearchSelector */,
 				2A54450A236CE01B00390B9A /* Buttons */,
 				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
 				2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */,
+				2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -236,6 +247,8 @@
 				2A2318E8236C01F70052A486 /* Styles.swift */,
 				2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */,
 				2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */,
+				2A9140A5236DC3B300A9E616 /* NSAttributedString+DWHighlightText.h */,
+				2A9140A6236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +279,14 @@
 				2A6AB242236CC31500165A6E /* TextInputFormTableViewCell.swift */,
 			);
 			path = BaseTextInput;
+			sourceTree = "<group>";
+		};
+		2A9140A1236DBCC100A9E616 /* SearchSelector */ = {
+			isa = PBXGroup;
+			children = (
+				2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */,
+			);
+			path = SearchSelector;
 			sourceTree = "<group>";
 		};
 		2ADF56A4236C4CA4009917D1 /* TextField */ = {
@@ -353,6 +374,7 @@
 				TargetAttributes = {
 					2A231891236BF6A10052A486 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
 					2A2318AC236BF8150052A486 = {
 						CreatedOnToolsVersion = 11.1;
@@ -514,12 +536,15 @@
 				2A2318D1236BFD290052A486 /* FormCellModel.swift in Sources */,
 				2A2318D6236BFD290052A486 /* SelectorFormTableViewCell.swift in Sources */,
 				2A2318E3236BFD290052A486 /* FormSectionModel.swift in Sources */,
+				2A9140A7236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m in Sources */,
 				2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */,
 				2A6AB240236CAC3000165A6E /* DatePickerFormTableViewCell.swift in Sources */,
+				2A9140A3236DBD0600A9E616 /* SearchSelectorViewController.swift in Sources */,
 				2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */,
 				2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */,
 				2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */,
 				2A2318DF236BFD290052A486 /* TextViewFormCellModel.swift in Sources */,
+				2A26CBDD236DC8CE009EAC52 /* LanguagesModel.swift in Sources */,
 				2A2318DE236BFD290052A486 /* TextViewFormTableViewCell.swift in Sources */,
 				2A2318D5236BFD290052A486 /* SelectorFormCellModel.swift in Sources */,
 				2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */,
@@ -696,6 +721,7 @@
 			baseConfigurationReference = 6AF9F47F822F2AA09F9B75EF /* Pods-CloudInAppMessaging_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;
@@ -705,6 +731,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.podkovyrin.CloudInAppMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudInAppMessaging/CloudInAppMessaging_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -715,6 +743,7 @@
 			baseConfigurationReference = 6A632D590E7341FB2EC8B3EA /* Pods-CloudInAppMessaging_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;
@@ -724,6 +753,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.podkovyrin.CloudInAppMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudInAppMessaging/CloudInAppMessaging_Example-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

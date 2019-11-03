@@ -59,6 +59,7 @@ disabled_rules:
   - file_header
   - number_separator
   - todo
+  - nesting
   - trailing_comma
   - identifier_name
   - file_name

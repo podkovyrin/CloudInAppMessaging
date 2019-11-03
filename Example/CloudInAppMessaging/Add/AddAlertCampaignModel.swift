@@ -21,6 +21,49 @@ import Foundation
 class AddAlertCampaignModel {
     let alertCampaign: CLMAlertCampaign
 
+    private let locale = Locale(identifier: "en_US")
+    private lazy var languageCodes: [String] = {
+        let allCodes = Locale.availableIdentifiers.compactMap {
+            Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
+        }
+        return Array(Set(allCodes)).sorted(by: <)
+    }()
+
+    private lazy var countryCodes: [String] = {
+        let allCodes = Locale.availableIdentifiers.compactMap {
+            Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue]
+        }
+        return Array(Set(allCodes)).sorted(by: <)
+    }()
+
+    lazy var languageCodes1: LocaleSelectorModel = {
+        let allCodes = Locale.availableIdentifiers.compactMap {
+            Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
+        }
+        let codes = Array(Set(allCodes)).sorted(by: <)
+        let model = LocaleSelectorModel(codes: codes,
+                                        localizeCode: {
+                                            locale.localizedString(forLanguageCode: $0) ?? ""
+                                        },
+                                        selectedIndex: nil)
+
+        return model
+    }()
+
+    lazy var countryCodes1: LocaleSelectorModel = {
+        let allCodes = Locale.availableIdentifiers.compactMap {
+            Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue]
+        }
+        let codes = Array(Set(allCodes)).sorted(by: <)
+        let model = LocaleSelectorModel(codes: codes,
+                                        localizeCode: {
+                                            locale.localizedString(forRegionCode: $0) ?? ""
+                                        },
+                                        selectedIndex: nil)
+
+        return model
+    }()
+
     init() {
         alertCampaign = CLMAlertCampaign()
         alertCampaign.defaultLangCode = "en"
@@ -29,5 +72,19 @@ class AddAlertCampaignModel {
         alertCampaign.buttonActionURLs = [CLMAlertCampaign.buttonURLNoAction]
 
         alertCampaign.trigger = .onForeground
+    }
+
+    func defaultLanguageModel() -> LocaleSelectorModel {
+        var selectedIndex: Int?
+        if let defaultLangCode = alertCampaign.defaultLangCode {
+            selectedIndex = languageCodes.firstIndex(of: defaultLangCode)
+        }
+        let model = LocaleSelectorModel(codes: languageCodes,
+                                        localizeCode: {
+                                            locale.localizedString(forLanguageCode: $0) ?? ""
+                                        },
+                                        selectedIndex: selectedIndex)
+
+        return model
     }
 }

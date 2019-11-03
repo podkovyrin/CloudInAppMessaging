@@ -286,11 +286,29 @@ class AddAlertCampaignViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
 
-    private func showDefaultLangCodeSelector() {}
+    private func showDefaultLangCodeSelector() {
+        let languageCodes = model.defaultLanguageModel()
+
+        let controller = SearchSelectorViewController(model: languageCodes) { [weak self] item in
+            guard let self = self else { return }
+            self.model.alertCampaign.defaultLangCode = item.code
+            self.reloadData()
+            self.navigationController?.popViewController(animated: true)
+        }
+        controller.title = "Default Lang Code"
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     private func showTranslationsController() {}
 
-    private func showCountriesController() {}
+    private func showCountriesController() {
+        // TODO: allow multi selection
+//        let countryCodes = model.countryCodes
+//
+//        let controller = SearchSelectorViewController(model: countryCodes) { item in
+//        }
+//        navigationController?.pushViewController(controller, animated: true)
+    }
 
     private func showLanguagesController() {}
 
