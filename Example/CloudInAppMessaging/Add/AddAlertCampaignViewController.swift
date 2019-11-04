@@ -260,6 +260,25 @@ class AddAlertCampaignViewController: UIViewController {
         return cellModel
     }
 
+    private var validate: SelectorFormCellModel {
+        let cellModel = SelectorFormCellModel()
+        cellModel.title = "Validate Alert Campaign"
+        cellModel.titleStyle = .tinted
+        cellModel.action = { [weak self] in
+            guard let self = self else { return }
+
+            let message = self.model.validate() ?? "✅ Perfect!"
+            let alert = UIAlertController(title: "Validation Result",
+                                          message: message,
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+
+        return cellModel
+    }
+
     private var formSections: [FormSectionModel] {
         let alertSection = FormSectionModel([alertTitle, alertMessage])
         alertSection.header = "Alert"
@@ -278,7 +297,15 @@ class AddAlertCampaignViewController: UIViewController {
         let schedulingSection = FormSectionModel([startDate, endDate, trigger])
         schedulingSection.header = "Scheduling"
 
-        return [alertSection, buttonsSection, localizationSecion, targetingSection, schedulingSection]
+        let maintenanceSection = FormSectionModel([validate])
+        maintenanceSection.header = "– Maintenance –"
+
+        return [alertSection,
+                buttonsSection,
+                localizationSecion,
+                targetingSection,
+                schedulingSection,
+                maintenanceSection]
     }
 
     override func viewDidLoad() {
@@ -313,7 +340,25 @@ class AddAlertCampaignViewController: UIViewController {
 
     @objc
     private func doneAction() {
-        delegate?.addAlertCampaignViewController(self, didFinishWith: model.alertCampaign)
+        let message = model.validate()
+        if message != nil {
+            let message = model.validate() ?? "✅ Perfect!"
+            let alert = UIAlertController(title: "Validation Result",
+                                          message: message,
+                                          preferredStyle: .alert)
+            let proceedAction = UIAlertAction(title: "Proceed anyway",
+                                              style: .destructive,
+                                              handler: { _ in
+                                                  self.finish()
+            })
+            alert.addAction(proceedAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
+        else {
+            finish()
+        }
     }
 
     private func showButtonsController() {
@@ -429,6 +474,10 @@ class AddAlertCampaignViewController: UIViewController {
 
     private func reloadData() {
         formController.setSections(formSections)
+    }
+
+    private func finish() {
+        delegate?.addAlertCampaignViewController(self, didFinishWith: model.alertCampaign)
     }
 
     private func trimVersionString(_ version: String?) -> String? {

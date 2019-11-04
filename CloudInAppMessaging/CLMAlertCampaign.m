@@ -57,8 +57,8 @@ static NSString * const kRecordType = @"AlertCampaign";
     if (self) {
         _identifier = [record.recordID.recordName copy];
         
-        _alertMessage = [record[CLM_KEYPATH(self, alertMessage)] copy];
         _alertTitle = [record[CLM_KEYPATH(self, alertTitle)] copy];
+        _alertMessage = [record[CLM_KEYPATH(self, alertMessage)] copy];
         
         _buttonActionURLs = [record[CLM_KEYPATH(self, buttonActionURLs)] copy] ?: [NSArray array];
         _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy] ?: [NSArray array];
@@ -86,8 +86,8 @@ static NSString * const kRecordType = @"AlertCampaign";
     CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:self.identifier zoneID:zone.zoneID];
     CKRecord *record = [[CKRecord alloc] initWithRecordType:kRecordType recordID:recordID];
     
-    record[CLM_KEYPATH(self, alertMessage)] = self.alertMessage;
     record[CLM_KEYPATH(self, alertTitle)] = self.alertTitle;
+    record[CLM_KEYPATH(self, alertMessage)] = self.alertMessage;
     
     record[CLM_KEYPATH(self, buttonActionURLs)] = self.buttonActionURLs;
     record[CLM_KEYPATH(self, buttonTitles)] = self.buttonTitles;

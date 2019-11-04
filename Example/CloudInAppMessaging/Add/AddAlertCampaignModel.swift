@@ -99,4 +99,72 @@ final class AddAlertCampaignModel {
 
         return model
     }
+
+    // swiftlint:disable cyclomatic_complexity force_unwrapping
+
+    func validate() -> String? {
+        var messages = [String]()
+
+        if alertCampaign.alertTitle == nil || alertCampaign.alertTitle!.isEmpty {
+            messages.append("⚠️ 'Alert Title' is empty")
+        }
+
+        if alertCampaign.alertMessage == nil || alertCampaign.alertMessage!.isEmpty {
+            messages.append("⚠️ 'Alert Message' is empty")
+        }
+
+        if alertCampaign.buttonTitles.isEmpty {
+            messages.append("⚠️ 'No buttons defined'")
+        }
+        else {
+            let uniqueTitles = Set(alertCampaign.buttonTitles)
+            if uniqueTitles.count != alertCampaign.buttonTitles.count {
+                messages.append("⚠️ One or more buttons are either empty or have the same titles")
+            }
+
+            let uniqueActions = Set(alertCampaign.buttonActionURLs)
+            if uniqueActions.count != alertCampaign.buttonActionURLs.count {
+                messages.append("⚠️ One or more buttons have the same actions")
+            }
+        }
+
+        if alertCampaign.defaultLangCode == nil || alertCampaign.defaultLangCode!.isEmpty {
+            messages.append("❌ 'Default Lang Code' is not set")
+        }
+
+        for translation in alertCampaign.translations {
+            var translationMessages = [String]()
+
+            if translation.langCode == nil || translation.langCode!.isEmpty {
+                translationMessages.append("❌ 'Language' is not set")
+            }
+
+            if translation.title == nil || translation.title!.isEmpty {
+                translationMessages.append("⚠️ 'Alert Title' is empty")
+            }
+
+            if translation.message == nil || translation.message!.isEmpty {
+                translationMessages.append("⚠️ 'Alert Message' is empty")
+            }
+
+            let uniqueButtons = Set(translation.buttonTitles)
+            if uniqueButtons.count != translation.buttonTitles.count {
+                translationMessages.append("⚠️ One or more buttons are either empty or have the same titles")
+            }
+
+            if !translationMessages.isEmpty {
+                let shortID = translation.identifier.prefix(8)
+                let message = "Translation <\(shortID)>:\n" + translationMessages.joined(separator: "\n")
+                messages.append(message)
+            }
+        }
+
+        if messages.isEmpty {
+            return nil
+        }
+
+        return messages.joined(separator: "\n\n")
+    }
+
+    // swiftlint:enable cyclomatic_complexity force_unwrapping
 }

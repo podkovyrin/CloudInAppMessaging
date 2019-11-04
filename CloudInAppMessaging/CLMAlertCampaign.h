@@ -22,8 +22,8 @@ CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 @property (readonly, nonatomic, copy) NSString *identifier;
 
 // Alert
-@property (nullable, nonatomic, copy) NSString *alertMessage;
 @property (nullable, nonatomic, copy) NSString *alertTitle;
+@property (nullable, nonatomic, copy) NSString *alertMessage;
 
 // Buttons
 
