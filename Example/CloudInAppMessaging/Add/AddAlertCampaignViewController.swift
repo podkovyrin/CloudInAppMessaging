@@ -279,6 +279,18 @@ class AddAlertCampaignViewController: UIViewController {
         return cellModel
     }
 
+    private var preview: SelectorFormCellModel {
+        let cellModel = SelectorFormCellModel()
+        cellModel.title = "Preview Alert (using the default lang)"
+        cellModel.titleStyle = .tinted
+        cellModel.action = { [weak self] in
+            guard let self = self else { return }
+            self.previewAlert()
+        }
+
+        return cellModel
+    }
+
     private var formSections: [FormSectionModel] {
         let alertSection = FormSectionModel([alertTitle, alertMessage])
         alertSection.header = "Alert"
@@ -297,7 +309,7 @@ class AddAlertCampaignViewController: UIViewController {
         let schedulingSection = FormSectionModel([startDate, endDate, trigger])
         schedulingSection.header = "Scheduling"
 
-        let maintenanceSection = FormSectionModel([validate])
+        let maintenanceSection = FormSectionModel([validate, preview])
         maintenanceSection.header = "– Maintenance –"
 
         return [alertSection,
@@ -474,6 +486,31 @@ class AddAlertCampaignViewController: UIViewController {
 
     private func reloadData() {
         formController.setSections(formSections)
+    }
+
+    private func previewAlert() {
+        let alert = UIAlertController(title: model.alertCampaign.alertTitle,
+                                      message: model.alertCampaign.alertMessage,
+                                      preferredStyle: .alert)
+
+        for (buttonTitle, buttonAction) in zip(model.alertCampaign.buttonTitles,
+                                               model.alertCampaign.buttonActionURLs) {
+            let hasAction = buttonAction != CLMAlertCampaign.buttonURLNoAction
+            let style: UIAlertAction.Style = hasAction ? .default : .cancel
+            let action = UIAlertAction(title: buttonTitle, style: style) { _ in
+                if hasAction {
+                    let actionAlert = UIAlertController(title: "The following URL will be opened within the app",
+                                                        message: buttonAction,
+                                                        preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel)
+                    actionAlert.addAction(okAction)
+                    self.present(actionAlert, animated: true)
+                }
+            }
+            alert.addAction(action)
+        }
+
+        present(alert, animated: true)
     }
 
     private func finish() {
