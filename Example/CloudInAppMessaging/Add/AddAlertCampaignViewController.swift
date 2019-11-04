@@ -338,7 +338,12 @@ class AddAlertCampaignViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
 
-    private func showTranslationsController() {}
+    private func showTranslationsController() {
+        let controller = AlertCampaignTranslationsViewController(alertCampaign: model.alertCampaign,
+                                                                 languageCodes: model.languageCodes,
+                                                                 locale: model.locale)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     private func showCountriesController() {
         let countryCodes = model.countriesModel()
@@ -349,7 +354,7 @@ class AddAlertCampaignViewController: UIViewController {
             self.model.alertCampaign.countries = items.map { $0.code }
             self.reloadData()
         }
-        controller.title = "Countries"
+        controller.title = "🎯 Countries"
         controller.multiSelection = true
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -363,7 +368,7 @@ class AddAlertCampaignViewController: UIViewController {
             self.model.alertCampaign.languages = items.map { $0.code }
             self.reloadData()
         }
-        controller.title = "Languages"
+        controller.title = "🎯 Languages"
         controller.multiSelection = true
         navigationController?.pushViewController(controller, animated: true)
     }

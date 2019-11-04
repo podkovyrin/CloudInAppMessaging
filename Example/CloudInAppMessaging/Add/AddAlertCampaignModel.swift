@@ -21,9 +21,10 @@ import Foundation
 final class AddAlertCampaignModel {
     let alertCampaign: CLMAlertCampaign
 
-    private let locale = Locale(identifier: "en_US")
+    // Show Language codes / Countries in English
+    let locale = Locale(identifier: "en_US")
 
-    private lazy var languageCodes: [String] = {
+    lazy var languageCodes: [String] = {
         let allCodes = Locale.availableIdentifiers.compactMap {
             Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
         }

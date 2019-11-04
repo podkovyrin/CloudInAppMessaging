@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A02759A23703D2D00B3025C /* AlertCampaignTranslationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02759923703D2D00B3025C /* AlertCampaignTranslationsViewController.swift */; };
+		2A02759C23704A7500B3025C /* AlertTranslationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02759B23704A7500B3025C /* AlertTranslationsModel.swift */; };
+		2A02759E237056EE00B3025C /* AlertButtonsTranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02759D237056EE00B3025C /* AlertButtonsTranslationViewController.swift */; };
+		2A0275A12370577200B3025C /* AlertButtonsTranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189A236BF6A10052A486 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231899236BF6A10052A486 /* ViewController.swift */; };
 		2A23189D236BF6A10052A486 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189B236BF6A10052A486 /* Main.storyboard */; };
@@ -62,6 +66,10 @@
 
 /* Begin PBXFileReference section */
 		0C74AAB889E7BBE7C71F9837 /* Pods-CloudInAppMessaging_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudInAppMessaging_Tests.debug.xcconfig"; path = "Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A02759923703D2D00B3025C /* AlertCampaignTranslationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignTranslationsViewController.swift; sourceTree = "<group>"; };
+		2A02759B23704A7500B3025C /* AlertTranslationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTranslationsModel.swift; sourceTree = "<group>"; };
+		2A02759D237056EE00B3025C /* AlertButtonsTranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButtonsTranslationViewController.swift; sourceTree = "<group>"; };
+		2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButtonsTranslationModel.swift; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudInAppMessaging_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudInAppMessaging_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A231899236BF6A10052A486 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +142,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A02759823703D0A00B3025C /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				2A02759F2370575B00B3025C /* Buttons */,
+				2A02759923703D2D00B3025C /* AlertCampaignTranslationsViewController.swift */,
+				2A02759B23704A7500B3025C /* AlertTranslationsModel.swift */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
+		2A02759F2370575B00B3025C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2A02759D237056EE00B3025C /* AlertButtonsTranslationViewController.swift */,
+				2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		2A231889236BF6A10052A486 = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +258,7 @@
 		2A2318E4236BFDBA0052A486 /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				2A02759823703D0A00B3025C /* Translations */,
 				2A9140A1236DBCC100A9E616 /* SearchSelector */,
 				2A54450A236CE01B00390B9A /* Buttons */,
 				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
@@ -526,10 +554,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A02759C23704A7500B3025C /* AlertTranslationsModel.swift in Sources */,
 				2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */,
 				2A2318E2236BFD290052A486 /* GroupedFormTableViewController.swift in Sources */,
 				2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */,
 				2A23189A236BF6A10052A486 /* ViewController.swift in Sources */,
+				2A0275A12370577200B3025C /* AlertButtonsTranslationModel.swift in Sources */,
 				2ADF56A9236C4CA4009917D1 /* TextFieldFormCellModel.swift in Sources */,
 				2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */,
 				2A2318D7236BFD290052A486 /* FormTableViewController.swift in Sources */,
@@ -540,6 +570,7 @@
 				2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */,
 				2A6AB240236CAC3000165A6E /* DatePickerFormTableViewCell.swift in Sources */,
 				2A9140A3236DBD0600A9E616 /* SearchSelectorViewController.swift in Sources */,
+				2A02759E237056EE00B3025C /* AlertButtonsTranslationViewController.swift in Sources */,
 				2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */,
 				2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */,
 				2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */,
@@ -558,6 +589,7 @@
 				2A2318D4236BFD290052A486 /* GroupedSelectorFormTableViewCell.swift in Sources */,
 				2ADF56AC236C51F3009917D1 /* TextInputFormCellModel.swift in Sources */,
 				2A2318E6236BFDCC0052A486 /* AddAlertCampaignViewController.swift in Sources */,
+				2A02759A23703D2D00B3025C /* AlertCampaignTranslationsViewController.swift in Sources */,
 				2A2318DA236BFD290052A486 /* GroupedSwitcherFormTableViewCell.swift in Sources */,
 				2ADF56A3236C1370009917D1 /* AddAlertCampaignModel.swift in Sources */,
 				2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */,

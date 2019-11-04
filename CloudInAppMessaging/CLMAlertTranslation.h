@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, copy) NSString *message;
-@property (nullable, nonatomic, copy) NSArray<NSString *> *buttonTitles;
+@property (nonatomic, copy) NSArray<NSString *> *buttonTitles;
 
 @end
 

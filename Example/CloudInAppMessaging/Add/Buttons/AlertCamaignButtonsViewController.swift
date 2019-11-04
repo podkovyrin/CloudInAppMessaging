@@ -71,7 +71,7 @@ class AlertCamaignButtonsViewController: UIViewController {
         titleModel.text = button.title
         titleModel.returnKeyType = .next
         titleModel.didChangeText = { titleModel in
-            button.title = titleModel.text ?? ""
+            button.title = titleModel.text?.trimmingCharacters(in: .whitespaces) ?? ""
         }
 
         let urlModel = TextFieldFormCellModel()
@@ -82,7 +82,7 @@ class AlertCamaignButtonsViewController: UIViewController {
         urlModel.autocorrectionType = .no
         urlModel.autocapitalizationType = .none
         urlModel.didChangeText = { titleModel in
-            button.url = titleModel.text ?? ""
+            button.url = titleModel.text?.trimmingCharacters(in: .whitespaces) ?? ""
         }
         urlModel.validateAction = { [weak self, weak urlModel] text in
             guard let self = self, let urlModel = urlModel else { return false }
@@ -101,16 +101,16 @@ class AlertCamaignButtonsViewController: UIViewController {
             }
         }
 
-        let remove = SelectorFormCellModel()
-        remove.title = "Remove Button"
-        remove.titleStyle = .destructive
-        remove.action = { [weak self] in
+        let removeModel = SelectorFormCellModel()
+        removeModel.title = "Remove Button"
+        removeModel.titleStyle = .destructive
+        removeModel.action = { [weak self] in
             guard let self = self else { return }
             self.model.removeButton(button)
             self.reloadData()
         }
 
-        return FormSectionModel([titleModel, urlModel, remove])
+        return FormSectionModel([titleModel, urlModel, removeModel])
     }
 
     private func reloadData() {

@@ -19,6 +19,7 @@ static NSString * const kRecordType = @"AlertTranslation";
     self = [super init];
     if (self) {
         _identifier = [NSUUID UUID].UUIDString;
+        _buttonTitles = [NSArray array];
     }
     
     return self;
@@ -35,7 +36,7 @@ static NSString * const kRecordType = @"AlertTranslation";
 
         _title = [record[CLM_KEYPATH(self, title)] copy];
         _message = [record[CLM_KEYPATH(self, message)] copy];
-        _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy];
+        _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy] ?: [NSArray array];
     }
     
     return self;
