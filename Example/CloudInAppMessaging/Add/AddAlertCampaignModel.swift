@@ -53,6 +53,7 @@ final class AddAlertCampaignModel {
             let selectedIndex = languageCodes.firstIndex(of: defaultLangCode) {
             selectedIndexes.insert(selectedIndex)
         }
+
         let model = LocaleSelectorModel(codes: languageCodes,
                                         localizeCode: {
                                             locale.localizedString(forLanguageCode: $0) ?? ""
@@ -74,6 +75,24 @@ final class AddAlertCampaignModel {
         let model = LocaleSelectorModel(codes: countryCodes,
                                         localizeCode: {
                                             locale.localizedString(forRegionCode: $0) ?? ""
+                                        },
+                                        selectedIndexes: selectedIndexes)
+
+        return model
+    }
+
+    func languagesModel() -> LocaleSelectorModel {
+        var selectedIndexes = Set<Int>()
+        for language in alertCampaign.languages {
+            guard let index = languageCodes.firstIndex(of: language) else {
+                fatalError("Invalid country")
+            }
+            selectedIndexes.insert(index)
+        }
+
+        let model = LocaleSelectorModel(codes: languageCodes,
+                                        localizeCode: {
+                                            locale.localizedString(forLanguageCode: $0) ?? ""
                                         },
                                         selectedIndexes: selectedIndexes)
 

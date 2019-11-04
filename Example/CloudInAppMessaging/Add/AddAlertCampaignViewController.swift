@@ -322,7 +322,19 @@ class AddAlertCampaignViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
 
-    private func showLanguagesController() {}
+    private func showLanguagesController() {
+        let languageCodes = model.languagesModel()
+
+        let controller = SearchSelectorViewController(model: languageCodes) { [weak self] items in
+            guard let self = self else { return }
+
+            self.model.alertCampaign.languages = items.map { $0.code }
+            self.reloadData()
+        }
+        controller.title = "Languages"
+        controller.multiSelection = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     private func showTriggerSelector() {
         let trigger = model.alertCampaign.trigger
