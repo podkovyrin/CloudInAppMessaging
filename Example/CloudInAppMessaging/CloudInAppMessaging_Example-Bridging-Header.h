@@ -6,5 +6,6 @@
 #define CloudInAppMessaging_AdminApp_Bridging_Header
 
 #import "NSAttributedString+DWHighlightText.h"
+#import "PlaceholderTextView.h"
 
 #endif /* CloudInAppMessaging_AdminApp_Bridging_Header */

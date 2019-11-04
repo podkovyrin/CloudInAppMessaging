@@ -8,4 +8,6 @@
 
 import UIKit
 
-final class TextViewFormCellModel: TextInputFormCellModel {}
+final class TextViewFormCellModel: TextInputFormCellModel {
+    var placeholder: String?
+}

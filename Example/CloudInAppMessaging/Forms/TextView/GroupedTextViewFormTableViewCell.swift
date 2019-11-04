@@ -16,6 +16,7 @@ final class GroupedTextViewFormTableViewCell: UITableViewCell, TextViewFormTable
             titleLabel.text = model.title
 
             textView.text = model.text
+            textView.placeholderText = model.placeholder
 
             textView.autocapitalizationType = model.autocapitalizationType
             textView.autocorrectionType = model.autocorrectionType
@@ -39,7 +40,7 @@ final class GroupedTextViewFormTableViewCell: UITableViewCell, TextViewFormTable
     weak var delegate: TextInputFormTableViewCellDelegate?
 
     private let titleLabel = UILabel(frame: .zero)
-    private let textView = UITextView(frame: .zero)
+    private let textView = PlaceholderTextView(frame: .zero)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
