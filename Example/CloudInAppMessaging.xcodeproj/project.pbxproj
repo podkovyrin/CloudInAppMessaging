@@ -31,7 +31,7 @@
 		2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EA236C02E60052A486 /* UIView+Animations.swift */; };
 		2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */; };
 		2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */; };
-		2A26CBDD236DC8CE009EAC52 /* LanguagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */; };
+		2A26CBDD236DC8CE009EAC52 /* LocaleSelectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */; };
 		2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */; };
 		2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */; };
 		2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */; };
@@ -90,7 +90,7 @@
 		2A2318EA236C02E60052A486 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTextViewFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A2318EE236C0EF80052A486 /* UIViewController+ChildControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChildControllers.swift"; sourceTree = "<group>"; };
-		2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesModel.swift; sourceTree = "<group>"; };
+		2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleSelectorModel.swift; sourceTree = "<group>"; };
 		2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCamaignButtonsViewController.swift; sourceTree = "<group>"; };
 		2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignButtonsModel.swift; sourceTree = "<group>"; };
 		2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudInAppMessaging+View.swift"; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				2A54450A236CE01B00390B9A /* Buttons */,
 				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
 				2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */,
-				2A26CBDC236DC8CE009EAC52 /* LanguagesModel.swift */,
+				2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -544,7 +544,7 @@
 				2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */,
 				2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */,
 				2A2318DF236BFD290052A486 /* TextViewFormCellModel.swift in Sources */,
-				2A26CBDD236DC8CE009EAC52 /* LanguagesModel.swift in Sources */,
+				2A26CBDD236DC8CE009EAC52 /* LocaleSelectorModel.swift in Sources */,
 				2A2318DE236BFD290052A486 /* TextViewFormTableViewCell.swift in Sources */,
 				2A2318D5236BFD290052A486 /* SelectorFormCellModel.swift in Sources */,
 				2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */,

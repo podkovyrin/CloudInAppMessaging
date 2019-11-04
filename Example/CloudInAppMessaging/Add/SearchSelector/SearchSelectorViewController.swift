@@ -22,10 +22,10 @@ protocol SearchSelectorItem {
 }
 
 protocol SearchSelectorModel: AnyObject {
-    associatedtype ItemType: SearchSelectorItem
+    associatedtype Item: SearchSelectorItem
 
-    var items: [ItemType] { get }
-    var selectedIndex: Int? { get set }
+    var items: [Item] { get }
+    var selectedIndexes: Set<Int> { get set }
 
     func filterItems(searchQuery: String)
 }
@@ -38,13 +38,14 @@ class SearchSelectorTableViewCell: UITableViewCell {
 }
 
 class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewController, UISearchResultsUpdating {
+    var multiSelection = false
+
     private let model: T
+    private let selectionChanged: ([T.Item]) -> Void
 
-    private let selectionBlock: (T.ItemType) -> Void
-
-    init(model: T, selectionBlock: @escaping (T.ItemType) -> Void) {
+    init(model: T, selectionBlock: @escaping ([T.Item]) -> Void) {
         self.model = model
-        self.selectionBlock = selectionBlock
+        selectionChanged = selectionBlock
 
         super.init(style: .grouped)
     }
@@ -77,6 +78,14 @@ class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewControlle
         let cell = SearchSelectorTableViewCell.self
         tableView.register(cell, forCellReuseIdentifier: String(describing: cell))
 
+        if multiSelection {
+            let barButton = UIBarButtonItem(title: "Uncheck All",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(uncheckAllButtonAction))
+            navigationItem.rightBarButtonItem = barButton
+        }
+
         // Search Controller
 
         definesPresentationContext = true
@@ -96,7 +105,7 @@ class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewControlle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let selectedIndex = model.selectedIndex {
+        if let selectedIndex = model.selectedIndexes.first {
             let indexPath = IndexPath(row: selectedIndex, section: 0)
             tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         }
@@ -117,7 +126,7 @@ class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewControlle
 
         let index = indexPath.row
         let item = model.items[index]
-        let selected = model.selectedIndex == index
+        let selected = model.selectedIndexes.contains(index)
         cell.configure(with: item, selected: selected)
 
         return cell
@@ -129,10 +138,24 @@ class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewControlle
         tableView.deselectRow(at: indexPath, animated: true)
 
         let index = indexPath.row
-        let item = model.items[index]
-        model.selectedIndex = index
 
-        selectionBlock(item)
+        if multiSelection {
+            if model.selectedIndexes.contains(index) {
+                model.selectedIndexes.remove(index)
+            }
+            else {
+                model.selectedIndexes.insert(index)
+            }
+
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        else {
+            model.selectedIndexes.removeAll()
+            model.selectedIndexes.insert(index)
+        }
+
+        let selectedItems = model.selectedIndexes.map { model.items[$0] }
+        selectionChanged(selectedItems)
     }
 
     // MARK: UISearchResultsUpdating
@@ -143,5 +166,14 @@ class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewControlle
         model.filterItems(searchQuery: trimmedQuery)
 
         tableView.reloadData()
+    }
+
+    // MARK: Actions
+
+    @objc
+    func uncheckAllButtonAction() {
+        model.selectedIndexes.removeAll()
+        tableView.reloadData()
+        selectionChanged([])
     }
 }

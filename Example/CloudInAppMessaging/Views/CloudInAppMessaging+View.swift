@@ -30,11 +30,6 @@ extension CLMAlertCampaignTrigger: CustomStringConvertible {
 
 extension CLMAlertCampaign {
     var isButtonsValid: Bool {
-        if let titles = buttonTitles, let urls = buttonActionURLs {
-            return titles.count == urls.count
-        }
-        else {
-            return true
-        }
+        return buttonTitles.count == buttonActionURLs.count
     }
 }

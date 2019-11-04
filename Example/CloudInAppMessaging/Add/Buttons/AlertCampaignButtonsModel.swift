@@ -38,7 +38,7 @@ class AlertCampaignButtonsModel {
 
         self.alertCampaign = alertCampaign
 
-        buttons = zip(alertCampaign.buttonTitles ?? [], alertCampaign.buttonActionURLs ?? [])
+        buttons = zip(alertCampaign.buttonTitles, alertCampaign.buttonActionURLs)
             .map { AlertCampaignButton(title: $0, url: $1) }
     }
 

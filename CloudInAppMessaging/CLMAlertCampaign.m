@@ -24,6 +24,11 @@ static NSString * const kRecordType = @"AlertCampaign";
     self = [super init];
     if (self) {
         _identifier = [NSUUID UUID].UUIDString;
+        _buttonActionURLs = [NSArray array];
+        _buttonTitles = [NSArray array];
+        _translations = [NSArray array];
+        _countries = [NSArray array];
+        _languages = [NSArray array];
     }
     
     return self;
@@ -55,15 +60,15 @@ static NSString * const kRecordType = @"AlertCampaign";
         _alertMessage = [record[CLM_KEYPATH(self, alertMessage)] copy];
         _alertTitle = [record[CLM_KEYPATH(self, alertTitle)] copy];
         
-        _buttonActionURLs = [record[CLM_KEYPATH(self, buttonActionURLs)] copy];
-        _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy];
+        _buttonActionURLs = [record[CLM_KEYPATH(self, buttonActionURLs)] copy] ?: [NSArray array];
+        _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy] ?: [NSArray array];
         
         _defaultLangCode = [record[CLM_KEYPATH(self, defaultLangCode)] copy];
             // TODO ref
-        //    record[CLM_KEYPATH(self, translations)]
+        //    record[CLM_KEYPATH(self, translations)]  ?: [NSArray array];
                 
-        _countries = [record[CLM_KEYPATH(self, countries)] copy];
-        _languages = [record[CLM_KEYPATH(self, languages)] copy];
+        _countries = [record[CLM_KEYPATH(self, countries)] copy] ?: [NSArray array];
+        _languages = [record[CLM_KEYPATH(self, languages)] copy] ?: [NSArray array];
         _maxAppVersion = [record[CLM_KEYPATH(self, maxAppVersion)] copy];
         _maxOSVersion = [record[CLM_KEYPATH(self, maxOSVersion)] copy];
         _minAppVersion = [record[CLM_KEYPATH(self, minAppVersion)] copy];

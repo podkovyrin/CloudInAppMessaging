@@ -73,7 +73,8 @@ class AddAlertCampaignViewController: UIViewController {
     private var buttons: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Alert Buttons"
-        cellModel.detail = (model.alertCampaign.buttonTitles?.joined(separator: ",") ?? "<No Buttons>")
+        let buttonTitles = model.alertCampaign.buttonTitles
+        cellModel.detail = buttonTitles.isEmpty ? "<No Buttons>" : buttonTitles.joined(separator: ", ")
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
             guard let self = self else { return }
@@ -99,7 +100,7 @@ class AddAlertCampaignViewController: UIViewController {
     private var translations: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Translations"
-        cellModel.detail = "\(model.alertCampaign.translations?.count ?? 0)"
+        cellModel.detail = "\(model.alertCampaign.translations.count)"
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
             guard let self = self else { return }
@@ -112,11 +113,12 @@ class AddAlertCampaignViewController: UIViewController {
     private var countries: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Countries"
-        if let countries = model.alertCampaign.countries {
-            cellModel.detail = countries.joined(separator: ",")
+        let countries = model.alertCampaign.countries
+        if countries.isEmpty {
+            cellModel.detail = "All Countries"
         }
         else {
-            cellModel.detail = "All Countries"
+            cellModel.detail = countries.joined(separator: ", ")
         }
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
@@ -130,11 +132,12 @@ class AddAlertCampaignViewController: UIViewController {
     private var languages: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Languages"
-        if let languages = model.alertCampaign.languages {
-            cellModel.detail = languages.joined(separator: ",")
+        let languages = model.alertCampaign.languages
+        if languages.isEmpty {
+            cellModel.detail = "All Languages"
         }
         else {
-            cellModel.detail = "All Languages"
+            cellModel.detail = languages.joined(separator: ", ")
         }
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
@@ -289,10 +292,14 @@ class AddAlertCampaignViewController: UIViewController {
     private func showDefaultLangCodeSelector() {
         let languageCodes = model.defaultLanguageModel()
 
-        let controller = SearchSelectorViewController(model: languageCodes) { [weak self] item in
+        let controller = SearchSelectorViewController(model: languageCodes) { [weak self] items in
             guard let self = self else { return }
+            guard let item = items.first else {
+                fatalError("Inconsistent state")
+            }
             self.model.alertCampaign.defaultLangCode = item.code
             self.reloadData()
+
             self.navigationController?.popViewController(animated: true)
         }
         controller.title = "Default Lang Code"
@@ -302,12 +309,17 @@ class AddAlertCampaignViewController: UIViewController {
     private func showTranslationsController() {}
 
     private func showCountriesController() {
-        // TODO: allow multi selection
-//        let countryCodes = model.countryCodes
-//
-//        let controller = SearchSelectorViewController(model: countryCodes) { item in
-//        }
-//        navigationController?.pushViewController(controller, animated: true)
+        let countryCodes = model.countriesModel()
+
+        let controller = SearchSelectorViewController(model: countryCodes) { [weak self] items in
+            guard let self = self else { return }
+
+            self.model.alertCampaign.countries = items.map { $0.code }
+            self.reloadData()
+        }
+        controller.title = "Countries"
+        controller.multiSelection = true
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     private func showLanguagesController() {}

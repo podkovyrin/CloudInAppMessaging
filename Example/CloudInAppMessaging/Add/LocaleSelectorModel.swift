@@ -73,13 +73,13 @@ final class LocaleSelectorModel: SearchSelectorModel {
         }
     }
 
-    var selectedIndex: Int?
+    var selectedIndexes = Set<Int>()
 
     private var allItems: [LocaleItem]
     private var searchQuery = ""
     private var filteredItems = [LocaleItem]()
 
-    init(codes: [String], localizeCode: (String) -> (String), selectedIndex: Int?) {
+    init(codes: [String], localizeCode: (String) -> (String), selectedIndexes: Set<Int>) {
         var items = [LocaleItem]()
         for code in codes {
             let localizedCode = localizeCode(code)
@@ -88,7 +88,7 @@ final class LocaleSelectorModel: SearchSelectorModel {
         }
         allItems = items
 
-        self.selectedIndex = selectedIndex
+        self.selectedIndexes = selectedIndexes
     }
 
     func filterItems(searchQuery: String) {

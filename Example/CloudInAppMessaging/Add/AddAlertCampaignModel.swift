@@ -18,10 +18,11 @@
 import CloudInAppMessaging
 import Foundation
 
-class AddAlertCampaignModel {
+final class AddAlertCampaignModel {
     let alertCampaign: CLMAlertCampaign
 
     private let locale = Locale(identifier: "en_US")
+
     private lazy var languageCodes: [String] = {
         let allCodes = Locale.availableIdentifiers.compactMap {
             Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
@@ -30,38 +31,10 @@ class AddAlertCampaignModel {
     }()
 
     private lazy var countryCodes: [String] = {
-        let allCodes = Locale.availableIdentifiers.compactMap {
-            Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue]
-        }
+        let allCodes = Locale.availableIdentifiers
+            .compactMap { Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue] }
+            .filter { $0.rangeOfCharacter(from: CharacterSet.letters) != nil } // filter countries only
         return Array(Set(allCodes)).sorted(by: <)
-    }()
-
-    lazy var languageCodes1: LocaleSelectorModel = {
-        let allCodes = Locale.availableIdentifiers.compactMap {
-            Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
-        }
-        let codes = Array(Set(allCodes)).sorted(by: <)
-        let model = LocaleSelectorModel(codes: codes,
-                                        localizeCode: {
-                                            locale.localizedString(forLanguageCode: $0) ?? ""
-                                        },
-                                        selectedIndex: nil)
-
-        return model
-    }()
-
-    lazy var countryCodes1: LocaleSelectorModel = {
-        let allCodes = Locale.availableIdentifiers.compactMap {
-            Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue]
-        }
-        let codes = Array(Set(allCodes)).sorted(by: <)
-        let model = LocaleSelectorModel(codes: codes,
-                                        localizeCode: {
-                                            locale.localizedString(forRegionCode: $0) ?? ""
-                                        },
-                                        selectedIndex: nil)
-
-        return model
     }()
 
     init() {
@@ -75,15 +48,34 @@ class AddAlertCampaignModel {
     }
 
     func defaultLanguageModel() -> LocaleSelectorModel {
-        var selectedIndex: Int?
-        if let defaultLangCode = alertCampaign.defaultLangCode {
-            selectedIndex = languageCodes.firstIndex(of: defaultLangCode)
+        var selectedIndexes = Set<Int>()
+        if let defaultLangCode = alertCampaign.defaultLangCode,
+            let selectedIndex = languageCodes.firstIndex(of: defaultLangCode) {
+            selectedIndexes.insert(selectedIndex)
         }
         let model = LocaleSelectorModel(codes: languageCodes,
                                         localizeCode: {
                                             locale.localizedString(forLanguageCode: $0) ?? ""
                                         },
-                                        selectedIndex: selectedIndex)
+                                        selectedIndexes: selectedIndexes)
+
+        return model
+    }
+
+    func countriesModel() -> LocaleSelectorModel {
+        var selectedIndexes = Set<Int>()
+        for country in alertCampaign.countries {
+            guard let index = countryCodes.firstIndex(of: country) else {
+                fatalError("Invalid country")
+            }
+            selectedIndexes.insert(index)
+        }
+
+        let model = LocaleSelectorModel(codes: countryCodes,
+                                        localizeCode: {
+                                            locale.localizedString(forRegionCode: $0) ?? ""
+                                        },
+                                        selectedIndexes: selectedIndexes)
 
         return model
     }

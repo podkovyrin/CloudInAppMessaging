@@ -28,16 +28,16 @@ CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 // Buttons
 
 /// Empty string as URL means "no action"
-@property (nullable, nonatomic, copy) NSArray<NSString *> *buttonActionURLs;
-@property (nullable, nonatomic, copy) NSArray<NSString *> *buttonTitles;
+@property (nonatomic, copy) NSArray<NSString *> *buttonActionURLs;
+@property (nonatomic, copy) NSArray<NSString *> *buttonTitles;
 
 // Localization
 @property (nullable, nonatomic, copy) NSString *defaultLangCode;
-@property (nullable, nonatomic, copy) NSArray<CLMAlertTranslation *> *translations;
+@property (nonatomic, copy) NSArray<CLMAlertTranslation *> *translations;
 
 // Targeting
-@property (nullable, nonatomic, copy) NSArray<NSString *> *countries;
-@property (nullable, nonatomic, copy) NSArray<NSString *> *languages;
+@property (nonatomic, copy) NSArray<NSString *> *countries;
+@property (nonatomic, copy) NSArray<NSString *> *languages;
 @property (nullable, nonatomic, copy) NSString *maxAppVersion;
 @property (nullable, nonatomic, copy) NSString *maxOSVersion;
 @property (nullable, nonatomic, copy) NSString *minAppVersion;
