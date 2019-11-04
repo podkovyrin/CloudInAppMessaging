@@ -12,4 +12,5 @@ final class TextFieldFormCellModel: TextInputFormCellModel {
     var placeholder: String?
 
     var validateAction: ((String) -> Bool)?
+    var transformAction: ((String) -> String?)?
 }

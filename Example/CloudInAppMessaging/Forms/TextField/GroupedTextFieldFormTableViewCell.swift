@@ -104,10 +104,20 @@ extension GroupedTextFieldFormTableViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let nsStringText = textField.text as NSString?
-        model?.text = nsStringText?.replacingCharacters(in: range, with: string) as String? ?? ""
+        let nsStringText = textField.text as NSString? ?? ""
+        let result = nsStringText.replacingCharacters(in: range, with: string)
+        if let transformAction = model?.transformAction {
+            let transformed = transformAction(result)
+            model?.text = transformed
+            textField.text = transformed
 
-        return true
+            return false
+        }
+        else {
+            model?.text = result
+
+            return true
+        }
     }
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {

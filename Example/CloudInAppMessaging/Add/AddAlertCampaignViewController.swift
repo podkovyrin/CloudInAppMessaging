@@ -52,7 +52,7 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.alertTitle
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.alertTitle = cellModel.text
+            self.model.alertCampaign.alertTitle = cellModel.text?.trimmingCharacters(in: .whitespaces)
         }
 
         return cellModel
@@ -64,7 +64,7 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.alertMessage
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.alertMessage = cellModel.text
+            self.model.alertCampaign.alertMessage = cellModel.text?.trimmingCharacters(in: .whitespaces)
         }
 
         return cellModel
@@ -154,6 +154,14 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.maxAppVersion
         cellModel.keyboardType = .decimalPad
         cellModel.placeholder = "Any"
+        cellModel.transformAction = { [weak self] string in
+            guard let self = self else { return nil }
+            return self.versionStringTransformer(string)
+        }
+        cellModel.didChangeText = { [weak self] cellModel in
+            guard let self = self else { return }
+            self.model.alertCampaign.maxAppVersion = self.trimVersionString(cellModel.text)
+        }
 
         return cellModel
     }
@@ -164,6 +172,14 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.maxOSVersion
         cellModel.keyboardType = .decimalPad
         cellModel.placeholder = "Any"
+        cellModel.transformAction = { [weak self] string in
+            guard let self = self else { return nil }
+            return self.versionStringTransformer(string)
+        }
+        cellModel.didChangeText = { [weak self] cellModel in
+            guard let self = self else { return }
+            self.model.alertCampaign.maxOSVersion = self.trimVersionString(cellModel.text)
+        }
 
         return cellModel
     }
@@ -174,6 +190,14 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.minAppVersion
         cellModel.keyboardType = .decimalPad
         cellModel.placeholder = "Any"
+        cellModel.transformAction = { [weak self] string in
+            guard let self = self else { return nil }
+            return self.versionStringTransformer(string)
+        }
+        cellModel.didChangeText = { [weak self] cellModel in
+            guard let self = self else { return }
+            self.model.alertCampaign.minAppVersion = self.trimVersionString(cellModel.text)
+        }
 
         return cellModel
     }
@@ -184,6 +208,14 @@ class AddAlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.minOSVersion
         cellModel.keyboardType = .decimalPad
         cellModel.placeholder = "Any"
+        cellModel.transformAction = { [weak self] string in
+            guard let self = self else { return nil }
+            return self.versionStringTransformer(string)
+        }
+        cellModel.didChangeText = { [weak self] cellModel in
+            guard let self = self else { return }
+            self.model.alertCampaign.minOSVersion = self.trimVersionString(cellModel.text)
+        }
 
         return cellModel
     }
@@ -353,7 +385,7 @@ class AddAlertCampaignViewController: UIViewController {
                 case .onAppLaunch:
                     break
                 default:
-                    textField.text = trigger.rawValue
+                    textField.text = trigger.rawValue.trimmingCharacters(in: .whitespaces)
                 }
             }
         }
@@ -392,5 +424,36 @@ class AddAlertCampaignViewController: UIViewController {
 
     private func reloadData() {
         formController.setSections(formSections)
+    }
+
+    private func trimVersionString(_ version: String?) -> String? {
+        guard let version = version else {
+            return nil
+        }
+
+        let trimmed = version.trimmingCharacters(in: .whitespaces)
+        if trimmed.isEmpty {
+            return nil
+        }
+
+        // fix separator in some locales
+        let fixed = trimmed.replacingOccurrences(of: ",", with: ".")
+
+        // remove any leading/trailing separators
+        let componets = fixed.components(separatedBy: ".").filter { !$0.isEmpty }
+
+        return componets.joined(separator: ".")
+    }
+
+    private func versionStringTransformer(_ version: String?) -> String? {
+        guard let trimmed = trimVersionString(version) else {
+            return nil
+        }
+
+        if let version = version, version.hasSuffix(".") {
+            return trimmed + "."
+        }
+
+        return trimmed
     }
 }
