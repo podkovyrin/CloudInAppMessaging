@@ -15,11 +15,25 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import <UIKit/UIKit.h>
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
+#import "CLMAlertActionDefaultExecutor.h"
 
-#endif /* CloudInAppMessaging_h */
+NS_ASSUME_NONNULL_BEGIN
+
+@implementation CLMAlertActionDefaultExecutor
+
+- (void)performAlertButtonAction:(NSString *)action inContext:(UIViewController *)context {
+    NSURL *url = [NSURL URLWithString:action];
+    if (!url) {
+        return;
+    }
+    
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+    }
+}
+
+@end
+
+NS_ASSUME_NONNULL_END

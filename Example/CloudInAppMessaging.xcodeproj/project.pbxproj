@@ -40,6 +40,7 @@
 		2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */; };
 		2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */; };
 		2A544510236CE10200390B9A /* CloudInAppMessaging+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */; };
+		2A56B5EE2370CD33001BB8B4 /* DummyAlertActionExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56B5ED2370CD33001BB8B4 /* DummyAlertActionExecutor.swift */; };
 		2A6AB23F236CAC3000165A6E /* DatePickerFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23C236CAC3000165A6E /* DatePickerFormCellModel.swift */; };
 		2A6AB240236CAC3000165A6E /* DatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23D236CAC3000165A6E /* DatePickerFormTableViewCell.swift */; };
 		2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		2A54450B236CE03800390B9A /* AlertCamaignButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCamaignButtonsViewController.swift; sourceTree = "<group>"; };
 		2A54450D236CE09100390B9A /* AlertCampaignButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignButtonsModel.swift; sourceTree = "<group>"; };
 		2A54450F236CE10200390B9A /* CloudInAppMessaging+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudInAppMessaging+View.swift"; sourceTree = "<group>"; };
+		2A56B5ED2370CD33001BB8B4 /* DummyAlertActionExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAlertActionExecutor.swift; sourceTree = "<group>"; };
 		2A6AB23C236CAC3000165A6E /* DatePickerFormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFormCellModel.swift; sourceTree = "<group>"; };
 		2A6AB23D236CAC3000165A6E /* DatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedDatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
 				2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */,
 				2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */,
+				2A56B5ED2370CD33001BB8B4 /* DummyAlertActionExecutor.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				2A02759A23703D2D00B3025C /* AlertCampaignTranslationsViewController.swift in Sources */,
 				2A2318DA236BFD290052A486 /* GroupedSwitcherFormTableViewCell.swift in Sources */,
 				2ADF56A3236C1370009917D1 /* AddAlertCampaignModel.swift in Sources */,
+				2A56B5EE2370CD33001BB8B4 /* DummyAlertActionExecutor.swift in Sources */,
 				2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,7 +763,7 @@
 			baseConfigurationReference = 6AF9F47F822F2AA09F9B75EF /* Pods-CloudInAppMessaging_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;
@@ -781,7 +785,7 @@
 			baseConfigurationReference = 6A632D590E7341FB2EC8B3EA /* Pods-CloudInAppMessaging_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;

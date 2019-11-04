@@ -15,11 +15,12 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import "CLMAlertActionExecutor.h"
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* CloudInAppMessaging_h */
+@interface CLMAlertActionDefaultExecutor : NSObject <CLMAlertActionExecutor>
+
+@end
+
+NS_ASSUME_NONNULL_END

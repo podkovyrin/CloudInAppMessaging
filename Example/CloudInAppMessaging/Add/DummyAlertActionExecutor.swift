@@ -1,4 +1,4 @@
-//  
+//
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -15,11 +15,16 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+import CloudInAppMessaging
+import UIKit
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
-
-#endif /* CloudInAppMessaging_h */
+class DummyAlertActionExecutor: CLMAlertActionExecutor {
+    func perform(alertButtonAction action: String, in context: UIViewController) {
+        let actionAlert = UIAlertController(title: "The following URL will be opened within the app",
+                                            message: action,
+                                            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        actionAlert.addAction(okAction)
+        context.present(actionAlert, animated: true)
+    }
+}

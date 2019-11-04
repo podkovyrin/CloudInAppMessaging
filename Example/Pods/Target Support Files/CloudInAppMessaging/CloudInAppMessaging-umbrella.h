@@ -10,7 +10,11 @@
 #endif
 #endif
 
+#import "CLMAlertActionDefaultExecutor.h"
+#import "CLMAlertActionExecutor.h"
 #import "CLMAlertCampaign.h"
+#import "CLMAlertDataSource.h"
+#import "CLMAlertPresenter.h"
 #import "CLMAlertTranslation.h"
 #import "CLMCloudKitSerializable.h"
 #import "CloudInAppMessaging.h"

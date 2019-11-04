@@ -6,24 +6,25 @@
 //
 
 #import "CLMCloudKitSerializable.h"
+#import "CLMAlertDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const CLMAlertCampaignButtonURLNoAction NS_SWIFT_NAME(CLMAlertCampaign.buttonURLNoAction);
 
 typedef NSString * CLMAlertCampaignTrigger NS_TYPED_EXTENSIBLE_ENUM;
-CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground;
-CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
+extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground;
+extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 
 @class CLMAlertTranslation;
 
-@interface CLMAlertCampaign : NSObject <CLMCloudKitSerializable>
+@interface CLMAlertCampaign : NSObject <CLMCloudKitSerializable, CLMAlertDataSource>
 
 @property (readonly, nonatomic, copy) NSString *identifier;
 
 // Alert
-@property (nullable, nonatomic, copy) NSString *alertTitle;
-@property (nullable, nonatomic, copy) NSString *alertMessage;
+@property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, copy) NSString *message;
 
 // Buttons
 

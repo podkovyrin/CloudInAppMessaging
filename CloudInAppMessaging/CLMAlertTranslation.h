@@ -6,10 +6,11 @@
 //
 
 #import "CLMCloudKitSerializable.h"
+#import "CLMAlertDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLMAlertTranslation : NSObject <CLMCloudKitSerializable>
+@interface CLMAlertTranslation : NSObject <CLMCloudKitSerializable, CLMAlertDataSource>
 
 @property (readonly, nonatomic, copy) NSString *identifier;
 

@@ -15,11 +15,15 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import <Foundation/Foundation.h>
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* CloudInAppMessaging_h */
+@protocol CLMAlertActionExecutor
+
+- (void)performAlertButtonAction:(NSString *)action
+                       inContext:(UIViewController *)context NS_SWIFT_NAME(perform(alertButtonAction:in:));
+
+@end
+
+NS_ASSUME_NONNULL_END

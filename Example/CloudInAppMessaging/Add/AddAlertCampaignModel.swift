@@ -105,11 +105,11 @@ final class AddAlertCampaignModel {
     func validate() -> String? {
         var messages = [String]()
 
-        if alertCampaign.alertTitle == nil || alertCampaign.alertTitle!.isEmpty {
+        if alertCampaign.title == nil || alertCampaign.title!.isEmpty {
             messages.append("⚠️ 'Alert Title' is empty")
         }
 
-        if alertCampaign.alertMessage == nil || alertCampaign.alertMessage!.isEmpty {
+        if alertCampaign.message == nil || alertCampaign.message!.isEmpty {
             messages.append("⚠️ 'Alert Message' is empty")
         }
 

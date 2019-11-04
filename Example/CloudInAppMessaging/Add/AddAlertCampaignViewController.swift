@@ -49,10 +49,10 @@ class AddAlertCampaignViewController: UIViewController {
     private var alertTitle: TextViewFormCellModel {
         let cellModel = TextViewFormCellModel()
         cellModel.title = "Alert Title"
-        cellModel.text = model.alertCampaign.alertTitle
+        cellModel.text = model.alertCampaign.title
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.alertTitle = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            self.model.alertCampaign.title = cellModel.text?.trimmingCharacters(in: .whitespaces)
         }
 
         return cellModel
@@ -61,10 +61,10 @@ class AddAlertCampaignViewController: UIViewController {
     private var alertMessage: TextViewFormCellModel {
         let cellModel = TextViewFormCellModel()
         cellModel.title = "Alert Message"
-        cellModel.text = model.alertCampaign.alertMessage
+        cellModel.text = model.alertCampaign.message
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.alertMessage = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            self.model.alertCampaign.message = cellModel.text?.trimmingCharacters(in: .whitespaces)
         }
 
         return cellModel
@@ -354,7 +354,6 @@ class AddAlertCampaignViewController: UIViewController {
     private func doneAction() {
         let message = model.validate()
         if message != nil {
-            let message = model.validate() ?? "✅ Perfect!"
             let alert = UIAlertController(title: "Validation Result",
                                           message: message,
                                           preferredStyle: .alert)
@@ -489,28 +488,14 @@ class AddAlertCampaignViewController: UIViewController {
     }
 
     private func previewAlert() {
-        let alert = UIAlertController(title: model.alertCampaign.alertTitle,
-                                      message: model.alertCampaign.alertMessage,
-                                      preferredStyle: .alert)
-
-        for (buttonTitle, buttonAction) in zip(model.alertCampaign.buttonTitles,
-                                               model.alertCampaign.buttonActionURLs) {
-            let hasAction = buttonAction != CLMAlertCampaign.buttonURLNoAction
-            let style: UIAlertAction.Style = hasAction ? .default : .cancel
-            let action = UIAlertAction(title: buttonTitle, style: style) { _ in
-                if hasAction {
-                    let actionAlert = UIAlertController(title: "The following URL will be opened within the app",
-                                                        message: buttonAction,
-                                                        preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel)
-                    actionAlert.addAction(okAction)
-                    self.present(actionAlert, animated: true)
-                }
-            }
-            alert.addAction(action)
+        guard let langCode = model.alertCampaign.defaultLangCode else {
+            fatalError("Default Lang Code is not set")
         }
 
-        present(alert, animated: true)
+        let presenter = CLMAlertPresenter(alertCampaign: model.alertCampaign,
+                                          preferredLanguages: [langCode])
+        presenter.actionExecutor = DummyAlertActionExecutor()
+        presenter.present(in: self)
     }
 
     private func finish() {
