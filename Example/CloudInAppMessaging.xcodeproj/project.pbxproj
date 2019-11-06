@@ -13,6 +13,7 @@
 		2A0275A12370577200B3025C /* AlertButtonsTranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */; };
 		2A0275A42370633500B3025C /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0275A32370633500B3025C /* PlaceholderTextView.m */; };
 		2A108C402372CAAF0043D4BB /* AlertCampaignListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */; };
+		2A108C452372CF1F0043D4BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108C442372CF1F0043D4BB /* CloudKit.framework */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -74,6 +75,8 @@
 		2A0275A22370633500B3025C /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		2A0275A32370633500B3025C /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignListViewController.swift; sourceTree = "<group>"; };
+		2A108C432372CF190043D4BB /* CloudInAppMessaging_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudInAppMessaging_Example.entitlements; sourceTree = "<group>"; };
+		2A108C442372CF1F0043D4BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2A231892236BF6A10052A486 /* CloudInAppMessaging_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudInAppMessaging_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD21147C10589FD5188B9B4 /* Pods_CloudInAppMessaging_Example.framework in Frameworks */,
+				2A108C452372CF1F0043D4BB /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +216,7 @@
 				2A23189E236BF6A20052A486 /* Assets.xcassets */,
 				2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */,
 				2A2318A3236BF6A20052A486 /* Info.plist */,
+				2A108C432372CF190043D4BB /* CloudInAppMessaging_Example.entitlements */,
 				2A9140A4236DC3B200A9E616 /* CloudInAppMessaging_Example-Bridging-Header.h */,
 			);
 			path = CloudInAppMessaging;
@@ -362,6 +367,7 @@
 		D5C05C306AE3931E9376CD7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A108C442372CF1F0043D4BB /* CloudKit.framework */,
 				6DD91BE5290E4EEB3F29A79F /* Pods_CloudInAppMessaging_Example.framework */,
 				42E14082EEED190B60FED262 /* Pods_CloudInAppMessaging_Tests.framework */,
 			);
@@ -787,6 +793,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_ENTITLEMENTS = CloudInAppMessaging/CloudInAppMessaging_Example.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;
@@ -809,6 +816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_ENTITLEMENTS = CloudInAppMessaging/CloudInAppMessaging_Example.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PMBQR35S8;
 				INFOPLIST_FILE = CloudInAppMessaging/Info.plist;
