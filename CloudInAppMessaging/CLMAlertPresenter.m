@@ -1,4 +1,4 @@
-//  
+//
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -41,9 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
         if (!preferredLanguages) {
             preferredLanguages = [NSLocale preferredLanguages];
         }
-        
+
         NSAssert(preferredLanguages.count > 0, @"Preferred Languages must not be empty");
-        
+
         _alertCampaign = alertCampaign;
         _preferredLanguages = [preferredLanguages copy];
     }
@@ -53,53 +53,53 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)presentInViewController:(UIViewController *)controller {
     NSParameterAssert(controller);
     NSAssert(self.actionExecutor, @"The actionExecutor must be set before calling present");
-    
+
     id<CLMAlertDataSource> dataSource = [self alertDataSourceForPreferredLanguage];
-    
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:dataSource.title
                                                                    message:dataSource.message
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    
+
     NSArray<NSString *> *buttonActionURLs = self.alertCampaign.buttonActionURLs;
     for (NSUInteger i = 0; i < buttonActionURLs.count; i++) {
         NSString *buttonTitle = dataSource.buttonTitles[i];
         NSString *buttonAction = buttonActionURLs[i];
-        
+
         const BOOL hasAction = ![buttonAction isEqualToString:CLMAlertCampaignButtonURLNoAction];
         const UIAlertActionStyle style = hasAction ? UIAlertActionStyleDefault : UIAlertActionStyleCancel;
-        
+
         void (^handler)(UIAlertAction *action) = nil;
         if (hasAction) {
             handler = ^(UIAlertAction *action) {
                 [self.actionExecutor performAlertButtonAction:buttonAction inContext:controller];
             };
         }
-        
+
         UIAlertAction *action = [UIAlertAction actionWithTitle:buttonTitle style:style handler:handler];
         [alert addAction:action];
     }
-    
+
     if (alert.actions.count == 1) {
         alert.preferredAction = alert.actions.firstObject;
     }
-    
+
     [controller presentViewController:alert animated:YES completion:nil];
 }
 
 - (id<CLMAlertDataSource>)alertDataSourceForPreferredLanguage {
     CLMAlertCampaign *alertCampaign = self.alertCampaign;
-    
+
     for (NSString *language in self.preferredLanguages) {
         NSString *langCode = language;
         if ([language rangeOfString:@"_"].location != NSNotFound) {
             NSArray<NSString *> *components = [language componentsSeparatedByString:@"_"];
             langCode = components.firstObject;
         }
-        
+
         if ([alertCampaign.defaultLangCode isEqualToString:langCode]) {
             return alertCampaign;
         }
-        
+
         for (CLMAlertTranslation *translation in alertCampaign.translations) {
             if ([translation.langCode isEqualToString:langCode]) {
                 // Create new CLMAlertTranslation and fallback to defaults if any entity wasn't translated
@@ -109,7 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
                 resultTranslation.langCode = translation.langCode;
                 resultTranslation.title = translation.title.length > 0 ? translation.title : alertCampaign.title;
                 resultTranslation.message = translation.message.length > 0 ? translation.message : alertCampaign.message;
-                
+
                 NSMutableArray<NSString *> *buttonTitles = [NSMutableArray array];
                 for (NSUInteger i = 0; i < translation.buttonTitles.count; i++) {
                     NSString *buttonTitle = translation.buttonTitles[i];
@@ -119,12 +119,12 @@ NS_ASSUME_NONNULL_BEGIN
                     [buttonTitles addObject:buttonTitle];
                 }
                 resultTranslation.buttonTitles = buttonTitles;
-                
+
                 return resultTranslation;
             }
         }
     }
-    
+
     return self.alertCampaign;
 }
 

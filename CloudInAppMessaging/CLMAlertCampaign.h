@@ -5,14 +5,14 @@
 //  Created by Andrew Podkovyrin on 10/31/19.
 //
 
-#import "CLMCloudKitSerializable.h"
 #import "CLMAlertDataSource.h"
+#import "CLMCloudKitSerializable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const CLMAlertCampaignButtonURLNoAction NS_SWIFT_NAME(CLMAlertCampaign.buttonURLNoAction);
+extern NSString *const CLMAlertCampaignButtonURLNoAction NS_SWIFT_NAME(CLMAlertCampaign.buttonURLNoAction);
 
-typedef NSString * CLMAlertCampaignTrigger NS_TYPED_EXTENSIBLE_ENUM;
+typedef NSString *CLMAlertCampaignTrigger NS_TYPED_EXTENSIBLE_ENUM;
 extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground;
 extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 
@@ -27,8 +27,6 @@ extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 @property (nullable, nonatomic, copy) NSString *message;
 
 // Buttons
-
-/// Empty string as URL means "no action"
 @property (nonatomic, copy) NSArray<NSString *> *buttonActionURLs;
 @property (nonatomic, copy) NSArray<NSString *> *buttonTitles;
 

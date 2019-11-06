@@ -18,15 +18,58 @@
 import CloudInAppMessaging
 import UIKit
 
-protocol AddAlertCampaignViewControllerDelegate: AnyObject {
-    func addAlertCampaignViewController(_ controller: AddAlertCampaignViewController,
-                                        didFinishWith alertCampaign: CLMAlertCampaign)
+protocol AlertCampaignViewControllerDelegate: AnyObject {
+    func alertCampaignViewController(didCancel controller: AlertCampaignViewController)
+    func alertCampaignViewController(_ controller: AlertCampaignViewController,
+                                     didFinishWith alertCampaign: CLMAlertCampaign)
 }
 
-class AddAlertCampaignViewController: UIViewController {
-    weak var delegate: AddAlertCampaignViewControllerDelegate?
+class AlertCampaignViewController: UIViewController {
+    weak var delegate: AlertCampaignViewControllerDelegate?
 
     private let model = AddAlertCampaignModel()
+    private lazy var formController = GroupedFormTableViewController()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = "Alert Campaign"
+
+        let previewItem = UIBarButtonItem(title: "Preview",
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(previewButtonAction))
+        navigationItem.leftBarButtonItem = previewItem
+
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                         target: self,
+                                         action: #selector(cancelAction))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                       target: self,
+                                       action: #selector(doneAction))
+        navigationItem.rightBarButtonItems = [doneItem, cancelItem]
+
+        displayController(formController, inContentView: view)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let buttonHeight: CGFloat = 44.0
+        let width: CGFloat = view.bounds.width
+        identifierButton.frame = CGRect(x: 0.0, y: 0.0, width: width, height: buttonHeight)
+        formController.tableView.tableHeaderView = identifierButton
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // reload data
+        formController.setSections(formSections)
+        identifierButton.setTitle(model.alertCampaign.identifier, for: .normal)
+    }
+
+    // MARK: Form
 
     private lazy var identifierButton: UIButton = {
         let button = UIButton(type: .system)
@@ -43,8 +86,6 @@ class AddAlertCampaignViewController: UIViewController {
 
         return button
     }()
-
-    private lazy var formController = GroupedFormTableViewController()
 
     private var alertTitle: TextViewFormCellModel {
         let cellModel = TextViewFormCellModel()
@@ -308,40 +349,11 @@ class AddAlertCampaignViewController: UIViewController {
                 maintenanceSection]
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: Actions
 
-        title = "Alert Campaign"
-
-        let previewButton = UIBarButtonItem(title: "Preview",
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(previewButtonAction))
-        navigationItem.leftBarButtonItem = previewButton
-
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                         target: self,
-                                         action: #selector(doneAction))
-        navigationItem.rightBarButtonItem = doneButton
-
-        displayController(formController, inContentView: view)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        let buttonHeight: CGFloat = 44.0
-        let width: CGFloat = view.bounds.width
-        identifierButton.frame = CGRect(x: 0.0, y: 0.0, width: width, height: buttonHeight)
-        formController.tableView.tableHeaderView = identifierButton
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // reload data
-        formController.setSections(formSections)
-        identifierButton.setTitle(model.alertCampaign.identifier, for: .normal)
+    @objc
+    private func cancelAction() {
+        delegate?.alertCampaignViewController(didCancel: self)
     }
 
     @objc
@@ -514,12 +526,14 @@ class AddAlertCampaignViewController: UIViewController {
         pasteboard.string = model.alertCampaign.identifier
     }
 
+    // MARK: Private
+
     private func reloadData() {
         formController.setSections(formSections)
     }
 
     private func finish() {
-        delegate?.addAlertCampaignViewController(self, didFinishWith: model.alertCampaign)
+        delegate?.alertCampaignViewController(self, didFinishWith: model.alertCampaign)
     }
 
     private func trimVersionString(_ version: String?) -> String? {

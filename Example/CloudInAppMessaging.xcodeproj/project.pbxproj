@@ -12,9 +12,8 @@
 		2A02759E237056EE00B3025C /* AlertButtonsTranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02759D237056EE00B3025C /* AlertButtonsTranslationViewController.swift */; };
 		2A0275A12370577200B3025C /* AlertButtonsTranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */; };
 		2A0275A42370633500B3025C /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0275A32370633500B3025C /* PlaceholderTextView.m */; };
+		2A108C402372CAAF0043D4BB /* AlertCampaignListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
-		2A23189A236BF6A10052A486 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231899236BF6A10052A486 /* ViewController.swift */; };
-		2A23189D236BF6A10052A486 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189B236BF6A10052A486 /* Main.storyboard */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
 		2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318AF236BF8150052A486 /* CloudInAppMessagingTests.swift */; };
@@ -31,7 +30,7 @@
 		2A2318DF236BFD290052A486 /* TextViewFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318CC236BFD290052A486 /* TextViewFormCellModel.swift */; };
 		2A2318E2236BFD290052A486 /* GroupedFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318CF236BFD290052A486 /* GroupedFormTableViewController.swift */; };
 		2A2318E3236BFD290052A486 /* FormSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318D0236BFD290052A486 /* FormSectionModel.swift */; };
-		2A2318E6236BFDCC0052A486 /* AddAlertCampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */; };
+		2A2318E6236BFDCC0052A486 /* AlertCampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318E5236BFDCC0052A486 /* AlertCampaignViewController.swift */; };
 		2A2318E9236C01F70052A486 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318E8236C01F70052A486 /* Styles.swift */; };
 		2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EA236C02E60052A486 /* UIView+Animations.swift */; };
 		2A2318ED236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */; };
@@ -74,10 +73,9 @@
 		2A0275A02370577100B3025C /* AlertButtonsTranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButtonsTranslationModel.swift; sourceTree = "<group>"; };
 		2A0275A22370633500B3025C /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
 		2A0275A32370633500B3025C /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignListViewController.swift; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudInAppMessaging_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudInAppMessaging_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A231899236BF6A10052A486 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2A23189C236BF6A10052A486 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A2318A1236BF6A20052A486 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A2318A3236BF6A20052A486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,7 +95,7 @@
 		2A2318CC236BFD290052A486 /* TextViewFormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormCellModel.swift; sourceTree = "<group>"; };
 		2A2318CF236BFD290052A486 /* GroupedFormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedFormTableViewController.swift; sourceTree = "<group>"; };
 		2A2318D0236BFD290052A486 /* FormSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionModel.swift; sourceTree = "<group>"; };
-		2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertCampaignViewController.swift; sourceTree = "<group>"; };
+		2A2318E5236BFDCC0052A486 /* AlertCampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignViewController.swift; sourceTree = "<group>"; };
 		2A2318E8236C01F70052A486 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		2A2318EA236C02E60052A486 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		2A2318EC236C06B40052A486 /* GroupedTextViewFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTextViewFormTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,6 +164,24 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		2A108C3E2372CA920043D4BB /* AlertCampaignList */ = {
+			isa = PBXGroup;
+			children = (
+				2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */,
+			);
+			path = AlertCampaignList;
+			sourceTree = "<group>";
+		};
+		2A108C422372CDF50043D4BB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2A2318E7236C01E90052A486 /* Views */,
+				2A9140A1236DBCC100A9E616 /* SearchSelector */,
+				2A2318B9236BFD290052A486 /* Forms */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		2A231889236BF6A10052A486 = {
 			isa = PBXGroup;
 			children = (
@@ -189,12 +205,10 @@
 		2A231894236BF6A10052A486 /* CloudInAppMessaging */ = {
 			isa = PBXGroup;
 			children = (
-				2A2318E7236C01E90052A486 /* Views */,
-				2A2318E4236BFDBA0052A486 /* Add */,
-				2A2318B9236BFD290052A486 /* Forms */,
+				2A108C422372CDF50043D4BB /* UI */,
+				2A108C3E2372CA920043D4BB /* AlertCampaignList */,
+				2A2318E4236BFDBA0052A486 /* AlertCampaign */,
 				2A231895236BF6A10052A486 /* AppDelegate.swift */,
-				2A231899236BF6A10052A486 /* ViewController.swift */,
-				2A23189B236BF6A10052A486 /* Main.storyboard */,
 				2A23189E236BF6A20052A486 /* Assets.xcassets */,
 				2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */,
 				2A2318A3236BF6A20052A486 /* Info.plist */,
@@ -260,18 +274,17 @@
 			path = TextView;
 			sourceTree = "<group>";
 		};
-		2A2318E4236BFDBA0052A486 /* Add */ = {
+		2A2318E4236BFDBA0052A486 /* AlertCampaign */ = {
 			isa = PBXGroup;
 			children = (
 				2A02759823703D0A00B3025C /* Translations */,
-				2A9140A1236DBCC100A9E616 /* SearchSelector */,
 				2A54450A236CE01B00390B9A /* Buttons */,
-				2A2318E5236BFDCC0052A486 /* AddAlertCampaignViewController.swift */,
+				2A2318E5236BFDCC0052A486 /* AlertCampaignViewController.swift */,
 				2ADF56A2236C1370009917D1 /* AddAlertCampaignModel.swift */,
 				2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */,
 				2A56B5ED2370CD33001BB8B4 /* DummyAlertActionExecutor.swift */,
 			);
-			path = Add;
+			path = AlertCampaign;
 			sourceTree = "<group>";
 		};
 		2A2318E7236C01E90052A486 /* Views */ = {
@@ -363,6 +376,7 @@
 			buildConfigurationList = 2A2318A6236BF6A20052A486 /* Build configuration list for PBXNativeTarget "CloudInAppMessaging_Example" */;
 			buildPhases = (
 				9B4EC4A332FB000EE4069433 /* [CP] Check Pods Manifest.lock */,
+				2A108C412372CAFD0043D4BB /* Format Pod Code */,
 				2A2318B8236BF8BD0052A486 /* Swift Format */,
 				2A2318B7236BF8A20052A486 /* Swift Lint */,
 				2A23188E236BF6A10052A486 /* Sources */,
@@ -444,7 +458,6 @@
 			files = (
 				2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */,
 				2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */,
-				2A23189D236BF6A10052A486 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +471,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2A108C412372CAFD0043D4BB /* Format Pod Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Format Pod Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudInAppMessaging\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
+		};
 		2A2318B7236BF8A20052A486 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -566,7 +597,6 @@
 				2A54450C236CE03800390B9A /* AlertCamaignButtonsViewController.swift in Sources */,
 				2A2318E2236BFD290052A486 /* GroupedFormTableViewController.swift in Sources */,
 				2A2318EF236C0EF80052A486 /* UIViewController+ChildControllers.swift in Sources */,
-				2A23189A236BF6A10052A486 /* ViewController.swift in Sources */,
 				2A0275A12370577200B3025C /* AlertButtonsTranslationModel.swift in Sources */,
 				2ADF56A9236C4CA4009917D1 /* TextFieldFormCellModel.swift in Sources */,
 				2A54450E236CE09100390B9A /* AlertCampaignButtonsModel.swift in Sources */,
@@ -595,9 +625,10 @@
 				2ADF56AA236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift in Sources */,
 				2A6AB245236CC5F900165A6E /* TextFieldFormTableViewCell.swift in Sources */,
 				2A2318D8236BFD290052A486 /* SwitcherFormTableViewCell.swift in Sources */,
+				2A108C402372CAAF0043D4BB /* AlertCampaignListViewController.swift in Sources */,
 				2A2318D4236BFD290052A486 /* GroupedSelectorFormTableViewCell.swift in Sources */,
 				2ADF56AC236C51F3009917D1 /* TextInputFormCellModel.swift in Sources */,
-				2A2318E6236BFDCC0052A486 /* AddAlertCampaignViewController.swift in Sources */,
+				2A2318E6236BFDCC0052A486 /* AlertCampaignViewController.swift in Sources */,
 				2A02759A23703D2D00B3025C /* AlertCampaignTranslationsViewController.swift in Sources */,
 				2A2318DA236BFD290052A486 /* GroupedSwitcherFormTableViewCell.swift in Sources */,
 				2ADF56A3236C1370009917D1 /* AddAlertCampaignModel.swift in Sources */,
@@ -625,14 +656,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2A23189B236BF6A10052A486 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A23189C236BF6A10052A486 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -776,7 +799,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudInAppMessaging/CloudInAppMessaging_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -797,7 +820,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudInAppMessaging/CloudInAppMessaging_Example-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

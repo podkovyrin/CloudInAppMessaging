@@ -59,10 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
         UIColor *placeholderColor = nil;
         if (@available(iOS 13.0, *)) {
             placeholderColor = [UIColor placeholderTextColor];
-        } else {
+        }
+        else {
             placeholderColor = [UIColor lightGrayColor];
         }
-        
+
         attributes = @{
             NSFontAttributeName : self.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody],
             NSForegroundColorAttributeName : placeholderColor,
