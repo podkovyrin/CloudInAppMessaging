@@ -33,6 +33,7 @@ class AlertTranslationsModel {
 
     func addTranslation() {
         let translation = CLMAlertTranslation()
+        translation.buttonTitles = Array(repeating: "", count: alertCampaign.buttonTitles.count)
         translations.append(translation)
     }
 

@@ -103,6 +103,14 @@ final class AddAlertCampaignModel {
     // swiftlint:disable cyclomatic_complexity force_unwrapping
 
     func validate() -> String? {
+        let hasEmptyButtonTitles: ([String]) -> Bool = { buttonTitles in
+            for buttonTitle in buttonTitles where buttonTitle.isEmpty {
+                return true
+            }
+
+            return false
+        }
+
         var messages = [String]()
 
         if alertCampaign.title == nil || alertCampaign.title!.isEmpty {
@@ -120,6 +128,9 @@ final class AddAlertCampaignModel {
             let uniqueTitles = Set(alertCampaign.buttonTitles)
             if uniqueTitles.count != alertCampaign.buttonTitles.count {
                 messages.append("⚠️ One or more buttons are either empty or have the same titles")
+            }
+            else if hasEmptyButtonTitles(alertCampaign.buttonTitles) {
+                messages.append("⚠️ One or more buttons have empty titles")
             }
 
             let uniqueActions = Set(alertCampaign.buttonActionURLs)
@@ -150,6 +161,9 @@ final class AddAlertCampaignModel {
             let uniqueButtons = Set(translation.buttonTitles)
             if uniqueButtons.count != translation.buttonTitles.count {
                 translationMessages.append("⚠️ One or more buttons are either empty or have the same titles")
+            }
+            else if hasEmptyButtonTitles(translation.buttonTitles) {
+                translationMessages.append("⚠️ One or more buttons have empty titles")
             }
 
             if !translationMessages.isEmpty {

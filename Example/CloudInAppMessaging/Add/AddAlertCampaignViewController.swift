@@ -279,18 +279,6 @@ class AddAlertCampaignViewController: UIViewController {
         return cellModel
     }
 
-    private var preview: SelectorFormCellModel {
-        let cellModel = SelectorFormCellModel()
-        cellModel.title = "Preview Alert (using the default lang)"
-        cellModel.titleStyle = .tinted
-        cellModel.action = { [weak self] in
-            guard let self = self else { return }
-            self.previewAlert()
-        }
-
-        return cellModel
-    }
-
     private var formSections: [FormSectionModel] {
         let alertSection = FormSectionModel([alertTitle, alertMessage])
         alertSection.header = "Alert"
@@ -309,7 +297,7 @@ class AddAlertCampaignViewController: UIViewController {
         let schedulingSection = FormSectionModel([startDate, endDate, trigger])
         schedulingSection.header = "Scheduling"
 
-        let maintenanceSection = FormSectionModel([validate, preview])
+        let maintenanceSection = FormSectionModel([validate])
         maintenanceSection.header = "– Maintenance –"
 
         return [alertSection,
@@ -324,6 +312,12 @@ class AddAlertCampaignViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Alert Campaign"
+
+        let previewButton = UIBarButtonItem(title: "Preview",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(previewButtonAction))
+        navigationItem.leftBarButtonItem = previewButton
 
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
                                          target: self,
@@ -370,6 +364,43 @@ class AddAlertCampaignViewController: UIViewController {
         else {
             finish()
         }
+    }
+
+    @objc
+    private func previewButtonAction() {
+        let previewAction: (String) -> Void = { langCode in
+            let presenter = CLMAlertPresenter(alertCampaign: self.model.alertCampaign,
+                                              preferredLanguages: [langCode])
+            presenter.actionExecutor = DummyAlertActionExecutor()
+            presenter.present(in: self)
+        }
+
+        let alert = UIAlertController(title: "Preview Alert Campaign",
+                                      message: "Select Alert Locale",
+                                      preferredStyle: .actionSheet)
+
+        guard let langCode = model.alertCampaign.defaultLangCode else {
+            fatalError("Default Lang Code is not set")
+        }
+
+        let defaultAction = UIAlertAction(title: "Default Locale: \(langCode)", style: .default) { _ in
+            previewAction(langCode)
+        }
+        alert.addAction(defaultAction)
+
+        for translation in model.alertCampaign.translations {
+            if let langCode = translation.langCode {
+                let action = UIAlertAction(title: "Locale: \(langCode)", style: .default) { _ in
+                    previewAction(langCode)
+                }
+                alert.addAction(action)
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
     }
 
     private func showButtonsController() {
@@ -485,17 +516,6 @@ class AddAlertCampaignViewController: UIViewController {
 
     private func reloadData() {
         formController.setSections(formSections)
-    }
-
-    private func previewAlert() {
-        guard let langCode = model.alertCampaign.defaultLangCode else {
-            fatalError("Default Lang Code is not set")
-        }
-
-        let presenter = CLMAlertPresenter(alertCampaign: model.alertCampaign,
-                                          preferredLanguages: [langCode])
-        presenter.actionExecutor = DummyAlertActionExecutor()
-        presenter.present(in: self)
     }
 
     private func finish() {

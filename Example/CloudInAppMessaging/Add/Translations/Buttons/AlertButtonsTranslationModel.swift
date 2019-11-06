@@ -38,17 +38,8 @@ class AlertButtonsTranslationModel {
         self.alertCampaign = alertCampaign
         self.translation = translation
 
-        let count = alertCampaign.buttonTitles.count
-        let translatedTitles: [String]
-        if translation.buttonTitles.count == count {
-            translatedTitles = translation.buttonTitles
-        }
-        else {
-            translatedTitles = Array(repeating: "", count: count)
-        }
-
         var buttons = [AlertCampaignButtonTranslation]()
-        for (title, originalTitle) in zip(translatedTitles, alertCampaign.buttonTitles) {
+        for (title, originalTitle) in zip(translation.buttonTitles, alertCampaign.buttonTitles) {
             let buttonTranslation = AlertCampaignButtonTranslation(title: title, originalTitle: originalTitle)
             buttons.append(buttonTranslation)
         }

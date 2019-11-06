@@ -87,6 +87,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (id<CLMAlertDataSource>)alertDataSourceForPreferredLanguage {
+    CLMAlertCampaign *alertCampaign = self.alertCampaign;
+    
     for (NSString *language in self.preferredLanguages) {
         NSString *langCode = language;
         if ([language rangeOfString:@"_"].location != NSNotFound) {
@@ -94,13 +96,31 @@ NS_ASSUME_NONNULL_BEGIN
             langCode = components.firstObject;
         }
         
-        if ([self.alertCampaign.defaultLangCode isEqualToString:langCode]) {
-            return self.alertCampaign;
+        if ([alertCampaign.defaultLangCode isEqualToString:langCode]) {
+            return alertCampaign;
         }
         
-        for (CLMAlertTranslation *translation in self.alertCampaign.translations) {
+        for (CLMAlertTranslation *translation in alertCampaign.translations) {
             if ([translation.langCode isEqualToString:langCode]) {
-                return translation;
+                // Create new CLMAlertTranslation and fallback to defaults if any entity wasn't translated
+                // This `resultTranslation` can't be used other than for displaying because it has different identifier
+                // (and it's impossible to mis-use it because we return it as protocol CLMAlertDataSource)
+                CLMAlertTranslation *resultTranslation = [[CLMAlertTranslation alloc] init];
+                resultTranslation.langCode = translation.langCode;
+                resultTranslation.title = translation.title.length > 0 ? translation.title : alertCampaign.title;
+                resultTranslation.message = translation.message.length > 0 ? translation.message : alertCampaign.message;
+                
+                NSMutableArray<NSString *> *buttonTitles = [NSMutableArray array];
+                for (NSUInteger i = 0; i < translation.buttonTitles.count; i++) {
+                    NSString *buttonTitle = translation.buttonTitles[i];
+                    if (buttonTitle.length == 0) {
+                        buttonTitle = alertCampaign.buttonTitles[i];
+                    }
+                    [buttonTitles addObject:buttonTitle];
+                }
+                resultTranslation.buttonTitles = buttonTitles;
+                
+                return resultTranslation;
             }
         }
     }
