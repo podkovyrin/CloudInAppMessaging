@@ -105,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
                 // Create new CLMAlertTranslation and fallback to defaults if any entity wasn't translated
                 // This `resultTranslation` can't be used other than for displaying because it has different identifier
                 // (and it's impossible to mis-use it because we return it as protocol CLMAlertDataSource)
-                CLMAlertTranslation *resultTranslation = [[CLMAlertTranslation alloc] init];
+                CLMAlertTranslation *resultTranslation = [[CLMAlertTranslation alloc] initWithAlertCampaign:alertCampaign];
                 resultTranslation.langCode = translation.langCode;
                 resultTranslation.title = translation.title.length > 0 ? translation.title : alertCampaign.title;
                 resultTranslation.message = translation.message.length > 0 ? translation.message : alertCampaign.message;

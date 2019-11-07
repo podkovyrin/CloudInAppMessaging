@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import UIKit
 
-class DummyAlertActionExecutor: CLMAlertActionExecutor {
+final class DummyAlertActionExecutor: CLMAlertActionExecutor {
     func perform(alertButtonAction action: String, in context: UIViewController) {
         let actionAlert = UIAlertController(title: "The following URL will be opened within the app",
                                             message: action,

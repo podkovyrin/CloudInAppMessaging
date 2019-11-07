@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import UIKit
 
-class AlertCampaignTranslationsViewController: UIViewController {
+final class AlertCampaignTranslationsViewController: UIViewController {
     private let model: AlertTranslationsModel
     private lazy var formController = GroupedFormTableViewController()
 

@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import UIKit
 
-class AlertButtonsTranslationViewController: UIViewController {
+final class AlertButtonsTranslationViewController: UIViewController {
     private let model: AlertButtonsTranslationModel
     private lazy var formController = GroupedFormTableViewController()
 

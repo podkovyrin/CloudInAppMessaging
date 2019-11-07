@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import Foundation
 
-final class AddAlertCampaignModel {
+final class AlertCampaignModel {
     let alertCampaign: CLMAlertCampaign
 
     // Show Language codes / Countries in English
@@ -38,14 +38,23 @@ final class AddAlertCampaignModel {
         return Array(Set(allCodes)).sorted(by: <)
     }()
 
-    init() {
-        alertCampaign = CLMAlertCampaign()
+    private let service: AlertCampaignCloudKitService
+
+    convenience init(service: AlertCampaignCloudKitService) {
+        let alertCampaign = CLMAlertCampaign()
         alertCampaign.defaultLangCode = "en"
 
         alertCampaign.buttonTitles = ["OK"]
-        alertCampaign.buttonActionURLs = [CLMAlertCampaign.buttonURLNoAction]
+        alertCampaign.buttonActionURLs = [CLMAlertCampaign.ButtonURLNoAction]
 
         alertCampaign.trigger = .onForeground
+
+        self.init(alertCampaign: alertCampaign, service: service)
+    }
+
+    init(alertCampaign: CLMAlertCampaign, service: AlertCampaignCloudKitService) {
+        self.alertCampaign = alertCampaign
+        self.service = service
     }
 
     func defaultLanguageModel() -> LocaleSelectorModel {
@@ -100,85 +109,7 @@ final class AddAlertCampaignModel {
         return model
     }
 
-    // swiftlint:disable cyclomatic_complexity force_unwrapping
-
-    func validate() -> String? {
-        let hasEmptyButtonTitles: ([String]) -> Bool = { buttonTitles in
-            for buttonTitle in buttonTitles where buttonTitle.isEmpty {
-                return true
-            }
-
-            return false
-        }
-
-        var messages = [String]()
-
-        if alertCampaign.title == nil || alertCampaign.title!.isEmpty {
-            messages.append("⚠️ 'Alert Title' is empty")
-        }
-
-        if alertCampaign.message == nil || alertCampaign.message!.isEmpty {
-            messages.append("⚠️ 'Alert Message' is empty")
-        }
-
-        if alertCampaign.buttonTitles.isEmpty {
-            messages.append("⚠️ 'No buttons defined'")
-        }
-        else {
-            let uniqueTitles = Set(alertCampaign.buttonTitles)
-            if uniqueTitles.count != alertCampaign.buttonTitles.count {
-                messages.append("⚠️ One or more buttons are either empty or have the same titles")
-            }
-            else if hasEmptyButtonTitles(alertCampaign.buttonTitles) {
-                messages.append("⚠️ One or more buttons have empty titles")
-            }
-
-            let uniqueActions = Set(alertCampaign.buttonActionURLs)
-            if uniqueActions.count != alertCampaign.buttonActionURLs.count {
-                messages.append("⚠️ One or more buttons have the same actions")
-            }
-        }
-
-        if alertCampaign.defaultLangCode == nil || alertCampaign.defaultLangCode!.isEmpty {
-            messages.append("❌ 'Default Lang Code' is not set")
-        }
-
-        for translation in alertCampaign.translations {
-            var translationMessages = [String]()
-
-            if translation.langCode == nil || translation.langCode!.isEmpty {
-                translationMessages.append("❌ 'Language' is not set")
-            }
-
-            if translation.title == nil || translation.title!.isEmpty {
-                translationMessages.append("⚠️ 'Alert Title' is empty")
-            }
-
-            if translation.message == nil || translation.message!.isEmpty {
-                translationMessages.append("⚠️ 'Alert Message' is empty")
-            }
-
-            let uniqueButtons = Set(translation.buttonTitles)
-            if uniqueButtons.count != translation.buttonTitles.count {
-                translationMessages.append("⚠️ One or more buttons are either empty or have the same titles")
-            }
-            else if hasEmptyButtonTitles(translation.buttonTitles) {
-                translationMessages.append("⚠️ One or more buttons have empty titles")
-            }
-
-            if !translationMessages.isEmpty {
-                let shortID = translation.identifier.prefix(8)
-                let message = "Translation <\(shortID)>:\n" + translationMessages.joined(separator: "\n")
-                messages.append(message)
-            }
-        }
-
-        if messages.isEmpty {
-            return nil
-        }
-
-        return messages.joined(separator: "\n\n")
+    func save(_ alertCampaign: CLMAlertCampaign, completion: @escaping ([Error]) -> Void) {
+        service.save(alertCampaign, completion: completion)
     }
-
-    // swiftlint:enable cyclomatic_complexity force_unwrapping
 }

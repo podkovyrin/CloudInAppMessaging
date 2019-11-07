@@ -24,11 +24,38 @@ protocol AlertCampaignViewControllerDelegate: AnyObject {
                                      didFinishWith alertCampaign: CLMAlertCampaign)
 }
 
-class AlertCampaignViewController: UIViewController {
+final class AlertCampaignViewController: UIViewController {
     weak var delegate: AlertCampaignViewControllerDelegate?
 
-    private let model = AddAlertCampaignModel()
+    private let model: AlertCampaignModel
     private lazy var formController = GroupedFormTableViewController()
+
+    init(alertCampaign: CLMAlertCampaign?, service: AlertCampaignCloudKitService) {
+        if let alertCampaign = alertCampaign {
+            model = AlertCampaignModel(alertCampaign: alertCampaign,
+                                       service: service)
+        }
+        else {
+            model = AlertCampaignModel(service: service)
+        }
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    @available(*, unavailable)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        fatalError("init(nibName:bundle:) has not been implemented")
+    }
+
+    @available(*, unavailable)
+    init() {
+        fatalError("init() has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -308,7 +335,7 @@ class AlertCampaignViewController: UIViewController {
         cellModel.action = { [weak self] in
             guard let self = self else { return }
 
-            let message = self.model.validate() ?? "✅ Perfect!"
+            let message = self.model.alertCampaign.validate() ?? "✅ Perfect!"
             let alert = UIAlertController(title: "Validation Result",
                                           message: message,
                                           preferredStyle: .alert)
@@ -358,7 +385,7 @@ class AlertCampaignViewController: UIViewController {
 
     @objc
     private func doneAction() {
-        let message = model.validate()
+        let message = model.alertCampaign.validate()
         if message != nil {
             let alert = UIAlertController(title: "Validation Result",
                                           message: message,
@@ -366,7 +393,7 @@ class AlertCampaignViewController: UIViewController {
             let proceedAction = UIAlertAction(title: "Proceed anyway",
                                               style: .destructive,
                                               handler: { _ in
-                                                  self.finish()
+                                                  self.saveAndFinish()
             })
             alert.addAction(proceedAction)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -374,7 +401,7 @@ class AlertCampaignViewController: UIViewController {
             present(alert, animated: true)
         }
         else {
-            finish()
+            saveAndFinish()
         }
     }
 
@@ -532,8 +559,17 @@ class AlertCampaignViewController: UIViewController {
         formController.setSections(formSections)
     }
 
-    private func finish() {
-        delegate?.alertCampaignViewController(self, didFinishWith: model.alertCampaign)
+    private func saveAndFinish() {
+        model.save(model.alertCampaign) { [weak self] errors in
+            guard let self = self else { return }
+
+            if !errors.isEmpty {
+                self.displayErrorsIfNeeded(errors)
+            }
+            else {
+                self.delegate?.alertCampaignViewController(self, didFinishWith: self.model.alertCampaign)
+            }
+        }
     }
 
     private func trimVersionString(_ version: String?) -> String? {

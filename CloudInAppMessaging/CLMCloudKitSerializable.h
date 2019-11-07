@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CLMCloudKitSerializable <NSObject>
 
 - (instancetype)initWithRecord:(CKRecord *)record;
-- (CKRecord *)recordInZone:(CKRecordZone *)zone;
+
+- (CKRecordID *)recordID;
+- (CKRecord *)record;
 
 @end
 

@@ -7,16 +7,17 @@
 
 #import "CLMAlertCampaign.h"
 
+#import "CLMAlertTranslation.h"
 #import "Private/CLMKeyPath.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString *const CLMAlertCampaignButtonURLNoAction = @"__CLM_NO_ACTION_URL__";
+NSString *const CLMAlertCampaignButtonURLNoAction = @"CLM_NO_ACTION_URL";
 
 CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground = @"CLMAlertCampaignTriggerOnForeground";
 CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch = @"CLMAlertCampaignTriggerOnAppLaunch";
 
-static NSString *const kRecordType = @"AlertCampaign";
+NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
 
 @implementation CLMAlertCampaign
 
@@ -64,8 +65,7 @@ static NSString *const kRecordType = @"AlertCampaign";
         _buttonTitles = [record[CLM_KEYPATH(self, buttonTitles)] copy] ?: [NSArray array];
 
         _defaultLangCode = [record[CLM_KEYPATH(self, defaultLangCode)] copy];
-        // TODO ref
-        //    record[CLM_KEYPATH(self, translations)]  ?: [NSArray array];
+        _translations = [NSArray array]; // Translations are empty until fetched
 
         _countries = [record[CLM_KEYPATH(self, countries)] copy] ?: [NSArray array];
         _languages = [record[CLM_KEYPATH(self, languages)] copy] ?: [NSArray array];
@@ -82,9 +82,14 @@ static NSString *const kRecordType = @"AlertCampaign";
     return self;
 }
 
-- (CKRecord *)recordInZone:(CKRecordZone *)zone {
-    CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:self.identifier zoneID:zone.zoneID];
-    CKRecord *record = [[CKRecord alloc] initWithRecordType:kRecordType recordID:recordID];
+- (CKRecordID *)recordID {
+    CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:self.identifier];
+    return recordID;
+}
+
+- (CKRecord *)record {
+    CKRecordID *recordID = [self recordID];
+    CKRecord *record = [[CKRecord alloc] initWithRecordType:CLMAlertCampaignRecordType recordID:recordID];
 
     record[CLM_KEYPATH(self, title)] = self.title;
     record[CLM_KEYPATH(self, message)] = self.message;
@@ -93,9 +98,6 @@ static NSString *const kRecordType = @"AlertCampaign";
     record[CLM_KEYPATH(self, buttonTitles)] = self.buttonTitles;
 
     record[CLM_KEYPATH(self, defaultLangCode)] = self.defaultLangCode;
-
-    // TODO ref
-    //    record[CLM_KEYPATH(self, translations)]
 
     record[CLM_KEYPATH(self, countries)] = self.countries;
     record[CLM_KEYPATH(self, languages)] = self.languages;
@@ -107,6 +109,8 @@ static NSString *const kRecordType = @"AlertCampaign";
     record[CLM_KEYPATH(self, startDate)] = self.startDate;
     record[CLM_KEYPATH(self, endDate)] = self.endDate;
     record[CLM_KEYPATH(self, trigger)] = self.trigger;
+
+    // `translations` should be fetched separately
 
     return record;
 }

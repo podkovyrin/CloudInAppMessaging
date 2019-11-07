@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const CLMAlertCampaignButtonURLNoAction NS_SWIFT_NAME(CLMAlertCampaign.buttonURLNoAction);
+extern NSString *const CLMAlertCampaignRecordType NS_SWIFT_NAME(CLMAlertCampaign.RecordType);
+
+extern NSString *const CLMAlertCampaignButtonURLNoAction NS_SWIFT_NAME(CLMAlertCampaign.ButtonURLNoAction);
 
 typedef NSString *CLMAlertCampaignTrigger NS_TYPED_EXTENSIBLE_ENUM;
 extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground;

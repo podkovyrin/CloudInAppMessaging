@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupedSwitcherFormTableViewCell: UITableViewCell, SwitcherFormTableViewCell {
+final class GroupedSwitcherFormTableViewCell: UITableViewCell, SwitcherFormTableViewCell {
     var model: SwitcherFormCellModel? {
         didSet {
             model?.changesObserver = self

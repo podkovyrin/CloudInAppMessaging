@@ -9,11 +9,13 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ServiceLocator.shared.addService(AlertCampaignCloudKitService())
+
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.backgroundColor = .black
         window.rootViewController = rootController()
@@ -24,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func rootController() -> UIViewController {
-        let controller = AlertCampaignListViewController()
+        let service: AlertCampaignCloudKitService = ServiceLocator.shared.getService()
+        let controller = AlertCampaignListViewController(service: service)
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
     }

@@ -30,14 +30,14 @@ protocol SearchSelectorModel: AnyObject {
     func filterItems(searchQuery: String)
 }
 
-class SearchSelectorTableViewCell: UITableViewCell {
+final class SearchSelectorTableViewCell: UITableViewCell {
     func configure(with item: SearchSelectorItem, selected: Bool) {
         textLabel?.attributedText = item.attributedTitle
         accessoryType = selected ? .checkmark : .none
     }
 }
 
-class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewController, UISearchResultsUpdating {
+final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewController, UISearchResultsUpdating {
     var multiSelection = false
 
     private let model: T

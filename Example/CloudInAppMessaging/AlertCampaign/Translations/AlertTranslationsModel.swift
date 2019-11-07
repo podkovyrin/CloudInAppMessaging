@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import Foundation
 
-class AlertTranslationsModel {
+final class AlertTranslationsModel {
     let alertCampaign: CLMAlertCampaign
     private(set) var translations: [CLMAlertTranslation]
     private let languageCodes: [String]
@@ -32,7 +32,7 @@ class AlertTranslationsModel {
     }
 
     func addTranslation() {
-        let translation = CLMAlertTranslation()
+        let translation = CLMAlertTranslation(alertCampaign: alertCampaign)
         translation.buttonTitles = Array(repeating: "", count: alertCampaign.buttonTitles.count)
         translations.append(translation)
     }

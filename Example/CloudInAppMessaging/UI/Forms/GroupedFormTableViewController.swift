@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupedFormTableViewController: FormTableViewController {
+final class GroupedFormTableViewController: FormTableViewController {
     init() {
         let cellModelToCellClass = [
             String(describing: SelectorFormCellModel.self): GroupedSelectorFormTableViewCell.self,

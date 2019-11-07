@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import UIKit
 
-class AlertCamaignButtonsViewController: UIViewController {
+final class AlertCamaignButtonsViewController: UIViewController {
     private let model: AlertCampaignButtonsModel
     private lazy var formController = GroupedFormTableViewController()
 
@@ -76,7 +76,7 @@ class AlertCamaignButtonsViewController: UIViewController {
 
         let urlModel = TextFieldFormCellModel()
         urlModel.title = "URL"
-        urlModel.text = button.url == CLMAlertCampaign.buttonURLNoAction ? nil : button.url
+        urlModel.text = button.url == CLMAlertCampaign.ButtonURLNoAction ? nil : button.url
         urlModel.placeholder = "No Action"
         urlModel.returnKeyType = .done
         urlModel.autocorrectionType = .no

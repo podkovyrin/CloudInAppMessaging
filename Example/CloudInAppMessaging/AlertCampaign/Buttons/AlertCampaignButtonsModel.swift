@@ -18,17 +18,17 @@
 import CloudInAppMessaging
 import Foundation
 
-class AlertCampaignButton {
+final class AlertCampaignButton {
     var title: String
     var url: String
 
-    init(title: String, url: String = CLMAlertCampaign.buttonURLNoAction) {
+    init(title: String, url: String = CLMAlertCampaign.ButtonURLNoAction) {
         self.title = title
         self.url = url
     }
 }
 
-class AlertCampaignButtonsModel {
+final class AlertCampaignButtonsModel {
     private(set) var buttons: [AlertCampaignButton]
 
     private let alertCampaign: CLMAlertCampaign
@@ -44,10 +44,18 @@ class AlertCampaignButtonsModel {
 
     func addButton() {
         buttons.append(AlertCampaignButton(title: ""))
+
+        for translation in alertCampaign.translations {
+            translation.buttonTitles.append("")
+        }
     }
 
     func removeButton(_ button: AlertCampaignButton) {
         buttons.removeAll(where: { $0 === button })
+
+        for translation in alertCampaign.translations {
+            translation.buttonTitles.removeLast()
+        }
     }
 
     func updateAlertCampaign() {
@@ -55,7 +63,7 @@ class AlertCampaignButtonsModel {
         let urls = buttons.map { button -> String in
             let url = button.url
             if url.isEmpty {
-                return CLMAlertCampaign.buttonURLNoAction
+                return CLMAlertCampaign.ButtonURLNoAction
             }
             else {
                 return url

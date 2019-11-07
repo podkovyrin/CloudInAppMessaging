@@ -18,7 +18,7 @@
 import CloudInAppMessaging
 import Foundation
 
-class AlertCampaignButtonTranslation {
+final class AlertCampaignButtonTranslation {
     var title: String
     var originalTitle: String
 
@@ -28,7 +28,7 @@ class AlertCampaignButtonTranslation {
     }
 }
 
-class AlertButtonsTranslationModel {
+final class AlertButtonsTranslationModel {
     private(set) var buttons: [AlertCampaignButtonTranslation]
     let alertCampaign: CLMAlertCampaign
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupedSelectorFormTableViewCell: UITableViewCell, SelectorFormTableViewCell {
+final class GroupedSelectorFormTableViewCell: UITableViewCell, SelectorFormTableViewCell {
     var model: SelectorFormCellModel? {
         didSet {
             textLabel?.text = model?.title
