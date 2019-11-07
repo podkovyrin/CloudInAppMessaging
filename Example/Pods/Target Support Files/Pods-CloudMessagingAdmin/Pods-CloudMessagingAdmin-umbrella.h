@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_CloudInAppMessaging_ExampleVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_CloudInAppMessaging_ExampleVersionString[];
+FOUNDATION_EXPORT double Pods_CloudMessagingAdminVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_CloudMessagingAdminVersionString[];
 

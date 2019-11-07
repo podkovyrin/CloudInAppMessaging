@@ -1,7 +1,7 @@
 use_frameworks!
 platform :ios, '11.0'
 
-target 'CloudInAppMessaging_Example' do
+target 'CloudMessagingAdmin' do
   pod 'CloudInAppMessaging', :path => '../'
 
   target 'CloudInAppMessaging_Tests' do

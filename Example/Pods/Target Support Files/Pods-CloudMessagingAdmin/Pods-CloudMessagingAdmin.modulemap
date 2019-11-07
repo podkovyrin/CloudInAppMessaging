@@ -1,0 +1,6 @@
+framework module Pods_CloudMessagingAdmin {
+  umbrella header "Pods-CloudMessagingAdmin-umbrella.h"
+
+  export *
+  module * { export * }
+}
