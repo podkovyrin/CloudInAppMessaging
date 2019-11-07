@@ -91,6 +91,22 @@ final class AlertCampaignListViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alertCampaign = model.alerts[indexPath.row]
+            model.delete(alertCampaign) { [weak self] errors in
+                guard let self = self else { return }
+                self.displayErrorsIfNeeded(errors)
+
+                if errors.isEmpty {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
+    }
+
     // MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,8 +127,13 @@ final class AlertCampaignListViewController: UITableViewController {
     private func debugButtonAction(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let createTestAction = UIAlertAction(title: "Create test Alert Campaign", style: .default) { _ in
+        let createTestAction = UIAlertAction(title: "Create Test Alert Campaign", style: .default) { _ in
             self.model.createTestAlertCampaign()
+
+            // wait for update from server
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.update()
+            }
         }
         alert.addAction(createTestAction)
 
@@ -158,5 +179,10 @@ extension AlertCampaignListViewController: AlertCampaignViewControllerDelegate {
     func alertCampaignViewController(_ controller: AlertCampaignViewController,
                                      didFinishWith alertCampaign: CLMAlertCampaign) {
         dismiss(animated: true)
+
+        // wait for update from server
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.update()
+        }
     }
 }

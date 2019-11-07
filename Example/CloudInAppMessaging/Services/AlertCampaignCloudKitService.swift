@@ -56,6 +56,15 @@ final class AlertCampaignCloudKitService {
                              completion: completion)
     }
 
+    func delete(_ alertCampaign: CLMAlertCampaign, completion: @escaping ([Error]) -> Void) {
+        let alertRecord = alertCampaign.record()
+        let recordID = alertRecord.recordID
+
+        cloudKitStorage.save(recordsToSave: [],
+                             recordIDsToDelete: [recordID],
+                             completion: completion)
+    }
+
     // MARK: Private
 
     private func fetchTranslations(for records: [CKRecord],
@@ -78,7 +87,18 @@ final class AlertCampaignCloudKitService {
         }
 
         dispatchGroup.notify(queue: .main) {
-            completion(alerts, allErrors)
+            let sortedAlerts = alerts.sorted { alert1, alert2 -> Bool in
+                if let s1 = alert1.startDate, let s2 = alert2.startDate {
+                    return s1 < s2
+                }
+
+                if let e1 = alert1.startDate, let e2 = alert2.startDate {
+                    return e1 < e2
+                }
+
+                return alert1.identifier < alert2.identifier
+            }
+            completion(sortedAlerts, allErrors)
         }
     }
 

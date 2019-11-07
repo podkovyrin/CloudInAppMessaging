@@ -42,35 +42,21 @@ final class AlertCampaignListModel {
         }
     }
 
+    func delete(_ alertCampaign: CLMAlertCampaign, completion: @escaping ([Error]) -> Void) {
+        service.delete(alertCampaign) { [weak self] errors in
+            guard let self = self else { return }
+
+            if errors.isEmpty {
+                self.alerts.removeAll { $0 === alertCampaign }
+            }
+
+            completion(errors)
+        }
+    }
+
     /// Creates test AlertCampaign to define schema on CloudKit
     func createTestAlertCampaign() {
-        let alertCampaign = CLMAlertCampaign()
-        alertCampaign.title = "Hello"
-        alertCampaign.message = "World"
-
-        alertCampaign.buttonTitles = ["OK"]
-        alertCampaign.buttonActionURLs = [CLMAlertCampaign.ButtonURLNoAction]
-
-        alertCampaign.defaultLangCode = "en"
-
-        let translation = CLMAlertTranslation(alertCampaign: alertCampaign)
-        translation.langCode = "ru"
-        translation.title = "Привет"
-        translation.message = "Мир"
-        translation.buttonTitles = ["Окей"]
-        alertCampaign.translations = [translation]
-
-        alertCampaign.countries = ["US", "RU"]
-        alertCampaign.languages = ["en", "ru"]
-        alertCampaign.maxAppVersion = "3.14"
-        alertCampaign.maxOSVersion = "13"
-        alertCampaign.minAppVersion = "1.0"
-        alertCampaign.minOSVersion = "11"
-
-        alertCampaign.startDate = Date()
-        alertCampaign.endDate = Date(timeIntervalSinceNow: 100_000)
-        alertCampaign.trigger = .onForeground
-
+        let alertCampaign = CLMAlertCampaign.testAlertCampaign()
         assert(alertCampaign.validate() == nil)
 
         service.save(alertCampaign) { errors in

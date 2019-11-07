@@ -57,6 +57,9 @@
 		2A108CEB237350760043D4BB /* AlertCampaignCloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CEA237350760043D4BB /* AlertCampaignCloudKitService.swift */; };
 		2A108CED2373E4700043D4BB /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CEC2373E4700043D4BB /* ServiceLocator.swift */; };
 		2A108CEF2373FDC30043D4BB /* AlertCampaignValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */; };
+		2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */; };
+		2A108CF223740E420043D4BB /* CLMAlertCampaign+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */; };
+		2A108CF323740E730043D4BB /* CLMAlertCampaign+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -163,6 +166,7 @@
 		2A108CEA237350760043D4BB /* AlertCampaignCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignCloudKitService.swift; sourceTree = "<group>"; };
 		2A108CEC2373E4700043D4BB /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignValidator.swift; sourceTree = "<group>"; };
+		2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLMAlertCampaign+TestData.swift"; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudInAppMessaging_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudInAppMessaging_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				2A108CE523730B170043D4BB /* Views */,
 				2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */,
 				2A108C462372D1100043D4BB /* AlertCampaignListModel.swift */,
+				2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */,
 			);
 			path = AlertCampaignList;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				2A2318A9236BF8150052A486 /* Sources */,
 				2A2318AA236BF8150052A486 /* Frameworks */,
 				2A2318AB236BF8150052A486 /* Resources */,
+				172E90DC64208D68D44E78A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -705,6 +711,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		172E90DC64208D68D44E78A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2A108C412372CAFD0043D4BB /* Format Pod Code */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -906,6 +929,7 @@
 				2A56B5EE2370CD33001BB8B4 /* DummyAlertActionExecutor.swift in Sources */,
 				2A108C472372D1100043D4BB /* AlertCampaignListModel.swift in Sources */,
 				2A108CA62372FB440043D4BB /* ReachabilityCondition.swift in Sources */,
+				2A108CF223740E420043D4BB /* CLMAlertCampaign+TestData.swift in Sources */,
 				2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */,
 				2A108CA82372FB440043D4BB /* NoCancelledDependencies.swift in Sources */,
 			);
@@ -915,7 +939,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A108CF323740E730043D4BB /* CLMAlertCampaign+TestData.swift in Sources */,
 				2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */,
+				2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,61 @@ NSString *const CLMAlertCampaignReferenceKey = @"alertCampaign";
     return self;
 }
 
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+
+    return [self isEqualToAlertTranslation:object];
+}
+
+- (BOOL)isEqualToAlertTranslation:(CLMAlertTranslation *)object {
+    if (!object) {
+        return NO;
+    }
+
+    BOOL equals = self.identifier == object.identifier || [self.identifier isEqualToString:object.identifier];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.langCode == object.langCode || [self.langCode isEqualToString:object.langCode];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.title == object.title || [self.title isEqualToString:object.title];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.message == object.message || [self.message isEqualToString:object.message];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.buttonTitles == object.buttonTitles || [self.buttonTitles isEqualToArray:object.buttonTitles];
+    if (!equals) {
+        return NO;
+    }
+
+    return YES;
+}
+
+- (NSUInteger)hash {
+    return (self.identifier.hash ^
+            self.langCode.hash ^
+            self.title.hash ^
+            self.message.hash ^
+            self.buttonTitles.hash);
+}
+
 #pragma mark - CLMCloudKitSerializable
 
 - (instancetype)initWithRecord:(CKRecord *)record {

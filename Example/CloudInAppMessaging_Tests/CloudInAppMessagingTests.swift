@@ -6,28 +6,68 @@
 //  Copyright © 2019 Andrew Podkovyrin. All rights reserved.
 //
 
+import CloudInAppMessaging
+import CloudKit
 import XCTest
 
+// swiftlint:disable force_cast
+
 class CloudInAppMessagingTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testValidation() {
+        let alert = CLMAlertCampaign.testAlertCampaign()
+
+        XCTAssertNil(alert.validate())
     }
 
-    override func tearDown() {
-        super.tearDown()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testEquals() {
+        let alert1 = CLMAlertCampaign.testAlertCampaign()
+        let alert2 = CLMAlertCampaign.testAlertCampaign()
+
+        XCTAssertNotEqual(alert1, alert2)
+
+        XCTAssertEqual(alert1, alert1)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testDeserialization() {
+        let alert = CLMAlertCampaign.testAlertCampaign()
+        let record = alert.record()
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+        XCTAssertEqual(record["title"], alert.title)
+        XCTAssertEqual(record["message"], alert.message)
+        XCTAssertEqual(record["buttonActionURLs"], alert.buttonActionURLs)
+        XCTAssertEqual(record["buttonTitles"], alert.buttonTitles)
+        XCTAssertEqual(record["defaultLangCode"], alert.defaultLangCode)
+        XCTAssertEqual(record["countries"], alert.countries)
+        XCTAssertEqual(record["languages"], alert.languages)
+        XCTAssertEqual(record["maxAppVersion"], alert.maxAppVersion)
+        XCTAssertEqual(record["maxOSVersion"], alert.maxOSVersion)
+        XCTAssertEqual(record["minAppVersion"], alert.minAppVersion)
+        XCTAssertEqual(record["minOSVersion"], alert.minOSVersion)
+        XCTAssertEqual(record["startDate"], alert.startDate)
+        XCTAssertEqual(record["endDate"], alert.endDate)
+        XCTAssertEqual(record["trigger"], alert.trigger?.rawValue)
+
+        for translation in alert.translations {
+            let translationRecord = translation.record()
+
+            XCTAssertEqual(translationRecord["langCode"], translation.langCode)
+            XCTAssertEqual(translationRecord["title"], translation.title)
+            XCTAssertEqual(translationRecord["message"], translation.message)
+            XCTAssertEqual(translationRecord["buttonTitles"], translation.buttonTitles)
+            XCTAssertEqual((translationRecord[CLMAlertCampaign.ReferenceKey] as! CKRecord.Reference).recordID,
+                           record.recordID)
         }
+    }
+
+    func testSerialization() {
+        let alert1 = CLMAlertCampaign.testAlertCampaign()
+
+        let alertRecord = alert1.record()
+        let translationRecords = alert1.translations.map { $0.record() }
+
+        let alert2 = CLMAlertCampaign(record: alertRecord)
+        alert2.translations = translationRecords.map { CLMAlertTranslation(record: $0) }
+
+        XCTAssertEqual(alert1, alert2)
     }
 }

@@ -6,6 +6,8 @@ target 'CloudInAppMessaging_Example' do
 
   target 'CloudInAppMessaging_Tests' do
     inherit! :search_paths
+    
+    pod 'CloudInAppMessaging', :path => '../'
   end
   
 end

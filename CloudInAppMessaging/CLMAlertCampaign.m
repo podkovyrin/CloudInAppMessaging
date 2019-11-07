@@ -51,6 +51,127 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
     _minOSVersion = [minOSVersion stringByReplacingOccurrencesOfString:@"," withString:@"."];
 }
 
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+
+    return [self isEqualToAlertCampaign:object];
+}
+
+- (BOOL)isEqualToAlertCampaign:(CLMAlertCampaign *)object {
+    if (!object) {
+        return NO;
+    }
+
+    BOOL equals = self.identifier == object.identifier || [self.identifier isEqualToString:object.identifier];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.title == object.title || [self.title isEqualToString:object.title];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.message == object.message || [self.message isEqualToString:object.message];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.buttonActionURLs == object.buttonActionURLs || [self.buttonActionURLs isEqualToArray:object.buttonActionURLs];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.buttonTitles == object.buttonTitles || [self.buttonTitles isEqualToArray:object.buttonTitles];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.defaultLangCode == object.defaultLangCode || [self.defaultLangCode isEqualToString:object.defaultLangCode];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.translations == object.translations || [self.translations isEqualToArray:object.translations];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.countries == object.countries || [self.countries isEqualToArray:object.countries];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.languages == object.languages || [self.languages isEqualToArray:object.languages];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.maxAppVersion == object.maxAppVersion || [self.maxAppVersion isEqualToString:object.maxAppVersion];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.maxOSVersion == object.maxOSVersion || [self.maxOSVersion isEqualToString:object.maxOSVersion];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.minAppVersion == object.minAppVersion || [self.minAppVersion isEqualToString:object.minAppVersion];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.minOSVersion == object.minOSVersion || [self.minOSVersion isEqualToString:object.minOSVersion];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.startDate == object.startDate || [self.startDate isEqualToDate:object.startDate];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.endDate == object.endDate || [self.endDate isEqualToDate:object.endDate];
+    if (!equals) {
+        return NO;
+    }
+
+    equals = self.trigger == object.trigger || [self.trigger isEqualToString:object.trigger];
+    if (!equals) {
+        return NO;
+    }
+
+    return YES;
+}
+
+- (NSUInteger)hash {
+    return (self.identifier.hash ^
+            self.title.hash ^
+            self.message.hash ^
+            self.buttonActionURLs.hash ^
+            self.buttonTitles.hash ^
+            self.defaultLangCode.hash ^
+            self.translations.hash ^
+            self.countries.hash ^
+            self.languages.hash ^
+            self.maxAppVersion.hash ^
+            self.maxOSVersion.hash ^
+            self.minAppVersion.hash ^
+            self.minOSVersion.hash ^
+            self.startDate.hash ^
+            self.endDate.hash ^
+            self.trigger.hash);
+}
+
 #pragma mark - CLMCloudKitSerializable
 
 - (instancetype)initWithRecord:(CKRecord *)record {
