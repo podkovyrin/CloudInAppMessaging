@@ -12,6 +12,11 @@ target 'CloudMessagingAdmin' do
   
 end
 
+target 'TestApp' do
+  pod 'CloudInAppMessaging', :path => '../'
+  
+end
+
 
 # Fixes indexing error: "Could not build module 'Foundation'"
 # https://stackoverflow.com/questions/25999754/could-not-build-module-foundation

@@ -60,6 +60,12 @@
 		2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */; };
 		2A108CF223740E420043D4BB /* CLMAlertCampaign+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */; };
 		2A108CF323740E730043D4BB /* CLMAlertCampaign+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */; };
+		2A108CFB2374191C0043D4BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CFA2374191C0043D4BB /* AppDelegate.swift */; };
+		2A108CFF2374191C0043D4BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108CFE2374191C0043D4BB /* ViewController.swift */; };
+		2A108D022374191C0043D4BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D002374191C0043D4BB /* Main.storyboard */; };
+		2A108D042374191F0043D4BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D032374191F0043D4BB /* Assets.xcassets */; };
+		2A108D072374191F0043D4BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D052374191F0043D4BB /* LaunchScreen.storyboard */; };
+		2A108D1023741B260043D4BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108C442372CF1F0043D4BB /* CloudKit.framework */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -98,6 +104,7 @@
 		2ADF56A9236C4CA4009917D1 /* TextFieldFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A6236C4CA4009917D1 /* TextFieldFormCellModel.swift */; };
 		2ADF56AA236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A7236C4CA4009917D1 /* GroupedTextFieldFormTableViewCell.swift */; };
 		2ADF56AC236C51F3009917D1 /* TextInputFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56AB236C51F3009917D1 /* TextInputFormCellModel.swift */; };
+		C47E148AB1CDE1C88C5D0596 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87679E02742E836F54560A9 /* Pods_TestApp.framework */; };
 		E365FF340E0E7B38B7D2860C /* Pods_CloudMessagingAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE965AB3B4A5CE0FE8F10E1 /* Pods_CloudMessagingAdmin.framework */; };
 		EA6568E8878A63EDD1F1B6A5 /* Pods_CloudInAppMessaging_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E14082EEED190B60FED262 /* Pods_CloudInAppMessaging_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +120,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1BFDCB2AF467A2D386BFBC /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		0C74AAB889E7BBE7C71F9837 /* Pods-CloudInAppMessaging_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudInAppMessaging_Tests.debug.xcconfig"; path = "Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2A02759923703D2D00B3025C /* AlertCampaignTranslationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignTranslationsViewController.swift; sourceTree = "<group>"; };
 		2A02759B23704A7500B3025C /* AlertTranslationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTranslationsModel.swift; sourceTree = "<group>"; };
@@ -167,6 +175,14 @@
 		2A108CEC2373E4700043D4BB /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignValidator.swift; sourceTree = "<group>"; };
 		2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLMAlertCampaign+TestData.swift"; sourceTree = "<group>"; };
+		2A108CF82374191C0043D4BB /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A108CFA2374191C0043D4BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A108CFE2374191C0043D4BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A108D012374191C0043D4BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A108D032374191F0043D4BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A108D062374191F0043D4BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A108D082374191F0043D4BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A108D0F23741B200043D4BB /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudMessagingAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudMessagingAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -213,12 +229,23 @@
 		2ADF56AB236C51F3009917D1 /* TextInputFormCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormCellModel.swift; sourceTree = "<group>"; };
 		42E14082EEED190B60FED262 /* Pods_CloudInAppMessaging_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudInAppMessaging_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2403E7E855C8B1557D54AE /* Pods-CloudMessagingAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudMessagingAdmin.debug.xcconfig"; path = "Target Support Files/Pods-CloudMessagingAdmin/Pods-CloudMessagingAdmin.debug.xcconfig"; sourceTree = "<group>"; };
+		7E87DDBA954D5BDFC8A11365 /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		93C668A6614924AA8FACCCD2 /* Pods-CloudMessagingAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudMessagingAdmin.release.xcconfig"; path = "Target Support Files/Pods-CloudMessagingAdmin/Pods-CloudMessagingAdmin.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F3CEBD93FF43B57EAF06B /* Pods-CloudInAppMessaging_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudInAppMessaging_Tests.release.xcconfig"; path = "Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BAE965AB3B4A5CE0FE8F10E1 /* Pods_CloudMessagingAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudMessagingAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87679E02742E836F54560A9 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A108CF52374191C0043D4BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C47E148AB1CDE1C88C5D0596 /* Pods_TestApp.framework in Frameworks */,
+				2A108D1023741B260043D4BB /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A23188F236BF6A10052A486 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,10 +440,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		2A108CF92374191C0043D4BB /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				2A108CFA2374191C0043D4BB /* AppDelegate.swift */,
+				2A108CFE2374191C0043D4BB /* ViewController.swift */,
+				2A108D002374191C0043D4BB /* Main.storyboard */,
+				2A108D032374191F0043D4BB /* Assets.xcassets */,
+				2A108D052374191F0043D4BB /* LaunchScreen.storyboard */,
+				2A108D082374191F0043D4BB /* Info.plist */,
+				2A108D0F23741B200043D4BB /* TestApp.entitlements */,
+			);
+			path = TestApp;
+			sourceTree = "<group>";
+		};
 		2A231889236BF6A10052A486 = {
 			isa = PBXGroup;
 			children = (
 				2A231894236BF6A10052A486 /* CloudMessagingAdmin */,
+				2A108CF92374191C0043D4BB /* TestApp */,
 				2A2318AE236BF8150052A486 /* CloudInAppMessaging_Tests */,
 				2A231893236BF6A10052A486 /* Products */,
 				98F8D7626234BC1F96821224 /* Pods */,
@@ -429,6 +471,7 @@
 			children = (
 				2A231892236BF6A10052A486 /* CloudMessagingAdmin.app */,
 				2A2318AD236BF8150052A486 /* CloudInAppMessaging_Tests.xctest */,
+				2A108CF82374191C0043D4BB /* TestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -590,6 +633,8 @@
 				BA7F3CEBD93FF43B57EAF06B /* Pods-CloudInAppMessaging_Tests.release.xcconfig */,
 				6C2403E7E855C8B1557D54AE /* Pods-CloudMessagingAdmin.debug.xcconfig */,
 				93C668A6614924AA8FACCCD2 /* Pods-CloudMessagingAdmin.release.xcconfig */,
+				0A1BFDCB2AF467A2D386BFBC /* Pods-TestApp.debug.xcconfig */,
+				7E87DDBA954D5BDFC8A11365 /* Pods-TestApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -600,6 +645,7 @@
 				2A108C442372CF1F0043D4BB /* CloudKit.framework */,
 				42E14082EEED190B60FED262 /* Pods_CloudInAppMessaging_Tests.framework */,
 				BAE965AB3B4A5CE0FE8F10E1 /* Pods_CloudMessagingAdmin.framework */,
+				F87679E02742E836F54560A9 /* Pods_TestApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -607,6 +653,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2A108CF72374191C0043D4BB /* TestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A108D092374191F0043D4BB /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildPhases = (
+				17BDCB5609822231AD6728A0 /* [CP] Check Pods Manifest.lock */,
+				2A108D0C23741A060043D4BB /* Format Pod Code */,
+				2A108D0D23741A1C0043D4BB /* Swift Format */,
+				2A108D0E23741A730043D4BB /* Swift Lint */,
+				2A108CF42374191C0043D4BB /* Sources */,
+				2A108CF52374191C0043D4BB /* Frameworks */,
+				2A108CF62374191C0043D4BB /* Resources */,
+				CB2DF6366317307270705F12 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestApp;
+			productName = TestApp;
+			productReference = 2A108CF82374191C0043D4BB /* TestApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		2A231891236BF6A10052A486 /* CloudMessagingAdmin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A2318A6236BF6A20052A486 /* Build configuration list for PBXNativeTarget "CloudMessagingAdmin" */;
@@ -655,10 +723,13 @@
 		2A23188A236BF6A10052A486 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Andrew Podkovyrin";
 				TargetAttributes = {
+					2A108CF72374191C0043D4BB = {
+						CreatedOnToolsVersion = 11.2;
+					};
 					2A231891236BF6A10052A486 = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -684,11 +755,22 @@
 			targets = (
 				2A231891236BF6A10052A486 /* CloudMessagingAdmin */,
 				2A2318AC236BF8150052A486 /* CloudInAppMessaging_Tests */,
+				2A108CF72374191C0043D4BB /* TestApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A108CF62374191C0043D4BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A108D072374191F0043D4BB /* LaunchScreen.storyboard in Resources */,
+				2A108D042374191F0043D4BB /* Assets.xcassets in Resources */,
+				2A108D022374191C0043D4BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A231890236BF6A10052A486 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -728,6 +810,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudInAppMessaging_Tests/Pods-CloudInAppMessaging_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		17BDCB5609822231AD6728A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2A108C412372CAFD0043D4BB /* Format Pod Code */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -745,6 +849,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudInAppMessaging\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
+		};
+		2A108D0C23741A060043D4BB /* Format Pod Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Format Pod Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudInAppMessaging\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
+		};
+		2A108D0D23741A1C0043D4BB /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat CloudMessagingAdmin\n    swiftformat TestApp\n    swiftformat CloudInAppMessaging_Tests\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		2A108D0E23741A730043D4BB /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		2A2318B7236BF8A20052A486 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -780,7 +938,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat CloudMessagingAdmin\n    swiftformat CloudInAppMessaging_Tests\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat CloudMessagingAdmin\n    swiftformat TestApp\n    swiftformat CloudInAppMessaging_Tests\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 		9B4EC4A332FB000EE4069433 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -826,6 +984,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CB2DF6366317307270705F12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CF66B5C6353CFAC93188276C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +1021,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A108CF42374191C0043D4BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A108CFF2374191C0043D4BB /* ViewController.swift in Sources */,
+				2A108CFB2374191C0043D4BB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A23188E236BF6A10052A486 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -956,6 +1140,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2A108D002374191C0043D4BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A108D012374191C0043D4BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A108D052374191F0043D4BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A108D062374191F0043D4BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -967,6 +1167,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2A108D0A2374191F0043D4BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A1BFDCB2AF467A2D386BFBC /* Pods-TestApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PMBQR35S8;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.podkovyrin.CloudInAppMessaging.testApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A108D0B2374191F0043D4BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E87DDBA954D5BDFC8A11365 /* Pods-TestApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PMBQR35S8;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.podkovyrin.CloudInAppMessaging.testApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2A2318A4236BF6A20052A486 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1173,6 +1413,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A108D092374191F0043D4BB /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A108D0A2374191F0043D4BB /* Debug */,
+				2A108D0B2374191F0043D4BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A23188D236BF6A10052A486 /* Build configuration list for PBXProject "CloudInAppMessaging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
