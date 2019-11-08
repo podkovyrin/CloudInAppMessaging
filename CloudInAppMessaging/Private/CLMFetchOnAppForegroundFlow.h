@@ -15,24 +15,14 @@
 //  limitations under the License.
 //
 
-#import <UIKit/UIKit.h>
-
-#import "CLMAlertActionDefaultExecutor.h"
+#import "CLMFetchFlow.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation CLMAlertActionDefaultExecutor
+@interface CLMFetchOnAppForegroundFlow : CLMFetchFlow
 
-- (void)performAlertButtonAction:(NSString *)action inContext:(UIViewController *)context {
-    NSURL *url = [NSURL URLWithString:action];
-    if (!url) {
-        return;
-    }
-
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-    }
-}
+- (void)start;
+- (void)stop;
 
 @end
 

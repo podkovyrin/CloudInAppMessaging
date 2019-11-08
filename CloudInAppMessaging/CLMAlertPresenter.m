@@ -22,45 +22,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLMAlertPresenter ()
+@implementation CLMDefaultAlertPresenter
 
-@property (readonly, nonatomic, copy) NSArray<NSString *> *preferredLanguages;
+@synthesize actionExecutor = _actionExecutor;
+@synthesize delegate = _delegate;
 
-@end
-
-@implementation CLMAlertPresenter
-
-- (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign {
-    return [self initWithAlertCampaign:alertCampaign preferredLanguages:nil];
-}
-
-- (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign
-                   preferredLanguages:(nullable NSArray<NSString *> *)preferredLanguages {
-    self = [super init];
-    if (self) {
-        if (!preferredLanguages) {
-            preferredLanguages = [NSLocale preferredLanguages];
-        }
-
-        NSAssert(preferredLanguages.count > 0, @"Preferred Languages must not be empty");
-
-        _alertCampaign = alertCampaign;
-        _preferredLanguages = [preferredLanguages copy];
-    }
-    return self;
-}
-
-- (void)presentInViewController:(UIViewController *)controller {
-    NSParameterAssert(controller);
+- (void)presentAlert:(CLMAlertCampaign *)alertCampaign
+    preferredLanguages:(NSArray<NSString *> *)preferredLanguages
+      inViewController:(UIViewController *)controller {
     NSAssert(self.actionExecutor, @"The actionExecutor must be set before calling present");
+    NSAssert(preferredLanguages.count > 0, @"Preferred Languages must not be empty");
+    NSParameterAssert(controller);
 
-    id<CLMAlertDataSource> dataSource = [self alertDataSourceForPreferredLanguage];
+    id<CLMAlertDataSource> dataSource = [self dataSourceForAlert:alertCampaign
+                                              preferredLanguages:preferredLanguages];
 
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:dataSource.title
                                                                    message:dataSource.message
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
-    NSArray<NSString *> *buttonActionURLs = self.alertCampaign.buttonActionURLs;
+    NSArray<NSString *> *buttonActionURLs = alertCampaign.buttonActionURLs;
     BOOL hasCancel = NO;
     for (NSUInteger i = 0; i < buttonActionURLs.count; i++) {
         NSString *buttonTitle = dataSource.buttonTitles[i];
@@ -74,7 +55,11 @@ NS_ASSUME_NONNULL_BEGIN
         }
 
         void (^handler)(UIAlertAction *action) = ^(UIAlertAction *action) {
-            [self.actionExecutor performAlertButtonAction:buttonAction inContext:controller];
+            [self.delegate alertPresenter:self didFinishPresentingAlert:alertCampaign];
+
+            if (hasAction) {
+                [self.actionExecutor performAlertButtonAction:buttonAction inContext:controller];
+            }
         };
 
         UIAlertAction *action = [UIAlertAction actionWithTitle:buttonTitle style:style handler:handler];
@@ -88,16 +73,11 @@ NS_ASSUME_NONNULL_BEGIN
     [controller presentViewController:alert animated:YES completion:nil];
 }
 
-- (id<CLMAlertDataSource>)alertDataSourceForPreferredLanguage {
-    CLMAlertCampaign *alertCampaign = self.alertCampaign;
+#pragma mark - Private
 
-    for (NSString *language in self.preferredLanguages) {
-        NSString *langCode = language;
-        if ([language rangeOfString:@"_"].location != NSNotFound) {
-            NSArray<NSString *> *components = [language componentsSeparatedByString:@"_"];
-            langCode = components.firstObject;
-        }
-
+- (id<CLMAlertDataSource>)dataSourceForAlert:(CLMAlertCampaign *)alertCampaign
+                          preferredLanguages:(NSArray<NSString *> *)preferredLanguages {
+    for (NSString *langCode in preferredLanguages) {
         if ([alertCampaign.defaultLangCode isEqualToString:langCode]) {
             return alertCampaign;
         }
@@ -127,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
         }
     }
 
-    return self.alertCampaign;
+    return alertCampaign;
 }
 
 @end

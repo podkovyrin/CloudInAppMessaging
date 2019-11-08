@@ -73,6 +73,12 @@ NS_ASSUME_NONNULL_BEGIN
     return nil;
 }
 
+- (void)removeAlert:(CLMAlertCampaign *)alert {
+    @synchronized(self) {
+        [self.alerts removeObject:alert];
+    }
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

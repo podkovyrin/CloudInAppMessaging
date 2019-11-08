@@ -15,11 +15,23 @@
 //  limitations under the License.
 //
 
-#import "CLMDisplayCheckOnFetchDoneNotificationFlow.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation CLMDisplayCheckOnFetchDoneNotificationFlow
+@class CLMDisplayExecutor;
+
+@interface CLMDisplayTriggerFlow : NSObject
+
+@property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
+
+- (instancetype)initWithDisplayExecutor:(CLMDisplayExecutor *)displayExecutor;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+- (void)start;
+- (void)stop;
 
 @end
 

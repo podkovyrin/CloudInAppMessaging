@@ -15,11 +15,11 @@
 //  limitations under the License.
 //
 
-#import "CLMDisplayCheckTriggerFlow.h"
+#import "CLMDisplayTriggerFlow.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation CLMDisplayCheckTriggerFlow
+@implementation CLMDisplayTriggerFlow
 
 - (instancetype)initWithDisplayExecutor:(CLMDisplayExecutor *)displayExecutor {
     self = [super init];

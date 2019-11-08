@@ -15,23 +15,11 @@
 //  limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "CLMDisplayTriggerFlow.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class CLMDisplayExecutor;
-
-@interface CLMDisplayCheckTriggerFlow : NSObject
-
-@property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
-
-- (instancetype)initWithDisplayExecutor:(CLMDisplayExecutor *)displayExecutor;
-
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
-
-- (void)start;
-- (void)stop;
+@interface CLMDisplayOnAppForegroundFlow : CLMDisplayTriggerFlow
 
 @end
 

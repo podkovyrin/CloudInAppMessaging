@@ -18,9 +18,10 @@
 #ifndef CloudInAppMessaging_h
 #define CloudInAppMessaging_h
 
+#import "CLMCloudInAppMessaging.h"
+
 #import "CLMAlertCampaign.h"
 #import "CLMAlertTranslation.h"
 #import "CLMAlertPresenter.h"
-#import "CLMCloudInAppMessaging.h"
 
 #endif /* CloudInAppMessaging_h */

@@ -17,15 +17,21 @@
 
 #import <Foundation/Foundation.h>
 
+#import "../CLMAlertPresenter.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class CLMSettings;
+@class CLMClientInfo;
 @class CLMAlertsMemoryCache;
 @class CLMStateKeeper;
 
 @interface CLMDisplayExecutor : NSObject
 
+@property (nullable, nonatomic, strong) id<CLMAlertPresenter> alertPresenter;
+
 - (instancetype)initWithSettings:(CLMSettings *)settings
+                      clientInfo:(CLMClientInfo *)clientInfo
                      memoryCache:(CLMAlertsMemoryCache *)memoryCache
                      stateKeeper:(CLMStateKeeper *)stateKeeper;
 
@@ -38,7 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)checkAndDisplayNextAppLaunchAlert;
 // Check and display next in-app alert eligible for app open trigger
 - (void)checkAndDisplayNextAppForegroundAlert;
-
 
 @end
 

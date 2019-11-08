@@ -59,7 +59,15 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch {
-    // TODO: check if fetch is allowed
+    NSDate *now = [NSDate date];
+    const NSTimeInterval intervalFromLastFetch =
+        now.timeIntervalSince1970 - self.stateKeeper.lastFetchDate.timeIntervalSince1970;
+    const BOOL isFetchAllowed = intervalFromLastFetch > self.settings.fetchMinInterval;
+    if (!isFetchAllowed) {
+        [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
+
+        return;
+    }
 
     [self.cloudKitService fetchAlertCampaignsForClientInfo:self.clientInfo
                                                 completion:^(NSArray<CLMAlertCampaign *> *alertCampaigns) {
@@ -74,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
     // TODO: filter alerts by App and OS versions
     [self.memeoryCache setAlertsData:alertCampaigns];
 
-    [self.delegate fetchFlowDidFetchedAlers:self initialAppLaunch:initialAppLaunch];
+    [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
 }
 
 @end

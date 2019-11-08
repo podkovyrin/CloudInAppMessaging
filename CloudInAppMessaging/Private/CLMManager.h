@@ -17,11 +17,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "../CLMAlertPresenter.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class CLMSettings;
 
 @interface CLMManager : NSObject
+
+@property (nullable, nonatomic, strong) id<CLMAlertPresenter> alertPresenter;
 
 /// The specified identifier must correspond to one of the ubiquity containers listed in
 /// the iCloud capabilities section of your Xcode project. Including the identifier
@@ -31,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
                                            settings:(CLMSettings *)settings;
 
 - (void)setMessageDisplaySuppressed:(BOOL)messageDisplaySuppressed;
+
+- (void)resume;
+- (void)pause;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

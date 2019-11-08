@@ -17,11 +17,13 @@
 
 #import "CLMManager.h"
 
+#import "CLMAlertActionDefaultExecutor.h"
 #import "CLMAlertsMemoryCache.h"
 #import "CLMCKService.h"
 #import "CLMClientInfo.h"
 #import "CLMDisplayExecutor.h"
-#import "CLMFetchFlow.h"
+#import "CLMDisplayOnAppForegroundFlow.h"
+#import "CLMFetchOnAppForegroundFlow.h"
 #import "CLMPresentingWindowHelper.h"
 #import "CLMSettings.h"
 #import "CLMStateKeeper.h"
@@ -38,8 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
 @property (readonly, nonatomic, strong) CLMCKService *cloudKitService;
 @property (readonly, nonatomic, strong) CLMAlertsMemoryCache *memoryCache;
-@property (readonly, nonatomic, strong) CLMFetchFlow *fetchFlow;
+@property (readonly, nonatomic, strong) CLMFetchOnAppForegroundFlow *fetchFlow;
 @property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
+@property (readonly, nonatomic, strong) CLMDisplayOnAppForegroundFlow *displayOnAppForegroundFlow;
 
 @end
 
@@ -57,17 +60,25 @@ NS_ASSUME_NONNULL_BEGIN
         _stateKeeper = [[CLMStateKeeper alloc] initWithUserDefaults:[NSUserDefaults standardUserDefaults]];
         _cloudKitService = [[CLMCKService alloc] initWithContainerIdentifier:containerIdentifier];
         _memoryCache = [[CLMAlertsMemoryCache alloc] initWithStateKeeper:_stateKeeper];
-        _fetchFlow = [[CLMFetchFlow alloc] initWithSettings:settings
-                                            cloudKitService:_cloudKitService
-                                                 clientInfo:_clientInfo
-                                                memoryCache:_memoryCache
-                                                stateKeeper:_stateKeeper
-                                                   delegate:self];
-        _displayExecutor = [[CLMDisplayExecutor alloc] initWithSettings:settings
+        _fetchFlow = [[CLMFetchOnAppForegroundFlow alloc] initWithSettings:_settings
+                                                           cloudKitService:_cloudKitService
+                                                                clientInfo:_clientInfo
+                                                               memoryCache:_memoryCache
+                                                               stateKeeper:_stateKeeper
+                                                                  delegate:self];
+
+        _displayExecutor = [[CLMDisplayExecutor alloc] initWithSettings:_settings
+                                                             clientInfo:_clientInfo
                                                             memoryCache:_memoryCache
                                                             stateKeeper:_stateKeeper];
+        _displayExecutor.alertPresenter = [self.class defaultAlertPresenter];
 
-        [self resume];
+        _displayOnAppForegroundFlow = [[CLMDisplayOnAppForegroundFlow alloc]
+            initWithDisplayExecutor:_displayExecutor];
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self start];
+        });
     }
     return self;
 }
@@ -75,7 +86,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)resume {
     @synchronized(self) {
         if (!_running) {
-            [self.fetchFlow checkAndFetchForInitialAppLaunch:YES];
+            [self.fetchFlow start];
+            [self.displayOnAppForegroundFlow start];
 
             _running = YES;
         }
@@ -85,6 +97,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pause {
     @synchronized(self) {
         if (_running) {
+            [self.fetchFlow stop];
+            [self.displayOnAppForegroundFlow stop];
 
             _running = NO;
         }
@@ -95,11 +109,49 @@ NS_ASSUME_NONNULL_BEGIN
     [self.displayExecutor setMessageDisplaySuppressed:messageDisplaySuppressed];
 }
 
+- (void)setAlertPresenter:(nullable id<CLMAlertPresenter>)alertPresenter {
+    _alertPresenter = alertPresenter;
+
+    self.displayExecutor.alertPresenter = alertPresenter ?: [self.class defaultAlertPresenter];
+}
+
+#pragma mark - Private
+
+- (void)start {
+    if (_running) {
+        [self.fetchFlow stop];
+        [self.displayOnAppForegroundFlow stop];
+    }
+
+    [self.fetchFlow checkAndFetchForInitialAppLaunch:YES];
+}
+
++ (id<CLMAlertPresenter>)defaultAlertPresenter {
+    id<CLMAlertPresenter> alertPresenter = [[CLMDefaultAlertPresenter alloc] init];
+    alertPresenter.actionExecutor = [[CLMAlertActionDefaultExecutor alloc] init];
+
+    return alertPresenter;
+}
+
 #pragma mark - CLMFetchFlowDelegate
 
-- (void)fetchFlowDidFetchedAlers:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch {
-    // TODO: fix me
-    [self.displayExecutor checkAndDisplayNextAppForegroundAlert];
+- (void)fetchFlowDidFinish:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch {
+    if (initialAppLaunch) {
+        [self.fetchFlow start];
+        [self.displayOnAppForegroundFlow start];
+
+        @synchronized(self) {
+            _running = YES;
+        }
+
+        [self.displayExecutor checkAndDisplayNextAppLaunchAlert];
+
+        // Simulate app going into foreground on startup
+        [self.displayExecutor checkAndDisplayNextAppForegroundAlert];
+    }
+    else {
+        [self.displayExecutor checkAndDisplayNextAppForegroundAlert];
+    }
 }
 
 @end

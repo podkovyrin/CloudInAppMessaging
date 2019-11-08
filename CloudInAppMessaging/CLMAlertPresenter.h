@@ -22,23 +22,26 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class CLMAlertCampaign;
+@protocol CLMAlertPresenter;
 
-@interface CLMAlertPresenter : NSObject
+@protocol CLMAlertPresenterDelegate <NSObject>
 
-@property (readonly, nonatomic, strong) CLMAlertCampaign *alertCampaign;
+- (void)alertPresenter:(id<CLMAlertPresenter>)alertPresenter didFinishPresentingAlert:(CLMAlertCampaign *)alertCampaign;
+
+@end
+
+@protocol CLMAlertPresenter <NSObject>
 
 @property (nullable, nonatomic, strong) id<CLMAlertActionExecutor> actionExecutor;
+@property (nullable, nonatomic, weak) id<CLMAlertPresenterDelegate> delegate;
 
-- (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign;
+- (void)presentAlert:(CLMAlertCampaign *)alertCampaign
+    preferredLanguages:(NSArray<NSString *> *)preferredLanguages
+      inViewController:(UIViewController *)controller NS_SWIFT_NAME(present(alert:preferredLanguages:in:));
 
-/// If `preferredLanguages` is nil `[NSLocale preferredLanguages]` will be used
-- (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign
-                   preferredLanguages:(nullable NSArray<NSString *> *)preferredLanguages NS_DESIGNATED_INITIALIZER;
+@end
 
-- (void)presentInViewController:(UIViewController *)controller NS_SWIFT_NAME(present(in:));
-
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+@interface CLMDefaultAlertPresenter : NSObject <CLMAlertPresenter>
 
 @end
 

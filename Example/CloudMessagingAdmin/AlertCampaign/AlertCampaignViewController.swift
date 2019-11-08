@@ -31,6 +31,11 @@ final class AlertCampaignViewController: UIViewController {
 
     private let model: AlertCampaignModel
     private lazy var formController = GroupedFormTableViewController()
+    private lazy var alertPresenter: CLMAlertPresenter = {
+        let alertPresenter = CLMDefaultAlertPresenter()
+        alertPresenter.actionExecutor = DummyAlertActionExecutor()
+        return alertPresenter
+    }()
 
     init(alertCampaign: CLMAlertCampaign?, service: AlertCampaignCloudKitService) {
         if let alertCampaign = alertCampaign {
@@ -422,10 +427,9 @@ final class AlertCampaignViewController: UIViewController {
     @objc
     private func previewButtonAction() {
         let previewAction: (String) -> Void = { langCode in
-            let presenter = CLMAlertPresenter(alertCampaign: self.model.alertCampaign,
-                                              preferredLanguages: [langCode])
-            presenter.actionExecutor = DummyAlertActionExecutor()
-            presenter.present(in: self)
+            self.alertPresenter.present(alert: self.model.alertCampaign,
+                                        preferredLanguages: [langCode],
+                                        in: self)
         }
 
         let alert = UIAlertController(title: "Preview Alert Campaign",

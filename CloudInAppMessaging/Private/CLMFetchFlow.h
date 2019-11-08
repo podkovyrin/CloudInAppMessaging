@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol CLMFetchFlowDelegate <NSObject>
 
-- (void)fetchFlowDidFetchedAlers:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch;
+- (void)fetchFlowDidFinish:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch;
 
 @end
 

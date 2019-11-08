@@ -51,12 +51,14 @@ static CLMCloudInAppMessaging *_sharedInstance = nil;
     self = [super init];
     if (self) {
         CLMSettings *settings = [[CLMSettings alloc] init];
-        settings.fetchMinInterval = 24 * 60;                  // fetch at most once every 24 hours
-        settings.displayForegroundAlertMinInterval = 24 * 60; // display at most one message from
-                                                              // app-foreground trigger every 24 hours
+        settings.fetchMinInterval = 12 * 60 * 60;                  // fetch at most once every 12 hours
+        settings.displayForegroundAlertMinInterval = 24 * 60 * 60; // display at most one message from
+                                                                   // app-foreground trigger every 24 hours
 
         _manager = [[CLMManager alloc] initWithCloudKitContainerIdentifier:containerIdentifier
                                                                   settings:settings];
+
+        _enabled = YES;
     }
     return self;
 }
@@ -64,6 +66,23 @@ static CLMCloudInAppMessaging *_sharedInstance = nil;
 - (void)setMessageDisplaySuppressed:(BOOL)messageDisplaySuppressed {
     _messageDisplaySuppressed = messageDisplaySuppressed;
     [self.manager setMessageDisplaySuppressed:messageDisplaySuppressed];
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    if (enabled) {
+        [self.manager resume];
+    }
+    else {
+        [self.manager pause];
+    }
+}
+
+- (nullable id<CLMAlertPresenter>)alertPresenter {
+    return self.manager.alertPresenter;
+}
+
+- (void)setAlertPresenter:(nullable id<CLMAlertPresenter>)alertPresenter {
+    self.manager.alertPresenter = alertPresenter;
 }
 
 @end
