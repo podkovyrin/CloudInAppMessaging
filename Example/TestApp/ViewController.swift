@@ -19,7 +19,7 @@ import CloudInAppMessaging
 import UIKit
 
 class ViewController: UIViewController {
-    let manager = CLMManager(cloudKitContainerIdentifier: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
+    let clm = CLMCloudInAppMessaging.setup(with: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
 
     override func viewDidLoad() {
         super.viewDidLoad()

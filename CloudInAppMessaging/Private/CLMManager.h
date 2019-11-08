@@ -15,29 +15,25 @@
 //  limitations under the License.
 //
 
-#import <CloudKit/CloudKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class CLMClientInfo;
-@class CLMAlertCampaign;
-@class CLMAlertTranslation;
+@class CLMSettings;
 
-@interface CLMCKService : NSObject
+@interface CLMManager : NSObject
 
 /// The specified identifier must correspond to one of the ubiquity containers listed in
 /// the iCloud capabilities section of your Xcode project. Including the identifier
 /// with your app’s capabilities adds the corresponding entitlements to your app.
 /// If nil is specified default container will be used
-- (instancetype)initWithContainerIdentifier:(nullable NSString *)identifier;
+- (instancetype)initWithCloudKitContainerIdentifier:(nullable NSString *)containerIdentifier
+                                           settings:(CLMSettings *)settings;
+
+- (void)setMessageDisplaySuppressed:(BOOL)messageDisplaySuppressed;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-
-- (void)fetchAlertCampaignsForClientInfo:(CLMClientInfo *)clientInfo
-                              completion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion;
-- (void)fetchTranslationsForAlertCampaign:(CLMAlertCampaign *)alertCampaign
-                               completion:(void (^)(NSArray<CLMAlertTranslation *> *alertTranslations))completion;
 
 @end
 

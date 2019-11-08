@@ -18,12 +18,17 @@
 #import <UIKit/UIKit.h>
 
 #import "CLMAlertActionDefaultExecutor.h"
+#import "CLMPresentingWindowHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation CLMAlertActionDefaultExecutor
 
 - (void)performAlertButtonAction:(NSString *)action inContext:(UIViewController *)context {
+    UIWindow *window = [CLMPresentingWindowHelper UIWindowForPresenting];
+    window.hidden = YES;
+    window.rootViewController = nil;
+
     NSURL *url = [NSURL URLWithString:action];
     if (!url) {
         return;

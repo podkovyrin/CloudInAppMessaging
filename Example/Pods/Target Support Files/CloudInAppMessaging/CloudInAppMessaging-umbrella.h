@@ -10,14 +10,13 @@
 #endif
 #endif
 
-#import "CLMAlertActionDefaultExecutor.h"
 #import "CLMAlertActionExecutor.h"
 #import "CLMAlertCampaign.h"
 #import "CLMAlertDataSource.h"
 #import "CLMAlertPresenter.h"
 #import "CLMAlertTranslation.h"
+#import "CLMCloudInAppMessaging.h"
 #import "CLMCloudKitSerializable.h"
-#import "CLMManager.h"
 #import "CloudInAppMessaging.h"
 
 FOUNDATION_EXPORT double CloudInAppMessagingVersionNumber;

@@ -71,7 +71,7 @@ final class AlertCamaignButtonsViewController: UIViewController {
         titleModel.text = button.title
         titleModel.returnKeyType = .next
         titleModel.didChangeText = { titleModel in
-            button.title = titleModel.text?.trimmingCharacters(in: .whitespaces) ?? ""
+            button.title = titleModel.text ?? ""
         }
 
         let urlModel = TextFieldFormCellModel()
@@ -82,7 +82,7 @@ final class AlertCamaignButtonsViewController: UIViewController {
         urlModel.autocorrectionType = .no
         urlModel.autocapitalizationType = .none
         urlModel.didChangeText = { titleModel in
-            button.url = titleModel.text?.trimmingCharacters(in: .whitespaces) ?? ""
+            button.url = titleModel.text ?? ""
         }
         urlModel.validateAction = { [weak self, weak urlModel] text in
             guard let self = self, let urlModel = urlModel else { return false }

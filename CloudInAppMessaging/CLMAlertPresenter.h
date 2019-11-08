@@ -29,13 +29,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, strong) id<CLMAlertActionExecutor> actionExecutor;
 
-- (void)presentInViewController:(UIViewController *)controller NS_SWIFT_NAME(present(in:));
-
 - (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign;
 
 /// If `preferredLanguages` is nil `[NSLocale preferredLanguages]` will be used
 - (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign
                    preferredLanguages:(nullable NSArray<NSString *> *)preferredLanguages NS_DESIGNATED_INITIALIZER;
+
+- (void)presentInViewController:(UIViewController *)controller NS_SWIFT_NAME(present(in:));
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

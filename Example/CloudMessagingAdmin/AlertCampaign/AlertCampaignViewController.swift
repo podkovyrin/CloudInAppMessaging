@@ -122,7 +122,7 @@ final class AlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.title
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.title = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            self.model.alertCampaign.title = cellModel.text
         }
 
         return cellModel
@@ -134,7 +134,7 @@ final class AlertCampaignViewController: UIViewController {
         cellModel.text = model.alertCampaign.message
         cellModel.didChangeText = { [weak self] cellModel in
             guard let self = self else { return }
-            self.model.alertCampaign.message = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            self.model.alertCampaign.message = cellModel.text
         }
 
         return cellModel
@@ -610,7 +610,7 @@ final class AlertCampaignViewController: UIViewController {
             return nil
         }
 
-        if let version = version, version.hasSuffix(".") {
+        if let version = version, version.hasSuffix(".") || version.hasSuffix(",") {
             return trimmed + "."
         }
 

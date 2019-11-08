@@ -72,7 +72,7 @@ final class AlertButtonsTranslationViewController: UIViewController {
             titleModel.placeholder = buttonTranslation.originalTitle
             titleModel.returnKeyType = .next
             titleModel.didChangeText = { titleModel in
-                buttonTranslation.title = titleModel.text?.trimmingCharacters(in: .whitespaces) ?? ""
+                buttonTranslation.title = titleModel.text ?? ""
             }
             items.append(titleModel)
         }

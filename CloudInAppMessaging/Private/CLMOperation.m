@@ -94,7 +94,7 @@
 
     @synchronized(self) {
         switch (self.state) {
-            case CLMOperationStateReady:
+            case CLMOperationStateInitialized:
                 ready = [super isReady] || [self isCancelled];
                 break;
             default:
@@ -138,7 +138,7 @@
 #pragma mark - Execution and Cancellation
 
 - (void)start {
-    NSAssert(self.state == CLMOperationStateReady, @"This operation must be performed on an operation queue.");
+    NSAssert(self.state == CLMOperationStateInitialized, @"This operation must be performed on an operation queue.");
 
     if (self.isCancelled) {
         [self finishWithError:nil];
@@ -160,7 +160,7 @@
     }
 
     self.cancelled = YES;
-    if (self.state > CLMOperationStateReady) {
+    if (self.state > CLMOperationStateInitialized) {
         [self finishWithError:nil];
     }
 }

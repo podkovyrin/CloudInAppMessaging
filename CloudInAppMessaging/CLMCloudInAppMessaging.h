@@ -1,4 +1,4 @@
-//  
+//
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -15,12 +15,20 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import <Foundation/Foundation.h>
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
-#import "CLMCloudInAppMessaging.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* CloudInAppMessaging_h */
+@interface CLMCloudInAppMessaging : NSObject
+
+@property (nonatomic, assign) BOOL messageDisplaySuppressed;
+
++ (instancetype)setupWithCloudKitContainerIdentifier:(nullable NSString *)containerIdentifier NS_SWIFT_NAME(setup(with:));
++ (instancetype)sharedInstance NS_SWIFT_NAME(shared());
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+@end
+
+NS_ASSUME_NONNULL_END

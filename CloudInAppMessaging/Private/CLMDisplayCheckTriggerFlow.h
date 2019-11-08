@@ -1,4 +1,4 @@
-//  
+//
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -15,12 +15,24 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import <Foundation/Foundation.h>
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
-#import "CLMCloudInAppMessaging.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* CloudInAppMessaging_h */
+@class CLMDisplayExecutor;
+
+@interface CLMDisplayCheckTriggerFlow : NSObject
+
+@property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
+
+- (instancetype)initWithDisplayExecutor:(CLMDisplayExecutor *)displayExecutor;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+- (void)start;
+- (void)stop;
+
+@end
+
+NS_ASSUME_NONNULL_END

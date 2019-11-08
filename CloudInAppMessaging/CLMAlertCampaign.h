@@ -49,6 +49,10 @@ extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 @property (nullable, nonatomic, strong) NSDate *endDate;
 @property (nullable, nonatomic, copy) CLMAlertCampaignTrigger trigger;
 
+- (BOOL)alertHasExpired;
+- (BOOL)alertHasStarted;
+- (BOOL)alertDisplayedOnTrigger:(CLMAlertCampaignTrigger)trigger;
+
 @end
 
 NS_ASSUME_NONNULL_END

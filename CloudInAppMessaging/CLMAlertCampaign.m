@@ -51,6 +51,34 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
     _minOSVersion = [minOSVersion stringByReplacingOccurrencesOfString:@"," withString:@"."];
 }
 
+#pragma mark - Public
+
+- (BOOL)alertHasExpired {
+    if (self.endDate) {
+        return self.endDate.timeIntervalSince1970 < [NSDate date].timeIntervalSince1970;
+    }
+
+    return NO;
+}
+
+- (BOOL)alertHasStarted {
+    if (self.startDate) {
+        return self.startDate.timeIntervalSince1970 < [NSDate date].timeIntervalSince1970;
+    }
+
+    return YES;
+}
+
+- (BOOL)alertDisplayedOnTrigger:(CLMAlertCampaignTrigger)trigger {
+    NSAssert(self.trigger, @"Trigger is invalid");
+
+    if (self.trigger) {
+        return [self.trigger isEqualToString:trigger];
+    }
+
+    return YES;
+}
+
 #pragma mark - NSObject
 
 - (BOOL)isEqual:(id)object {

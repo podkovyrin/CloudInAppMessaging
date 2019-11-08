@@ -1,4 +1,4 @@
-//  
+//
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -15,12 +15,26 @@
 //  limitations under the License.
 //
 
-#ifndef CloudInAppMessaging_h
-#define CloudInAppMessaging_h
+#import <Foundation/Foundation.h>
 
-#import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
-#import "CLMAlertPresenter.h"
-#import "CLMCloudInAppMessaging.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* CloudInAppMessaging_h */
+@class CLMAlertCampaign;
+
+@interface CLMStateKeeper : NSObject
+
+@property (nullable, readonly, nonatomic, strong) NSDate *lastDisplayDate;
+@property (nullable, readonly, nonatomic, strong) NSDate *lastFetchDate;
+@property (readonly, nonatomic, copy) NSArray<NSString *> *impressionIDs;
+
+- (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults;
+
+- (void)recordAlertImpression:(CLMAlertCampaign *)alertCampaign;
+- (void)recordFetch;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+@end
+
+NS_ASSUME_NONNULL_END

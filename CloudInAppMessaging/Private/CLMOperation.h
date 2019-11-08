@@ -21,8 +21,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, CLMOperationState) {
-    /// The `CLMOperation` is ready to execute.
-    CLMOperationStateReady,
+    /// The initial state of an `CLMOperation`.
+    CLMOperationStateInitialized,
 
     /// The `CLMOperation` is executing.
     CLMOperationStateExecuting,

@@ -19,13 +19,29 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLMManager : NSObject
+@class CLMStateKeeper;
+@class CLMCKService;
+@class CLMClientInfo;
+@class CLMAlertsMemoryCache;
+@class CLMSettings;
+@class CLMFetchFlow;
 
-/// The specified identifier must correspond to one of the ubiquity containers listed in
-/// the iCloud capabilities section of your Xcode project. Including the identifier
-/// with your app’s capabilities adds the corresponding entitlements to your app.
-/// If nil is specified default container will be used
-- (instancetype)initWithCloudKitContainerIdentifier:(nullable NSString *)containerIdentifier;
+@protocol CLMFetchFlowDelegate <NSObject>
+
+- (void)fetchFlowDidFetchedAlers:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch;
+
+@end
+
+@interface CLMFetchFlow : NSObject
+
+- (instancetype)initWithSettings:(CLMSettings *)settings
+                 cloudKitService:(CLMCKService *)cloudKitService
+                      clientInfo:(CLMClientInfo *)clientInfo
+                     memoryCache:(CLMAlertsMemoryCache *)memeoryCache
+                     stateKeeper:(CLMStateKeeper *)stateKeeper
+                        delegate:(id<CLMFetchFlowDelegate>)delegate;
+
+- (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

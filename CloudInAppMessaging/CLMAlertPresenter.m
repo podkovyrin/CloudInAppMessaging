@@ -61,19 +61,21 @@ NS_ASSUME_NONNULL_BEGIN
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
     NSArray<NSString *> *buttonActionURLs = self.alertCampaign.buttonActionURLs;
+    BOOL hasCancel = NO;
     for (NSUInteger i = 0; i < buttonActionURLs.count; i++) {
         NSString *buttonTitle = dataSource.buttonTitles[i];
         NSString *buttonAction = buttonActionURLs[i];
 
         const BOOL hasAction = ![buttonAction isEqualToString:CLMAlertCampaignButtonURLNoAction];
-        const UIAlertActionStyle style = hasAction ? UIAlertActionStyleDefault : UIAlertActionStyleCancel;
+        const UIAlertActionStyle style = hasAction || hasCancel ? UIAlertActionStyleDefault : UIAlertActionStyleCancel;
 
-        void (^handler)(UIAlertAction *action) = nil;
-        if (hasAction) {
-            handler = ^(UIAlertAction *action) {
-                [self.actionExecutor performAlertButtonAction:buttonAction inContext:controller];
-            };
+        if (style == UIAlertActionStyleCancel) {
+            hasCancel = YES;
         }
+
+        void (^handler)(UIAlertAction *action) = ^(UIAlertAction *action) {
+            [self.actionExecutor performAlertButtonAction:buttonAction inContext:controller];
+        };
 
         UIAlertAction *action = [UIAlertAction actionWithTitle:buttonTitle style:style handler:handler];
         [alert addAction:action];

@@ -99,7 +99,7 @@ final class AlertCampaignTranslationsViewController: UIViewController {
         titleModel.text = translation.title
         titleModel.placeholder = model.alertCampaign.title
         titleModel.didChangeText = { cellModel in
-            translation.title = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            translation.title = cellModel.text
         }
 
         let messageModel = TextViewFormCellModel()
@@ -107,7 +107,7 @@ final class AlertCampaignTranslationsViewController: UIViewController {
         messageModel.text = translation.message
         messageModel.placeholder = model.alertCampaign.message
         messageModel.didChangeText = { cellModel in
-            translation.message = cellModel.text?.trimmingCharacters(in: .whitespaces)
+            translation.message = cellModel.text
         }
 
         let buttonsModel = SelectorFormCellModel()

@@ -18,6 +18,7 @@
 #import "CLMCKService.h"
 
 #import "../CLMAlertCampaign.h"
+#import "../CLMAlertTranslation.h"
 #import "CLMCKConfiguration.h"
 #import "CLMCKFetchOperation.h"
 #import "CLMClientInfo.h"
@@ -56,20 +57,55 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)fetchAlertCampaignsForClientInfo:(CLMClientInfo *)clientInfo
-                              completion:(void (^)(NSArray<CKRecord *> *alertCampaigns))completion {
+                              completion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion {
     NSPredicate *predicate = [self alertCampaignsPredicateForClient:clientInfo];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:CLMAlertCampaignRecordType predicate:predicate];
     CLMCKFetchOperation *operation = [[CLMCKFetchOperation alloc] initWithConfiguration:[self configuration]
                                                                                   query:query];
     __block typeof(operation) blockOperation = operation;
     operation.completionBlock = ^{
+        NSMutableArray<CLMAlertCampaign *> *alertCampaigns = [NSMutableArray array];
+        for (CKRecord *record in blockOperation.records) {
+            CLMAlertCampaign *alertCampaign = [[CLMAlertCampaign alloc] initWithRecord:record];
+            [alertCampaigns addObject:alertCampaign];
+        }
+
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSArray<CKRecord *> *alertCampaigns = blockOperation.records;
             if (completion) {
-                completion(alertCampaigns);
+                completion([alertCampaigns copy]);
             }
-            blockOperation = nil;
         });
+
+        blockOperation = nil;
+    };
+    [self.operationQueue addOperation:operation];
+}
+
+- (void)fetchTranslationsForAlertCampaign:(CLMAlertCampaign *)alertCampaign
+                               completion:(void (^)(NSArray<CLMAlertTranslation *> *))completion {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@",
+                                                              CLMAlertCampaignReferenceKey,
+                                                              alertCampaign.recordID];
+
+    CKQuery *query = [[CKQuery alloc] initWithRecordType:CLMAlertTranslationRecordType predicate:predicate];
+    CLMCKFetchOperation *operation = [[CLMCKFetchOperation alloc] initWithConfiguration:[self configuration]
+                                                                                  query:query];
+
+    __block typeof(operation) blockOperation = operation;
+    operation.completionBlock = ^{
+        NSMutableArray<CLMAlertTranslation *> *alertTranslations = [NSMutableArray array];
+        for (CKRecord *record in blockOperation.records) {
+            CLMAlertTranslation *alertTranslation = [[CLMAlertTranslation alloc] initWithRecord:record];
+            [alertTranslations addObject:alertTranslation];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion([alertTranslations copy]);
+            }
+        });
+
+        blockOperation = nil;
     };
     [self.operationQueue addOperation:operation];
 }
