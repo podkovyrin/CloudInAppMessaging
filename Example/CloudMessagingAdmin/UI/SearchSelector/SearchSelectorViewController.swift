@@ -79,11 +79,12 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
         tableView.register(cell, forCellReuseIdentifier: String(describing: cell))
 
         if multiSelection {
-            let barButton = UIBarButtonItem(title: "Uncheck All",
+            let barButton = UIBarButtonItem(title: "",
                                             style: .plain,
                                             target: self,
                                             action: #selector(uncheckAllButtonAction))
             navigationItem.rightBarButtonItem = barButton
+            updateSelectionButtonTitle()
         }
 
         // Search Controller
@@ -148,6 +149,7 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
             }
 
             tableView.reloadRows(at: [indexPath], with: .none)
+            updateSelectionButtonTitle()
         }
         else {
             model.selectedIndexes.removeAll()
@@ -172,8 +174,32 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
 
     @objc
     func uncheckAllButtonAction() {
-        model.selectedIndexes.removeAll()
+        let selectedItems: [T.Item]
+        if model.selectedIndexes.isEmpty {
+            model.selectedIndexes = Set(0 ..< model.items.count)
+            selectedItems = model.items
+        }
+        else {
+            model.selectedIndexes.removeAll()
+            selectedItems = []
+        }
+
+        updateSelectionButtonTitle()
         tableView.reloadData()
-        selectionChanged([])
+
+        selectionChanged(selectedItems)
+    }
+
+    // MARK: Private
+
+    func updateSelectionButtonTitle() {
+        let title: String
+        if model.selectedIndexes.isEmpty {
+            title = "Check All"
+        }
+        else {
+            title = "Uncheck All"
+        }
+        navigationItem.rightBarButtonItem?.title = title
     }
 }

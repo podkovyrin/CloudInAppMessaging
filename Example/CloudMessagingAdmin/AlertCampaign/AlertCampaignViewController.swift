@@ -24,6 +24,8 @@ protocol AlertCampaignViewControllerDelegate: AnyObject {
                                      didFinishWith alertCampaign: CLMAlertCampaign)
 }
 
+private let MaxDisplayedDetailItems = 6
+
 final class AlertCampaignViewController: UIViewController {
     weak var delegate: AlertCampaignViewControllerDelegate?
 
@@ -182,11 +184,17 @@ final class AlertCampaignViewController: UIViewController {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Countries"
         let countries = model.alertCampaign.countries
-        if countries.isEmpty {
+        if countries == model.localeCodes.countryCodes {
             cellModel.detail = "All Countries"
         }
         else {
-            cellModel.detail = countries.joined(separator: ", ")
+            let count = countries.count
+            if count > MaxDisplayedDetailItems {
+                cellModel.detail = "\(count) / \(model.localeCodes.countryCodes.count)"
+            }
+            else {
+                cellModel.detail = countries.joined(separator: ", ")
+            }
         }
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
@@ -201,11 +209,17 @@ final class AlertCampaignViewController: UIViewController {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Languages"
         let languages = model.alertCampaign.languages
-        if languages.isEmpty {
+        if languages == model.localeCodes.languageCodes {
             cellModel.detail = "All Languages"
         }
         else {
-            cellModel.detail = languages.joined(separator: ", ")
+            let count = languages.count
+            if count > MaxDisplayedDetailItems {
+                cellModel.detail = "\(count) / \(model.localeCodes.languageCodes.count)"
+            }
+            else {
+                cellModel.detail = languages.joined(separator: ", ")
+            }
         }
         cellModel.accessoryType = .disclosureIndicator
         cellModel.action = { [weak self] in
@@ -466,7 +480,7 @@ final class AlertCampaignViewController: UIViewController {
 
     private func showTranslationsController() {
         let controller = AlertCampaignTranslationsViewController(alertCampaign: model.alertCampaign,
-                                                                 languageCodes: model.languageCodes,
+                                                                 languageCodes: model.localeCodes.languageCodes,
                                                                  locale: model.locale)
         navigationController?.pushViewController(controller, animated: true)
     }

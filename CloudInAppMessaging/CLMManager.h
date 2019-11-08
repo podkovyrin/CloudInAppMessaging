@@ -19,13 +19,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLMClientInfo : NSObject
+@interface CLMManager : NSObject
 
-// Following are synchronous methods for fetching data
-- (NSArray<NSString *> *)preferredLanguages;
-- (NSString *)countryCode;
-- (NSString *)appVersion;
-- (NSString *)osVersion;
+/// The specified identifier must correspond to one of the ubiquity containers listed in
+/// the iCloud capabilities section of your Xcode project. Including the identifier
+/// with your app’s capabilities adds the corresponding entitlements to your app.
+/// If nil is specified default container will be used
+- (instancetype)initWithCloudKitContainerIdentifier:(nullable NSString *)containerIdentifier;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

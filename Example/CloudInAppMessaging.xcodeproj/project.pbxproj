@@ -66,6 +66,7 @@
 		2A108D042374191F0043D4BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D032374191F0043D4BB /* Assets.xcassets */; };
 		2A108D072374191F0043D4BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D052374191F0043D4BB /* LaunchScreen.storyboard */; };
 		2A108D1023741B260043D4BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108C442372CF1F0043D4BB /* CloudKit.framework */; };
+		2A108D3623753E5F0043D4BB /* LocaleCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108D3523753E5F0043D4BB /* LocaleCodes.swift */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -183,6 +184,7 @@
 		2A108D062374191F0043D4BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A108D082374191F0043D4BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A108D0F23741B200043D4BB /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
+		2A108D3523753E5F0043D4BB /* LocaleCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleCodes.swift; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudMessagingAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudMessagingAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				2A26CBDC236DC8CE009EAC52 /* LocaleSelectorModel.swift */,
 				2A56B5ED2370CD33001BB8B4 /* DummyAlertActionExecutor.swift */,
 				2A108CEE2373FDC30043D4BB /* AlertCampaignValidator.swift */,
+				2A108D3523753E5F0043D4BB /* LocaleCodes.swift */,
 			);
 			path = AlertCampaign;
 			sourceTree = "<group>";
@@ -848,7 +851,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudInAppMessaging\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
+			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudMessagingAdmin\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
 		};
 		2A108D0C23741A060043D4BB /* Format Pod Code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -866,7 +869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudInAppMessaging\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
+			shellScript = "#!/bin/sh\n\necho \"Reformatting code with clang-format\"\n\nfunction formatObjCFiles() {\n    find \"$1\" -name '*.h' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.m' -print0 | xargs -0 clang-format -i -style=file\n    find \"$1\" -name '*.mm' -print0 | xargs -0 clang-format -i -style=file\n}\n\nif which clang-format >/dev/null; then\n    formatObjCFiles CloudMessagingAdmin\n\n    for SUBDIR in ../CloudInAppMessaging\n    do\n        formatObjCFiles $SUBDIR\n    done\nelse\n    echo \"warning: clang-format not installed, install it by running `brew install clang-format`\"\nfi\n";
 		};
 		2A108D0D23741A1C0043D4BB /* Swift Format */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1115,6 +1118,7 @@
 				2A108CA62372FB440043D4BB /* ReachabilityCondition.swift in Sources */,
 				2A108CF223740E420043D4BB /* CLMAlertCampaign+TestData.swift in Sources */,
 				2A2318EB236C02E60052A486 /* UIView+Animations.swift in Sources */,
+				2A108D3623753E5F0043D4BB /* LocaleCodes.swift in Sources */,
 				2A108CA82372FB440043D4BB /* NoCancelledDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1384,7 +1388,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudInAppMessaging_Example.app/CloudInAppMessaging_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudMessagingAdmin.app/CloudMessagingAdmin";
 			};
 			name = Debug;
 		};
@@ -1406,7 +1410,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudInAppMessaging_Example.app/CloudInAppMessaging_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CloudMessagingAdmin.app/CloudMessagingAdmin";
 			};
 			name = Release;
 		};

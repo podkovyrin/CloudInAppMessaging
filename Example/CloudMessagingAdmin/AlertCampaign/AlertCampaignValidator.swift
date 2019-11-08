@@ -62,6 +62,14 @@ extension CLMAlertCampaign {
             messages.append("❌ 'Default Lang Code' is not set")
         }
 
+        if countries.isEmpty {
+            messages.append("❌ 'Countries' is not specified")
+        }
+
+        if languages.isEmpty {
+            messages.append("❌ 'Languages' is not specified")
+        }
+
         for translation in translations {
             var translationMessages = [String]()
 

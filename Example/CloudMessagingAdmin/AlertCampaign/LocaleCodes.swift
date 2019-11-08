@@ -15,14 +15,20 @@
 //  limitations under the License.
 //
 
-import CloudInAppMessaging
-import UIKit
+import Foundation
 
-class ViewController: UIViewController {
-    let manager = CLMManager(cloudKitContainerIdentifier: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
+struct LocaleCodes {
+    let languageCodes: [String] = {
+        let allCodes = Locale.availableIdentifiers.compactMap {
+            Locale.components(fromIdentifier: $0)[NSLocale.Key.languageCode.rawValue]
+        }
+        return Array(Set(allCodes)).sorted(by: <)
+    }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+    let countryCodes: [String] = {
+        let allCodes = Locale.availableIdentifiers
+            .compactMap { Locale.components(fromIdentifier: $0)[NSLocale.Key.countryCode.rawValue] }
+            .filter { $0.rangeOfCharacter(from: CharacterSet.letters) != nil } // filter countries only
+        return Array(Set(allCodes)).sorted(by: <)
+    }()
 }

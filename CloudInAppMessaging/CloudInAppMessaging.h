@@ -21,5 +21,6 @@
 #import "CLMAlertCampaign.h"
 #import "CLMAlertTranslation.h"
 #import "CLMAlertPresenter.h"
+#import "CLMManager.h"
 
 #endif /* CloudInAppMessaging_h */

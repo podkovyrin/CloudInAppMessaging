@@ -16,9 +16,8 @@
 #import "CLMAlertDataSource.h"
 #import "CLMAlertPresenter.h"
 #import "CLMAlertTranslation.h"
-#import "CLMClientInfo.h"
 #import "CLMCloudKitSerializable.h"
-#import "CLMPresentingWindowHelper.h"
+#import "CLMManager.h"
 #import "CloudInAppMessaging.h"
 
 FOUNDATION_EXPORT double CloudInAppMessagingVersionNumber;

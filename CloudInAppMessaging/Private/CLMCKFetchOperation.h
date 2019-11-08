@@ -15,14 +15,20 @@
 //  limitations under the License.
 //
 
-import CloudInAppMessaging
-import UIKit
+#import "CLMCKBaseOperation.h"
 
-class ViewController: UIViewController {
-    let manager = CLMManager(cloudKitContainerIdentifier: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
+NS_ASSUME_NONNULL_BEGIN
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-}
+@interface CLMCKFetchOperation : CLMCKBaseOperation
+
+@property (readonly, nonatomic, copy) NSArray<CKRecord *> *records;
+
+- (instancetype)initWithConfiguration:(CLMCKConfiguration *)configuration query:(CKQuery *)query;
+
+- (instancetype)initWithConfiguration:(CLMCKConfiguration *)configuration NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+@end
+
+NS_ASSUME_NONNULL_END
