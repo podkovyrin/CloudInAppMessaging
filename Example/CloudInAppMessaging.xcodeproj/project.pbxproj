@@ -67,6 +67,8 @@
 		2A108D072374191F0043D4BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A108D052374191F0043D4BB /* LaunchScreen.storyboard */; };
 		2A108D1023741B260043D4BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108C442372CF1F0043D4BB /* CloudKit.framework */; };
 		2A108D3623753E5F0043D4BB /* LocaleCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108D3523753E5F0043D4BB /* LocaleCodes.swift */; };
+		2A108D7D2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */; };
+		2A108D7E2379B6B50043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -185,6 +187,7 @@
 		2A108D082374191F0043D4BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A108D0F23741B200043D4BB /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
 		2A108D3523753E5F0043D4BB /* LocaleCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleCodes.swift; sourceTree = "<group>"; };
+		2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudMessagingAdminConfiguration.swift; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudMessagingAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudMessagingAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -491,6 +494,7 @@
 				2A2318A3236BF6A20052A486 /* Info.plist */,
 				2A108C432372CF190043D4BB /* CloudMessagingAdmin.entitlements */,
 				2A9140A4236DC3B200A9E616 /* CloudMessagingAdmin-Bridging-Header.h */,
+				2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */,
 			);
 			path = CloudMessagingAdmin;
 			sourceTree = "<group>";
@@ -1100,6 +1104,7 @@
 				2A108CAB2372FB440043D4BB /* SilentCondition.swift in Sources */,
 				2A108CEB237350760043D4BB /* AlertCampaignCloudKitService.swift in Sources */,
 				2A2318D8236BFD290052A486 /* SwitcherFormTableViewCell.swift in Sources */,
+				2A108D7D2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */,
 				2A108CDC2372FB520043D4BB /* CloudKitOperationDelegate.swift in Sources */,
 				2A108CE12372FB520043D4BB /* CloudKitStorage.swift in Sources */,
 				2A108CDF2372FB520043D4BB /* CloudKitOperationConfiguration.swift in Sources */,
@@ -1130,6 +1135,7 @@
 				2A108CF323740E730043D4BB /* CLMAlertCampaign+TestData.swift in Sources */,
 				2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */,
 				2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */,
+				2A108D7E2379B6B50043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

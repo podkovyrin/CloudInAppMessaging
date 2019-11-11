@@ -62,6 +62,10 @@ extension CLMAlertCampaign {
             messages.append("❌ 'Default Lang Code' is not set")
         }
 
+        if bundleIdentifier == nil || bundleIdentifier!.isEmpty {
+            messages.append("❌ 'Bundle ID' is not set")
+        }
+
         if countries.isEmpty {
             messages.append("❌ 'Countries' is not specified")
         }

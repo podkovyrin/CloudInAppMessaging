@@ -15,18 +15,6 @@
 //  limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface CLMClientInfo : NSObject
-
-@property (readonly, nonatomic, copy) NSString *bundleIdentifier;
-@property (readonly, nonatomic, copy) NSArray<NSString *> *preferredLanguages;
-@property (nullable, readonly, nonatomic, copy) NSString *countryCode;
-@property (readonly, nonatomic, copy) NSString *appVersion;
-@property (readonly, nonatomic, copy) NSString *osVersion;
-
-@end
-
-NS_ASSUME_NONNULL_END
+let DefaultBundleIdentifier = "com.podkovyrin.CloudInAppMessaging.testApp"

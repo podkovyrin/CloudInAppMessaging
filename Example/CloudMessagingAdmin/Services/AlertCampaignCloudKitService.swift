@@ -124,7 +124,7 @@ final class AlertCampaignCloudKitService {
 }
 
 extension AlertCampaignCloudKitService: CloudKitStorageDelegate {
-    func cloudKitStorage(_ cloudKitStorage: CloudKitStorage, didFailedWithError error: CKError) {
+    func cloudKitStorage(_ cloudKitStorage: CloudKitStorage, didFailWithError error: Error) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
             let rootController = appDelegate.window?.rootViewController else {
             fatalError("Inconsistent state")

@@ -133,6 +133,11 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
         return NO;
     }
 
+    equals = self.bundleIdentifier == object.bundleIdentifier || [self.bundleIdentifier isEqualToString:object.bundleIdentifier];
+    if (!equals) {
+        return NO;
+    }
+
     equals = self.countries == object.countries || [self.countries isEqualToArray:object.countries];
     if (!equals) {
         return NO;
@@ -189,6 +194,7 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
             self.buttonTitles.hash ^
             self.defaultLangCode.hash ^
             self.translations.hash ^
+            self.bundleIdentifier.hash ^
             self.countries.hash ^
             self.languages.hash ^
             self.maxAppVersion.hash ^
@@ -216,6 +222,7 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
         _defaultLangCode = [record[CLM_KEYPATH(self, defaultLangCode)] copy];
         _translations = [NSArray array]; // Translations are empty until fetched
 
+        _bundleIdentifier = [record[CLM_KEYPATH(self, bundleIdentifier)] copy];
         _countries = [record[CLM_KEYPATH(self, countries)] copy] ?: [NSArray array];
         _languages = [record[CLM_KEYPATH(self, languages)] copy] ?: [NSArray array];
         _maxAppVersion = [record[CLM_KEYPATH(self, maxAppVersion)] copy];
@@ -248,6 +255,7 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
 
     record[CLM_KEYPATH(self, defaultLangCode)] = self.defaultLangCode;
 
+    record[CLM_KEYPATH(self, bundleIdentifier)] = self.bundleIdentifier;
     record[CLM_KEYPATH(self, countries)] = self.countries;
     record[CLM_KEYPATH(self, languages)] = self.languages;
     record[CLM_KEYPATH(self, maxAppVersion)] = self.maxAppVersion;

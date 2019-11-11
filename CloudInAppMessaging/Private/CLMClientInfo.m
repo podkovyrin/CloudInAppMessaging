@@ -46,6 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
+- (NSString *)bundleIdentifier {
+    return [[NSBundle mainBundle] bundleIdentifier];
+}
+
 - (nullable NSString *)countryCode {
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];

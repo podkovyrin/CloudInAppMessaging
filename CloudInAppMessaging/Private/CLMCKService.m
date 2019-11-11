@@ -124,6 +124,11 @@ NS_ASSUME_NONNULL_BEGIN
 
     NSMutableArray<NSPredicate *> *predicates = [NSMutableArray array];
 
+    NSPredicate *bundlePredicate = [NSPredicate predicateWithFormat:@"%K = %@",
+                                                                    CLM_KEYPATH(alert, bundleIdentifier),
+                                                                    clientInfo.bundleIdentifier];
+    [predicates addObject:bundlePredicate];
+
     NSString *countryCode = clientInfo.countryCode;
     if (countryCode) {
         NSPredicate *countries = [NSPredicate predicateWithFormat:@"%@ IN %K",

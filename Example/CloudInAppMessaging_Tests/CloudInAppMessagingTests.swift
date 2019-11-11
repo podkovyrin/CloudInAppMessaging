@@ -37,6 +37,7 @@ class CloudInAppMessagingTests: XCTestCase {
         XCTAssertEqual(record["buttonActionURLs"], alert.buttonActionURLs)
         XCTAssertEqual(record["buttonTitles"], alert.buttonTitles)
         XCTAssertEqual(record["defaultLangCode"], alert.defaultLangCode)
+        XCTAssertEqual(record["bundleIdentifier"], alert.bundleIdentifier)
         XCTAssertEqual(record["countries"], alert.countries)
         XCTAssertEqual(record["languages"], alert.languages)
         XCTAssertEqual(record["maxAppVersion"], alert.maxAppVersion)

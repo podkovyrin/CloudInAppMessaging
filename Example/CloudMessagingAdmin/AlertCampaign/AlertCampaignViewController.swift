@@ -185,6 +185,19 @@ final class AlertCampaignViewController: UIViewController {
         return cellModel
     }
 
+    private var bundleIdentifier: TextFieldFormCellModel {
+        let cellModel = TextFieldFormCellModel()
+        cellModel.title = "Bundle ID"
+        cellModel.text = model.alertCampaign.bundleIdentifier
+        cellModel.placeholder = "com.example.myapp"
+        cellModel.didChangeText = { [weak self] cellModel in
+            guard let self = self else { return }
+            self.model.alertCampaign.bundleIdentifier = cellModel.text
+        }
+
+        return cellModel
+    }
+
     private var countries: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Countries"
@@ -377,7 +390,7 @@ final class AlertCampaignViewController: UIViewController {
         localizationSecion.header = "Localization"
 
         let targetingSection = FormSectionModel([
-            countries, languages, maxAppVersion, maxOSVersion, minAppVersion, minOSVersion,
+            bundleIdentifier, countries, languages, maxAppVersion, maxOSVersion, minAppVersion, minOSVersion,
         ])
         targetingSection.header = "Targeting"
 

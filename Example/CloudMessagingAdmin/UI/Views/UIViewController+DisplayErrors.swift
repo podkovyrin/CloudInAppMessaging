@@ -15,13 +15,14 @@
 //  limitations under the License.
 //
 
+import CloudKit
 import UIKit
 
 extension UIViewController {
     func displayErrorsIfNeeded(_ errors: [Error]) {
         guard !errors.isEmpty else { return }
 
-        let message = errors.map { $0.localizedDescription }.joined(separator: "\n\n")
+        let message = errors.map { $0.userMessage }.joined(separator: "\n\n")
 
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 
@@ -29,5 +30,20 @@ extension UIViewController {
         alert.addAction(okAction)
 
         present(alert, animated: true)
+    }
+}
+
+extension Error {
+    var userMessage: String {
+        if let error = self as? CKError {
+            switch error.code {
+            case .notAuthenticated:
+                return "Not authenticated. iCloud account is required."
+            default:
+                return localizedDescription
+            }
+        }
+
+        return localizedDescription
     }
 }

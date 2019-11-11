@@ -36,10 +36,11 @@ extension CLMAlertCampaign {
         translation.buttonTitles = ["Окей"]
         alertCampaign.translations = [translation]
 
+        alertCampaign.bundleIdentifier = DefaultBundleIdentifier
         alertCampaign.countries = ["US", "RU"]
         alertCampaign.languages = ["en", "ru"]
         alertCampaign.maxAppVersion = "3.14"
-        alertCampaign.maxOSVersion = "13"
+        alertCampaign.maxOSVersion = "13.99"
         alertCampaign.minAppVersion = "1.0"
         alertCampaign.minOSVersion = "11"
 

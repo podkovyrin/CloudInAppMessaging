@@ -21,7 +21,7 @@ import UIKit
 // swiftlint:disable file_length
 
 protocol CloudKitStorageDelegate: AnyObject {
-    func cloudKitStorage(_ cloudKitStorage: CloudKitStorage, didFailedWithError error: CKError)
+    func cloudKitStorage(_ cloudKitStorage: CloudKitStorage, didFailWithError error: Error)
 }
 
 final class CloudKitStorage {
@@ -36,6 +36,15 @@ final class CloudKitStorage {
         operationQueue.maxConcurrentOperationCount = 1
 
         database = container.publicCloudDatabase
+
+        // Verify if there's an active iCloud account which is required to create/modify Alert Campaigns
+        container.verify { error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.delegate?.cloudKitStorage(self, didFailWithError: error)
+                }
+            }
+        }
     }
 
     // MARK: - Public
@@ -93,7 +102,7 @@ final class CloudKitStorage {
 extension CloudKitStorage: CloudKitOperationDelegate {
     func operationRequiresUserAction(_ operation: Operation, error: CKError) {
         DispatchQueue.main.async {
-            self.delegate?.cloudKitStorage(self, didFailedWithError: error)
+            self.delegate?.cloudKitStorage(self, didFailWithError: error)
         }
     }
 }
