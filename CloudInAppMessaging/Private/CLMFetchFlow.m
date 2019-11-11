@@ -25,6 +25,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// Normalize version string to the semver format: MAJOR.MINOR.PATCH
+static NSString *CLMNormalizeVersionString(NSString *version) {
+    NSMutableArray<NSString *> *separatedVersion = [[version componentsSeparatedByString:@"."] mutableCopy];
+    while (separatedVersion.count < 3) {
+        [separatedVersion addObject:@"0"];
+    }
+    return [separatedVersion componentsJoinedByString:@"."];
+}
+
 @interface CLMFetchFlow ()
 
 @property (readonly, nonatomic, strong) CLMSettings *settings;
@@ -79,10 +89,82 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Private
 
 - (void)handleAlerts:(NSArray<CLMAlertCampaign *> *)alertCampaigns initialAppLaunch:(BOOL)initialAppLaunch {
-    // TODO: filter alerts by App and OS versions
-    [self.memeoryCache setAlertsData:alertCampaigns];
+    NSString *appVersion = CLMNormalizeVersionString(self.clientInfo.appVersion);
+    NSString *osVersion = self.clientInfo.osVersion; // already normalized
+    NSSet<NSString *> *impressionSet = [NSSet setWithArray:self.stateKeeper.impressionIDs];
 
-    [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
+    NSMutableArray<CLMAlertCampaign *> *matchedAlertCampaigns = [NSMutableArray array];
+    for (CLMAlertCampaign *alertCampaign in alertCampaigns) {
+        if (![impressionSet containsObject:alertCampaign.identifier] &&
+            ![alertCampaign alertHasExpired] &&
+            [self alertMatches:alertCampaign
+                    appVersion:appVersion
+                     osVersion:osVersion]) {
+            [matchedAlertCampaigns addObject:alertCampaign];
+        }
+    }
+
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+
+    for (CLMAlertCampaign *alertCampaign in matchedAlertCampaigns) {
+        dispatch_group_enter(dispatchGroup);
+        [self.cloudKitService fetchTranslationsForAlertCampaign:alertCampaign
+                                                     completion:^(NSArray<CLMAlertTranslation *> *alertTranslations) {
+                                                         alertCampaign.translations = alertTranslations;
+
+                                                         dispatch_group_leave(dispatchGroup);
+                                                     }];
+    }
+
+    dispatch_group_notify(dispatchGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.memeoryCache setAlertsData:matchedAlertCampaigns];
+
+        [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
+    });
+}
+
+
+/// Check if the AlertCampaign can be shown with given appVersion and osVersion
+/// @param alertCampaign Alert Campaign to check
+/// @param appVersion Normalized App Version
+/// @param osVersion Normalized OS Version
+- (BOOL)alertMatches:(CLMAlertCampaign *)alertCampaign
+          appVersion:(NSString *)appVersion
+           osVersion:(NSString *)osVersion {
+
+    NSString *maxAppVersion = alertCampaign.maxAppVersion;
+    if (maxAppVersion.length > 0) {
+        maxAppVersion = CLMNormalizeVersionString(maxAppVersion);
+        if ([appVersion compare:maxAppVersion options:NSNumericSearch] == NSOrderedDescending) {
+            return NO; // appVersion > maxAppVersion
+        }
+    }
+
+    NSString *maxOSVersion = alertCampaign.maxOSVersion;
+    if (maxOSVersion.length > 0) {
+        maxOSVersion = CLMNormalizeVersionString(maxOSVersion);
+        if ([osVersion compare:maxOSVersion options:NSNumericSearch] == NSOrderedDescending) {
+            return NO; // osVersion > maxOSVersion
+        }
+    }
+
+    NSString *minAppVersion = alertCampaign.minAppVersion;
+    if (minAppVersion.length > 0) {
+        minAppVersion = CLMNormalizeVersionString(minAppVersion);
+        if ([appVersion compare:minAppVersion options:NSNumericSearch] == NSOrderedAscending) {
+            return NO; // appVersion < minAppVersion
+        }
+    }
+
+    NSString *minOSVersion = alertCampaign.minOSVersion;
+    if (minOSVersion.length > 0) {
+        minOSVersion = CLMNormalizeVersionString(minOSVersion);
+        if ([osVersion compare:minOSVersion options:NSNumericSearch] == NSOrderedAscending) {
+            return NO; // osVersion < minOSVersion
+        }
+    }
+
+    return YES;
 }
 
 @end

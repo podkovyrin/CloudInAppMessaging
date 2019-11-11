@@ -27,19 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)start {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-
     [notificationCenter addObserver:self
                            selector:@selector(applicationWillEnterForegroundNotification:)
                                name:UIApplicationWillEnterForegroundNotification
                              object:nil];
-#if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
-    if (@available(iOS 13.0, *)) {
-        [notificationCenter addObserver:self
-                               selector:@selector(applicationWillEnterForegroundNotification:)
-                                   name:UISceneWillEnterForegroundNotification
-                                 object:nil];
-    }
-#endif // defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 }
 
 - (void)applicationWillEnterForegroundNotification:(NSNotification *)notification {

@@ -17,9 +17,36 @@
 
 #import "CLMDisplayOnAppForegroundFlow.h"
 
+#import "CLMDisplayExecutor.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation CLMDisplayOnAppForegroundFlow
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)start {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationWillEnterForegroundNotification:)
+                               name:UIApplicationWillEnterForegroundNotification
+                             object:nil];
+}
+
+- (void)applicationWillEnterForegroundNotification:(NSNotification *)notification {
+    // Show the alert with 0.5 second delay so that the app's UI is more stable.
+    // When alerts are displayed, the UI operation will be dispatched back to main UI thread.
+    dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, 500 * (int64_t)NSEC_PER_MSEC);
+    dispatch_after(when, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.displayExecutor checkAndDisplayNextAppForegroundAlert];
+    });
+}
+
+- (void)stop {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end
 

@@ -120,7 +120,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSPredicate *)alertCampaignsPredicateForClient:(CLMClientInfo *)clientInfo {
-    // TODO: check if it's possible to skip fetching already shown alerts (~ NOT in impression list)
     CLMAlertCampaign *alert = nil;
 
     NSMutableArray<NSPredicate *> *predicates = [NSMutableArray array];
