@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CLMSettings;
 @class CLMClientInfo;
-@class CLMAlertsMemoryCache;
+@class CLMAlertMemoryCache;
 @class CLMStateKeeper;
 
 /// The class for checking if there are appropriate alerts to be displayed and if so, show it.
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
                       clientInfo:(CLMClientInfo *)clientInfo
-                     memoryCache:(CLMAlertsMemoryCache *)memoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memoryCache
                      stateKeeper:(CLMStateKeeper *)stateKeeper;
 
 - (instancetype)init NS_UNAVAILABLE;

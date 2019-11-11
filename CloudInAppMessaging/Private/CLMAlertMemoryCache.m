@@ -15,20 +15,20 @@
 //  limitations under the License.
 //
 
-#import "CLMAlertsMemoryCache.h"
+#import "CLMAlertMemoryCache.h"
 
 #import "CLMStateKeeper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLMAlertsMemoryCache ()
+@interface CLMAlertMemoryCache ()
 
 @property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
 @property (nullable, nonatomic, strong) NSMutableArray<CLMAlertCampaign *> *alerts;
 
 @end
 
-@implementation CLMAlertsMemoryCache
+@implementation CLMAlertMemoryCache
 
 - (instancetype)initWithStateKeeper:(CLMStateKeeper *)stateKeeper {
     self = [super init];

@@ -18,7 +18,7 @@
 #import "CLMDisplayExecutor.h"
 
 #import "CLMAlertActionDefaultExecutor.h"
-#import "CLMAlertsMemoryCache.h"
+#import "CLMAlertMemoryCache.h"
 #import "CLMClientInfo.h"
 #import "CLMPresentingWindowHelper.h"
 #import "CLMSettings.h"
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, nonatomic, strong) CLMSettings *settings;
 @property (readonly, nonatomic, strong) CLMClientInfo *clientInfo;
-@property (readonly, nonatomic, strong) CLMAlertsMemoryCache *memoryCache;
+@property (readonly, nonatomic, strong) CLMAlertMemoryCache *memoryCache;
 @property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
 
 @property (nonatomic, assign) BOOL messageDisplaySuppressed;
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
                       clientInfo:(CLMClientInfo *)clientInfo
-                     memoryCache:(CLMAlertsMemoryCache *)memoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memoryCache
                      stateKeeper:(CLMStateKeeper *)stateKeeper {
     self = [super init];
     if (self) {

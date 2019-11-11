@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class CLMStateKeeper;
 @class CLMCKService;
 @class CLMClientInfo;
-@class CLMAlertsMemoryCache;
+@class CLMAlertMemoryCache;
 @class CLMSettings;
 @class CLMFetchFlow;
 
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSettings:(CLMSettings *)settings
                  cloudKitService:(CLMCKService *)cloudKitService
                       clientInfo:(CLMClientInfo *)clientInfo
-                     memoryCache:(CLMAlertsMemoryCache *)memeoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memeoryCache
                      stateKeeper:(CLMStateKeeper *)stateKeeper
                         delegate:(id<CLMFetchFlowDelegate>)delegate;
 

@@ -17,7 +17,7 @@
 
 #import "CLMFetchFlow.h"
 
-#import "CLMAlertsMemoryCache.h"
+#import "CLMAlertMemoryCache.h"
 #import "CLMCKService.h"
 #import "CLMClientInfo.h"
 #import "CLMSettings.h"
@@ -40,7 +40,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 @property (readonly, nonatomic, strong) CLMSettings *settings;
 @property (readonly, nonatomic, strong) CLMCKService *cloudKitService;
 @property (readonly, nonatomic, strong) CLMClientInfo *clientInfo;
-@property (readonly, nonatomic, strong) CLMAlertsMemoryCache *memeoryCache;
+@property (readonly, nonatomic, strong) CLMAlertMemoryCache *memeoryCache;
 @property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
 @property (nullable, nonatomic, weak) id<CLMFetchFlowDelegate> delegate;
 
@@ -52,7 +52,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 - (instancetype)initWithSettings:(CLMSettings *)settings
                  cloudKitService:(CLMCKService *)cloudKitService
                       clientInfo:(CLMClientInfo *)clientInfo
-                     memoryCache:(CLMAlertsMemoryCache *)memeoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memeoryCache
                      stateKeeper:(CLMStateKeeper *)stateKeeper
                         delegate:(id<CLMFetchFlowDelegate>)delegate {
     self = [super init];

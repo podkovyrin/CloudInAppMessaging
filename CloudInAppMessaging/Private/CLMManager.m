@@ -18,7 +18,7 @@
 #import "CLMManager.h"
 
 #import "CLMAlertActionDefaultExecutor.h"
-#import "CLMAlertsMemoryCache.h"
+#import "CLMAlertMemoryCache.h"
 #import "CLMCKService.h"
 #import "CLMClientInfo.h"
 #import "CLMDisplayExecutor.h"
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, strong) CLMClientInfo *clientInfo;
 @property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
 @property (readonly, nonatomic, strong) CLMCKService *cloudKitService;
-@property (readonly, nonatomic, strong) CLMAlertsMemoryCache *memoryCache;
+@property (readonly, nonatomic, strong) CLMAlertMemoryCache *memoryCache;
 @property (readonly, nonatomic, strong) CLMFetchOnAppForegroundFlow *fetchFlow;
 @property (readonly, nonatomic, strong) CLMAlertActionDefaultExecutor *defaultActionExecutor;
 @property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
         _clientInfo = [[CLMClientInfo alloc] init];
         _stateKeeper = [[CLMStateKeeper alloc] initWithUserDefaults:[NSUserDefaults standardUserDefaults]];
         _cloudKitService = [[CLMCKService alloc] initWithContainerIdentifier:containerIdentifier];
-        _memoryCache = [[CLMAlertsMemoryCache alloc] initWithStateKeeper:_stateKeeper];
+        _memoryCache = [[CLMAlertMemoryCache alloc] initWithStateKeeper:_stateKeeper];
         _fetchFlow = [[CLMFetchOnAppForegroundFlow alloc] initWithSettings:_settings
                                                            cloudKitService:_cloudKitService
                                                                 clientInfo:_clientInfo
