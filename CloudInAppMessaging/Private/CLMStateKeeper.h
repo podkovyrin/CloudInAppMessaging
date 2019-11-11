@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CLMAlertCampaign;
 
+// A wrapper around NSUserDefaults to store internal states.
 @interface CLMStateKeeper : NSObject
 
 @property (nullable, readonly, nonatomic, strong) NSDate *lastDisplayDate;

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CLMSettings;
 
+/// A class for managing the objects / dependencies of CloudInAppMessaging SDK
 @interface CLMManager : NSObject
 
 @property (nullable, nonatomic, strong) id<CLMAlertPresenter> alertPresenter;

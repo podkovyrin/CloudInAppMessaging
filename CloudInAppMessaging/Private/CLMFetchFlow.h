@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// Parent class for supporting different fetching flows. Subclass is supposed to trigger
+// `checkAndFetchForInitialAppLaunch:` at appropriate moments based on its fetch strategy
 @interface CLMFetchFlow : NSObject
 
 - (instancetype)initWithSettings:(CLMSettings *)settings

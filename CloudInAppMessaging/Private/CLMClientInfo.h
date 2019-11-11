@@ -19,12 +19,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A class for wrapping the interactions for retrieving client side info to be used in request
+/// parameter for interacting with CloudKit and filtering Alert Campaigns.
 @interface CLMClientInfo : NSObject
 
+/// App's Bundle Identifier.
 @property (readonly, nonatomic, copy) NSString *bundleIdentifier;
+/// Languages extracted from `[NSLocale preferredLanguages]`.
 @property (readonly, nonatomic, copy) NSArray<NSString *> *preferredLanguages;
+/// A country code from the current locale.
 @property (nullable, readonly, nonatomic, copy) NSString *countryCode;
+/// App's version.
 @property (readonly, nonatomic, copy) NSString *appVersion;
+/// Current iOS version.
 @property (readonly, nonatomic, copy) NSString *osVersion;
 
 @end

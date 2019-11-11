@@ -19,6 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A configuration object for CLMCKBaseOperation classes.
 @interface CLMCKConfiguration : NSObject
 
 @property (readonly, nonatomic, strong) CKContainer *container;

@@ -19,6 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// An operation containing CKQueryOperation
 @interface CLMCKFetchOperation : CLMCKBaseOperation
 
 @property (readonly, nonatomic, copy) NSArray<CKRecord *> *records;

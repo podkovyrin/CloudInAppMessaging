@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class CLMAlertCampaign;
 @class CLMAlertTranslation;
 
+/// A service for fetching data from CloudKit.
 @interface CLMCKService : NSObject
 
 /// The specified identifier must correspond to one of the ubiquity containers listed in

@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CLMDisplayExecutor;
 
+// Parent class for modeling different flows in which we would trigger the check to see if there
+// is appropriate in-app messaging to be shown. Notice that the flow only triggers the check
+// and whether it turns out to have any eligible alert to be displayed depending on if certain
+// conditions are met
 @interface CLMDisplayTriggerFlow : NSObject
 
 @property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;

@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @class CLMAlertsMemoryCache;
 @class CLMStateKeeper;
 
+/// The class for checking if there are appropriate alerts to be displayed and if so, show it.
+/// There are other flows that would determine the timing for the checking and then use this class
+/// instance for the actual check/display.
 @interface CLMDisplayExecutor : NSObject
 
 @property (nullable, nonatomic, strong) id<CLMAlertPresenter> alertPresenter;

@@ -19,6 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// An implementation of CLMDisplayTriggerFlow by triggering the display when app is foregrounded
 @interface CLMDisplayOnAppForegroundFlow : CLMDisplayTriggerFlow
 
 @end

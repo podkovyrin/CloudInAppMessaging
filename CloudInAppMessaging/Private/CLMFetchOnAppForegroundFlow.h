@@ -19,6 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// An implementation of CLMFetchFlow by triggering the display when app is foregrounded
 @interface CLMFetchOnAppForegroundFlow : CLMFetchFlow
 
 - (void)start;

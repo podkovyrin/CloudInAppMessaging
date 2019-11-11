@@ -19,6 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Settings of CloudInAppMessaging SDK
 @interface CLMSettings : NSObject
 
 @property (nonatomic, assign) NSTimeInterval fetchMinInterval;

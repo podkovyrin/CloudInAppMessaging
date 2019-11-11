@@ -22,6 +22,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Base class for CloudKit-based operations.
 @interface CLMCKBaseOperation : CLMOperation
 
 @property (readonly, nonatomic, strong) CKContainer *container;
