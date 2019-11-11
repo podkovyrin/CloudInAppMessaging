@@ -21,6 +21,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// The root object of CloudInAppMessaging SDK.
 @interface CLMCloudInAppMessaging : NSObject
 
 /// A boolean flag that can be used to suppress alert display. Default is false.

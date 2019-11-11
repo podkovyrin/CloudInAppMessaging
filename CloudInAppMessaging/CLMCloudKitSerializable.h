@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A protocol describing an object that can be serialized to / from CKRecord
 @protocol CLMCloudKitSerializable <NSObject>
 
 - (instancetype)initWithRecord:(CKRecord *)record;

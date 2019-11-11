@@ -18,7 +18,7 @@
 #import "CLMAlertPresenter.h"
 
 #import "CLMAlertCampaign.h"
-#import "CLMAlertTranslation.h"
+#import "CLMAlertCampaign+CLMPresenting.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,8 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSAssert(preferredLanguages.count > 0, @"Preferred Languages must not be empty");
     NSParameterAssert(controller);
 
-    id<CLMAlertDataSource> dataSource = [self dataSourceForAlert:alertCampaign
-                                              preferredLanguages:preferredLanguages];
+    id<CLMAlertDataSource> dataSource = [alertCampaign clm_dataSourceForPreferredLanguages:preferredLanguages];
 
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:dataSource.title
                                                                    message:dataSource.message
@@ -71,43 +70,6 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     [controller presentViewController:alert animated:YES completion:nil];
-}
-
-#pragma mark - Private
-
-- (id<CLMAlertDataSource>)dataSourceForAlert:(CLMAlertCampaign *)alertCampaign
-                          preferredLanguages:(NSArray<NSString *> *)preferredLanguages {
-    for (NSString *langCode in preferredLanguages) {
-        if ([alertCampaign.defaultLangCode isEqualToString:langCode]) {
-            return alertCampaign;
-        }
-
-        for (CLMAlertTranslation *translation in alertCampaign.translations) {
-            if ([translation.langCode isEqualToString:langCode]) {
-                // Create new CLMAlertTranslation and fallback to defaults if any entity wasn't translated
-                // This `resultTranslation` can't be used other than for displaying because it has different identifier
-                // (and it's impossible to mis-use it because we return it as protocol CLMAlertDataSource)
-                CLMAlertTranslation *resultTranslation = [[CLMAlertTranslation alloc] initWithAlertCampaign:alertCampaign];
-                resultTranslation.langCode = translation.langCode;
-                resultTranslation.title = translation.title.length > 0 ? translation.title : alertCampaign.title;
-                resultTranslation.message = translation.message.length > 0 ? translation.message : alertCampaign.message;
-
-                NSMutableArray<NSString *> *buttonTitles = [NSMutableArray array];
-                for (NSUInteger i = 0; i < translation.buttonTitles.count; i++) {
-                    NSString *buttonTitle = translation.buttonTitles[i];
-                    if (buttonTitle.length == 0) {
-                        buttonTitle = alertCampaign.buttonTitles[i];
-                    }
-                    [buttonTitles addObject:buttonTitle];
-                }
-                resultTranslation.buttonTitles = buttonTitles;
-
-                return resultTranslation;
-            }
-        }
-    }
-
-    return alertCampaign;
 }
 
 @end

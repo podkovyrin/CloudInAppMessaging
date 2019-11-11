@@ -24,23 +24,39 @@ NS_ASSUME_NONNULL_BEGIN
 @class CLMAlertCampaign;
 @protocol CLMAlertPresenter;
 
+
+/// A protocol describing a delegate of the CLMAlertPresenter.
 @protocol CLMAlertPresenterDelegate <NSObject>
 
+
+/// Called when the alert is dismissed. Should be called from main thread.
+/// @param alertPresenter A presenter of the alert.
+/// @param alertCampaign An alert that was dismissed.
 - (void)alertPresenter:(id<CLMAlertPresenter>)alertPresenter didFinishPresentingAlert:(CLMAlertCampaign *)alertCampaign;
 
 @end
 
+/// A protocol describing a component that used to display Alert Campaigns.
 @protocol CLMAlertPresenter <NSObject>
 
+/// An executor of the alert action.
 @property (nullable, nonatomic, strong) id<CLMAlertActionExecutor> actionExecutor;
+/// A delegate to notify about presentation events
 @property (nullable, nonatomic, weak) id<CLMAlertPresenterDelegate> delegate;
 
+/// Presents the given Alert Campaign to the user.
+/// @param alertCampaign An Alert Campaign to present.
+/// @param preferredLanguages An array of user preferred languages in which Alert Campaign can be dispayed.
+/// @param controller A parent controller to present on.
 - (void)presentAlert:(CLMAlertCampaign *)alertCampaign
     preferredLanguages:(NSArray<NSString *> *)preferredLanguages
       inViewController:(UIViewController *)controller NS_SWIFT_NAME(present(alert:preferredLanguages:in:));
 
 @end
 
+
+/// Default implementation of `CLMAlertPresenter` protocol
+/// UIAlertController is used as a display component.
 @interface CLMDefaultAlertPresenter : NSObject <CLMAlertPresenter>
 
 @end

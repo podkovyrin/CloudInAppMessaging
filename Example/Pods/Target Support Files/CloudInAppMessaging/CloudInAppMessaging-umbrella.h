@@ -11,6 +11,7 @@
 #endif
 
 #import "CLMAlertActionExecutor.h"
+#import "CLMAlertCampaign+CLMPresenting.h"
 #import "CLMAlertCampaign.h"
 #import "CLMAlertDataSource.h"
 #import "CLMAlertPresenter.h"

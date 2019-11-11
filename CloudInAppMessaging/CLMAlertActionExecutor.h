@@ -19,8 +19,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A protocol describing an object resposible for executing actions of the Alert Campaign.
 @protocol CLMAlertActionExecutor
 
+/// Perform a given action.
+/// @param action A string representation of NSURL.
+/// @param context A controller in which the Alert Campaign is presented.
 - (void)performAlertButtonAction:(NSString *)action
                        inContext:(UIViewController *)context NS_SWIFT_NAME(perform(alertButtonAction:in:));
 

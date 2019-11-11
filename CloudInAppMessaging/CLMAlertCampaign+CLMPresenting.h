@@ -1,4 +1,4 @@
-//
+//  
 //  Created by Andrew Podkovyrin
 //  Copyright © 2019 Dash Core Group. All rights reserved.
 //
@@ -15,19 +15,17 @@
 //  limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "CLMAlertCampaign.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A protocol describing the displayable alert
-@protocol CLMAlertDataSource <NSObject>
+@interface CLMAlertCampaign (CLMPresenting)
 
-/// A title of an alert
-@property (readonly, nullable, nonatomic, copy) NSString *title;
-/// A message of an alert
-@property (readonly, nullable, nonatomic, copy) NSString *message;
-/// Button titles of an alert
-@property (readonly, nonatomic, copy) NSArray<NSString *> *buttonTitles;
+/// Returns object that can be used for displaying by the alert campaign presenter.
+/// It will return either `CLMAlertCampaign` itself if a `defultLang` matches one of `preferredLanguages`
+/// or one of the Alert Translations.
+/// If nothing matches any of `preferredLanguages` `CLMAlertCampaign` is used.
+- (id<CLMAlertDataSource>)clm_dataSourceForPreferredLanguages:(NSArray<NSString *> *)preferredLanguages;
 
 @end
 
