@@ -17,8 +17,8 @@
 
 #import "CLMAlertPresenter.h"
 
-#import "CLMAlertCampaign.h"
 #import "CLMAlertCampaign+CLMPresenting.h"
+#import "CLMAlertCampaign.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

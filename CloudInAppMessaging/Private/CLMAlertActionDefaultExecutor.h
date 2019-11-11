@@ -19,6 +19,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A class for handling Alert Campaign actions.
+/// It tries to handle these cases:
+/// 1. Follow a universal link.
+/// 2. Follow a custom url scheme link.
+/// 3. Follow other types of links.
 @interface CLMAlertActionDefaultExecutor : NSObject <CLMAlertActionExecutor>
 
 @end

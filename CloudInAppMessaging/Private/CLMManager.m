@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, strong) CLMCKService *cloudKitService;
 @property (readonly, nonatomic, strong) CLMAlertsMemoryCache *memoryCache;
 @property (readonly, nonatomic, strong) CLMFetchOnAppForegroundFlow *fetchFlow;
+@property (readonly, nonatomic, strong) CLMAlertActionDefaultExecutor *defaultActionExecutor;
 @property (readonly, nonatomic, strong) CLMDisplayExecutor *displayExecutor;
 @property (readonly, nonatomic, strong) CLMDisplayOnAppForegroundFlow *displayOnAppForegroundFlow;
 
@@ -67,11 +68,12 @@ NS_ASSUME_NONNULL_BEGIN
                                                                stateKeeper:_stateKeeper
                                                                   delegate:self];
 
+        _defaultActionExecutor = [[CLMAlertActionDefaultExecutor alloc] init];
         _displayExecutor = [[CLMDisplayExecutor alloc] initWithSettings:_settings
                                                              clientInfo:_clientInfo
                                                             memoryCache:_memoryCache
                                                             stateKeeper:_stateKeeper];
-        _displayExecutor.alertPresenter = [self.class defaultAlertPresenter];
+        _displayExecutor.alertPresenter = [self defaultAlertPresenter];
 
         _displayOnAppForegroundFlow = [[CLMDisplayOnAppForegroundFlow alloc]
             initWithDisplayExecutor:_displayExecutor];
@@ -112,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setAlertPresenter:(nullable id<CLMAlertPresenter>)alertPresenter {
     _alertPresenter = alertPresenter;
 
-    self.displayExecutor.alertPresenter = alertPresenter ?: [self.class defaultAlertPresenter];
+    self.displayExecutor.alertPresenter = alertPresenter ?: [self defaultAlertPresenter];
 }
 
 #pragma mark - Private
@@ -126,9 +128,11 @@ NS_ASSUME_NONNULL_BEGIN
     [self.fetchFlow checkAndFetchForInitialAppLaunch:YES];
 }
 
-+ (id<CLMAlertPresenter>)defaultAlertPresenter {
+- (id<CLMAlertPresenter>)defaultAlertPresenter {
+    NSParameterAssert(self.defaultActionExecutor);
+
     id<CLMAlertPresenter> alertPresenter = [[CLMDefaultAlertPresenter alloc] init];
-    alertPresenter.actionExecutor = [[CLMAlertActionDefaultExecutor alloc] init];
+    alertPresenter.actionExecutor = self.defaultActionExecutor;
 
     return alertPresenter;
 }
