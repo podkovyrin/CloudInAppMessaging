@@ -21,14 +21,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class CLMStateKeeper;
+@protocol CLMStateKeeper;
 
 /// In-memory cache of the alerts that would be searched for finding next alert to be displayed.
 /// In the case an alert has been displayed, it's removed from the cache so that it's not
 /// considered next time for the alert search.
 @interface CLMAlertMemoryCache : NSObject
 
-- (instancetype)initWithStateKeeper:(CLMStateKeeper *)stateKeeper;
+- (instancetype)initWithStateKeeper:(id<CLMStateKeeper>)stateKeeper;
 
 /// Update cache datasource.
 - (void)setAlertsData:(NSArray<CLMAlertCampaign *> *)alerts;

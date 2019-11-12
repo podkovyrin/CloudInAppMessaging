@@ -23,14 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMAlertMemoryCache ()
 
-@property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
+@property (readonly, nonatomic, strong) id<CLMStateKeeper> stateKeeper;
 @property (nullable, nonatomic, strong) NSMutableArray<CLMAlertCampaign *> *alerts;
 
 @end
 
 @implementation CLMAlertMemoryCache
 
-- (instancetype)initWithStateKeeper:(CLMStateKeeper *)stateKeeper {
+- (instancetype)initWithStateKeeper:(id<CLMStateKeeper>)stateKeeper {
     self = [super init];
     if (self) {
         _stateKeeper = stateKeeper;

@@ -19,9 +19,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A class for wrapping the interactions for retrieving client side info to be used in request
+/// A protocol for wrapping the interactions for retrieving client side info to be used in request
 /// parameter for interacting with CloudKit and filtering Alert Campaigns.
-@interface CLMClientInfo : NSObject
+@protocol CLMClientInfo
 
 /// App's Bundle Identifier.
 @property (readonly, nonatomic, copy) NSString *bundleIdentifier;
@@ -33,6 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, copy) NSString *appVersion;
 /// Current iOS version.
 @property (readonly, nonatomic, copy) NSString *osVersion;
+
+@end
+
+
+/// Default implementation of CLMClientInfo protocol which retrieves data
+/// from main NSBundle or current NSLocale
+@interface CLMClientInfo : NSObject <CLMClientInfo>
 
 @end
 

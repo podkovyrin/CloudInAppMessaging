@@ -19,28 +19,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CLMTimeFetcher;
 @class CLMAlertCampaign;
+@class CLMAlertTranslation;
 
-@protocol CLMStateKeeper
+@protocol CLMAlertCampaignFetcher
 
-@property (readonly, nonatomic, assign) NSTimeInterval lastDisplayTimeInterval;
-@property (readonly, nonatomic, assign) NSTimeInterval lastFetchTimeInterval;
-@property (readonly, nonatomic, copy) NSArray<NSString *> *impressionIDs;
-
-- (void)recordAlertImpression:(CLMAlertCampaign *)alertCampaign;
-- (void)recordFetch;
-
-@end
-
-// A wrapper around NSUserDefaults to store internal states.
-@interface CLMStateKeeper : NSObject <CLMStateKeeper>
-
-- (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults
-                         timeFetcher:(id<CLMTimeFetcher>)timeFetcher;
-
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (void)fetchAlertCampaignsCompletion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion;
+- (void)fetchTranslationsForAlertCampaign:(CLMAlertCampaign *)alertCampaign
+                               completion:(void (^)(NSArray<CLMAlertTranslation *> *alertTranslations))completion;
 
 @end
 

@@ -22,9 +22,9 @@
 #import "CLMClientInfo.h"
 #import "CLMSettings.h"
 #import "CLMStateKeeper.h"
+#import "CLMTimeFetcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
 
 /// Normalize version string to the semver format: MAJOR.MINOR.PATCH
 static NSString *CLMNormalizeVersionString(NSString *version) {
@@ -38,27 +38,29 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 @interface CLMFetchFlow ()
 
 @property (readonly, nonatomic, strong) CLMSettings *settings;
-@property (readonly, nonatomic, strong) CLMCKService *cloudKitService;
-@property (readonly, nonatomic, strong) CLMClientInfo *clientInfo;
+@property (readonly, nonatomic, strong) id<CLMTimeFetcher> timeFetcher;
+@property (readonly, nonatomic, strong) id<CLMAlertCampaignFetcher> alertFetcher;
+@property (readonly, nonatomic, strong) id<CLMClientInfo> clientInfo;
 @property (readonly, nonatomic, strong) CLMAlertMemoryCache *memeoryCache;
-@property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
+@property (readonly, nonatomic, strong) id<CLMStateKeeper> stateKeeper;
 @property (nullable, nonatomic, weak) id<CLMFetchFlowDelegate> delegate;
-
 
 @end
 
 @implementation CLMFetchFlow
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
-                 cloudKitService:(CLMCKService *)cloudKitService
-                      clientInfo:(CLMClientInfo *)clientInfo
+                     timeFetcher:(id<CLMTimeFetcher>)timeFetcher
+                    alertFetcher:(id<CLMAlertCampaignFetcher>)alertFetcher
+                      clientInfo:(id<CLMClientInfo>)clientInfo
                      memoryCache:(CLMAlertMemoryCache *)memeoryCache
-                     stateKeeper:(CLMStateKeeper *)stateKeeper
+                     stateKeeper:(id<CLMStateKeeper>)stateKeeper
                         delegate:(id<CLMFetchFlowDelegate>)delegate {
     self = [super init];
     if (self) {
         _settings = settings;
-        _cloudKitService = cloudKitService;
+        _timeFetcher = timeFetcher;
+        _alertFetcher = alertFetcher;
         _clientInfo = clientInfo;
         _memeoryCache = memeoryCache;
         _stateKeeper = stateKeeper;
@@ -69,9 +71,8 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 }
 
 - (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch {
-    NSDate *now = [NSDate date];
-    const NSTimeInterval intervalFromLastFetch =
-        now.timeIntervalSince1970 - self.stateKeeper.lastFetchDate.timeIntervalSince1970;
+    const NSTimeInterval currentTimestamp = [self.timeFetcher currentTimestamp];
+    const NSTimeInterval intervalFromLastFetch = currentTimestamp - self.stateKeeper.lastFetchTimeInterval;
     const BOOL isFetchAllowed = intervalFromLastFetch > self.settings.fetchMinInterval;
     if (!isFetchAllowed) {
         [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
@@ -79,11 +80,10 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
         return;
     }
 
-    [self.cloudKitService fetchAlertCampaignsForClientInfo:self.clientInfo
-                                                completion:^(NSArray<CLMAlertCampaign *> *alertCampaigns) {
-                                                    [self.stateKeeper recordFetch];
-                                                    [self handleAlerts:alertCampaigns initialAppLaunch:initialAppLaunch];
-                                                }];
+    [self.alertFetcher fetchAlertCampaignsCompletion:^(NSArray<CLMAlertCampaign *> *alertCampaigns) {
+        [self.stateKeeper recordFetch];
+        [self handleAlerts:alertCampaigns initialAppLaunch:initialAppLaunch];
+    }];
 }
 
 #pragma mark - Private
@@ -108,12 +108,12 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 
     for (CLMAlertCampaign *alertCampaign in matchedAlertCampaigns) {
         dispatch_group_enter(dispatchGroup);
-        [self.cloudKitService fetchTranslationsForAlertCampaign:alertCampaign
-                                                     completion:^(NSArray<CLMAlertTranslation *> *alertTranslations) {
-                                                         alertCampaign.translations = alertTranslations;
+        [self.alertFetcher fetchTranslationsForAlertCampaign:alertCampaign
+                                                  completion:^(NSArray<CLMAlertTranslation *> *alertTranslations) {
+                                                      alertCampaign.translations = alertTranslations;
 
-                                                         dispatch_group_leave(dispatchGroup);
-                                                     }];
+                                                      dispatch_group_leave(dispatchGroup);
+                                                  }];
     }
 
     dispatch_group_notify(dispatchGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -122,7 +122,6 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
         [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
     });
 }
-
 
 /// Check if the AlertCampaign can be shown with given appVersion and osVersion
 /// @param alertCampaign Alert Campaign to check

@@ -31,12 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, strong) CKContainer *container;
 @property (readonly, nonatomic, strong) CKDatabase *database;
 @property (readonly, nonatomic, strong) NSOperationQueue *operationQueue;
+@property (readonly, nonatomic, strong) id<CLMClientInfo> clientInfo;
 
 @end
 
 @implementation CLMCKService
 
-- (instancetype)initWithContainerIdentifier:(nullable NSString *)identifier {
+- (instancetype)initWithContainerIdentifier:(nullable NSString *)identifier
+                                 clientInfo:(id<CLMClientInfo>)clientInfo {
     self = [super init];
     if (self) {
         if (identifier) {
@@ -45,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
         else {
             _container = [CKContainer defaultContainer];
         }
+        _clientInfo = clientInfo;
 
         _database = _container.publicCloudDatabase;
 
@@ -56,9 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-- (void)fetchAlertCampaignsForClientInfo:(CLMClientInfo *)clientInfo
-                              completion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion {
-    NSPredicate *predicate = [self alertCampaignsPredicateForClient:clientInfo];
+#pragma mark - CLMAlertCampaignFetcher
+
+- (void)fetchAlertCampaignsCompletion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion {
+    NSPredicate *predicate = [self alertCampaignsPredicateForClient:self.clientInfo];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:CLMAlertCampaignRecordType predicate:predicate];
     CLMCKFetchOperation *operation = [[CLMCKFetchOperation alloc] initWithConfiguration:[self configuration]
                                                                                   query:query];
@@ -119,7 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
     return configuration;
 }
 
-- (NSPredicate *)alertCampaignsPredicateForClient:(CLMClientInfo *)clientInfo {
+- (NSPredicate *)alertCampaignsPredicateForClient:(id<CLMClientInfo>)clientInfo {
     CLMAlertCampaign *alert = nil;
 
     NSMutableArray<NSPredicate *> *predicates = [NSMutableArray array];

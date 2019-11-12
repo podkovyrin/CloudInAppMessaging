@@ -18,35 +18,44 @@
 #import "CLMStateKeeper.h"
 
 #import "../CLMAlertCampaign.h"
+#import "CLMTimeFetcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const kCLMStateKeeperLastDisplayDateKey = @"clm.state.lastDisplayDate";
-static NSString *const kCLMStateKeeperLastFetchDateKey = @"clm.state.lastFetchDate";
+static NSString *const kCLMStateKeeperLastDisplayTimeIntervalKey = @"clm.state.lastDisplayTimeInterval";
+static NSString *const kCLMStateKeeperLastFetchTimeIntervalKey = @"clm.state.lastFetchTimeInterval";
 static NSString *const kCLMStateKeeperImpressionIDsKey = @"clm.state.impressionIDs";
 
 @interface CLMStateKeeper ()
 
 @property (readonly, nonatomic, strong) NSUserDefaults *userDefaults;
+@property (readonly, nonatomic, strong) id<CLMTimeFetcher> timeFetcher;
+
+@property (nonatomic, assign) NSTimeInterval lastDisplayTimeInterval;
+@property (nonatomic, assign) NSTimeInterval lastFetchTimeInterval;
 
 @end
 
 @implementation CLMStateKeeper
 
-- (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults {
+- (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults
+                         timeFetcher:(id<CLMTimeFetcher>)timeFetcher {
     self = [super init];
     if (self) {
         _userDefaults = userDefaults;
+        _timeFetcher = timeFetcher;
     }
     return self;
 }
 
-- (nullable NSDate *)lastDisplayDate {
-    return [self.userDefaults objectForKey:kCLMStateKeeperLastDisplayDateKey];
+#pragma mark - CLMStateKeeper
+
+- (NSTimeInterval)lastDisplayTimeInterval {
+    return [self.userDefaults doubleForKey:kCLMStateKeeperLastDisplayTimeIntervalKey];
 }
 
-- (nullable NSDate *)lastFetchDate {
-    return [self.userDefaults objectForKey:kCLMStateKeeperLastFetchDateKey];
+- (NSTimeInterval)lastFetchTimeInterval {
+    return [self.userDefaults doubleForKey:kCLMStateKeeperLastFetchTimeIntervalKey];
 }
 
 - (NSArray<NSString *> *)impressionIDs {
@@ -55,7 +64,7 @@ static NSString *const kCLMStateKeeperImpressionIDsKey = @"clm.state.impressionI
 
 - (void)recordAlertImpression:(CLMAlertCampaign *)alertCampaign {
     @synchronized(self) {
-        self.lastDisplayDate = [NSDate date];
+        self.lastDisplayTimeInterval = [self.timeFetcher currentTimestamp];
 
         NSMutableArray<NSString *> *impressionIDs = [self.impressionIDs mutableCopy];
         [impressionIDs addObject:alertCampaign.identifier];
@@ -65,18 +74,18 @@ static NSString *const kCLMStateKeeperImpressionIDsKey = @"clm.state.impressionI
 
 - (void)recordFetch {
     @synchronized(self) {
-        self.lastFetchDate = [NSDate date];
+        self.lastFetchTimeInterval = [self.timeFetcher currentTimestamp];
     }
 }
 
 #pragma mark - Private
 
-- (void)setLastDisplayDate:(NSDate *_Nullable)lastDisplayDate {
-    [self.userDefaults setObject:lastDisplayDate forKey:kCLMStateKeeperLastDisplayDateKey];
+- (void)setLastDisplayTimeInterval:(NSTimeInterval)lastDisplayTimeInterval {
+    [self.userDefaults setDouble:lastDisplayTimeInterval forKey:kCLMStateKeeperLastDisplayTimeIntervalKey];
 }
 
-- (void)setLastFetchDate:(NSDate *_Nullable)lastFetchDate {
-    [self.userDefaults setObject:lastFetchDate forKey:kCLMStateKeeperLastFetchDateKey];
+- (void)setLastFetchTimeInterval:(NSTimeInterval)lastFetchTimeInterval {
+    [self.userDefaults setDouble:lastFetchTimeInterval forKey:kCLMStateKeeperLastFetchTimeIntervalKey];
 }
 
 - (void)setImpressionIDs:(NSArray<NSString *> *)impressionIDs {

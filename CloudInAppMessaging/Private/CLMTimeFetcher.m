@@ -15,19 +15,15 @@
 //  limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "CLMTimeFetcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A protocol describing the displayable alert
-@protocol CLMAlertDataSource
+@implementation CLMTimeFetcher
 
-/// A title of an alert
-@property (readonly, nullable, nonatomic, copy) NSString *title;
-/// A message of an alert
-@property (readonly, nullable, nonatomic, copy) NSString *message;
-/// Button titles of an alert
-@property (readonly, nonatomic, copy) NSArray<NSString *> *buttonTitles;
+- (NSTimeInterval)currentTimestamp {
+    return [NSDate date].timeIntervalSince1970;
+}
 
 @end
 

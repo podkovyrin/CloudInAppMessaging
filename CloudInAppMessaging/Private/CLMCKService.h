@@ -17,28 +17,24 @@
 
 #import <CloudKit/CloudKit.h>
 
+#import "CLMAlertCampaignFetcher.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@class CLMClientInfo;
-@class CLMAlertCampaign;
-@class CLMAlertTranslation;
+@protocol CLMClientInfo;
 
 /// A service for fetching data from CloudKit.
-@interface CLMCKService : NSObject
+@interface CLMCKService : NSObject <CLMAlertCampaignFetcher>
 
 /// The specified identifier must correspond to one of the ubiquity containers listed in
 /// the iCloud capabilities section of your Xcode project. Including the identifier
 /// with your app’s capabilities adds the corresponding entitlements to your app.
 /// If nil is specified default container will be used
-- (instancetype)initWithContainerIdentifier:(nullable NSString *)identifier;
+- (instancetype)initWithContainerIdentifier:(nullable NSString *)identifier
+                                 clientInfo:(id<CLMClientInfo>)clientInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-
-- (void)fetchAlertCampaignsForClientInfo:(CLMClientInfo *)clientInfo
-                              completion:(void (^)(NSArray<CLMAlertCampaign *> *alertCampaigns))completion;
-- (void)fetchTranslationsForAlertCampaign:(CLMAlertCampaign *)alertCampaign
-                               completion:(void (^)(NSArray<CLMAlertTranslation *> *alertTranslations))completion;
 
 @end
 

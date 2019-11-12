@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation CLMClientInfo
 
+@synthesize preferredLanguages = _preferredLanguages;
+@synthesize appVersion = _appVersion;
+@synthesize osVersion = _osVersion;
+
 - (instancetype)init {
     self = [super init];
     if (self) {

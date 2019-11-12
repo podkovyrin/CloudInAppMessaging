@@ -71,28 +71,29 @@
 		2A108D7E2379B6B50043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */; };
 		2A108E0A237ABC300043D4BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108DBC237ABB2D0043D4BB /* UIKit.framework */; };
 		2A108E0C237ABC350043D4BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A108E0B237ABC350043D4BB /* CloudKit.framework */; };
-		2A108E88237AC2FB0043D4BB /* CLMAlertPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E57237AC2FA0043D4BB /* CLMAlertPresenter.m */; };
-		2A108E89237AC2FB0043D4BB /* CLMAlertTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E59237AC2FA0043D4BB /* CLMAlertTranslation.m */; };
-		2A108E8A237AC2FB0043D4BB /* CLMCloudInAppMessaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E5C237AC2FA0043D4BB /* CLMCloudInAppMessaging.m */; };
-		2A108E8B237AC2FB0043D4BB /* CLMStateKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E5F237AC2FA0043D4BB /* CLMStateKeeper.m */; };
-		2A108E8C237AC2FB0043D4BB /* CLMDisplayExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E61237AC2FA0043D4BB /* CLMDisplayExecutor.m */; };
-		2A108E8D237AC2FB0043D4BB /* CLMOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E65237AC2FA0043D4BB /* CLMOperation.m */; };
-		2A108E8E237AC2FB0043D4BB /* CLMCKService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E66237AC2FA0043D4BB /* CLMCKService.m */; };
-		2A108E8F237AC2FB0043D4BB /* CLMAlertActionDefaultExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E67237AC2FA0043D4BB /* CLMAlertActionDefaultExecutor.m */; };
-		2A108E90237AC2FB0043D4BB /* CLMFetchOnAppForegroundFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E71237AC2FA0043D4BB /* CLMFetchOnAppForegroundFlow.m */; };
-		2A108E91237AC2FB0043D4BB /* CLMPresentingWindowHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E73237AC2FA0043D4BB /* CLMPresentingWindowHelper.m */; };
-		2A108E92237AC2FB0043D4BB /* CLMAlertMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E74237AC2FA0043D4BB /* CLMAlertMemoryCache.m */; };
-		2A108E93237AC2FB0043D4BB /* CLMCKBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E78237AC2FA0043D4BB /* CLMCKBaseOperation.m */; };
-		2A108E94237AC2FB0043D4BB /* CLMFetchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E79237AC2FA0043D4BB /* CLMFetchFlow.m */; };
-		2A108E95237AC2FB0043D4BB /* CLMCKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7A237AC2FA0043D4BB /* CLMCKConfiguration.m */; };
-		2A108E96237AC2FB0043D4BB /* CLMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7B237AC2FA0043D4BB /* CLMManager.m */; };
-		2A108E97237AC2FB0043D4BB /* CLMClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7C237AC2FA0043D4BB /* CLMClientInfo.m */; };
-		2A108E98237AC2FB0043D4BB /* CLMDisplayOnAppForegroundFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7D237AC2FA0043D4BB /* CLMDisplayOnAppForegroundFlow.m */; };
-		2A108E99237AC2FB0043D4BB /* CLMDisplayTriggerFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7E237AC2FA0043D4BB /* CLMDisplayTriggerFlow.m */; };
-		2A108E9A237AC2FB0043D4BB /* CLMCKFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E7F237AC2FA0043D4BB /* CLMCKFetchOperation.m */; };
-		2A108E9B237AC2FB0043D4BB /* CLMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E80237AC2FA0043D4BB /* CLMSettings.m */; };
-		2A108E9C237AC2FB0043D4BB /* CLMAlertCampaign+CLMPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E84237AC2FA0043D4BB /* CLMAlertCampaign+CLMPresenting.m */; };
-		2A108E9D237AC2FB0043D4BB /* CLMAlertCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108E86237AC2FA0043D4BB /* CLMAlertCampaign.m */; };
+		2A108EDA237AD15C0043D4BB /* CLMStateKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EAB237AD15B0043D4BB /* CLMStateKeeper.m */; };
+		2A108EDB237AD15C0043D4BB /* CLMDisplayExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EAD237AD15B0043D4BB /* CLMDisplayExecutor.m */; };
+		2A108EDC237AD15C0043D4BB /* CLMOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EB2237AD15B0043D4BB /* CLMOperation.m */; };
+		2A108EDD237AD15C0043D4BB /* CLMCKService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EB3237AD15B0043D4BB /* CLMCKService.m */; };
+		2A108EDE237AD15C0043D4BB /* CLMAlertActionDefaultExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EB4237AD15B0043D4BB /* CLMAlertActionDefaultExecutor.m */; };
+		2A108EDF237AD15C0043D4BB /* CLMFetchOnAppForegroundFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EBE237AD15B0043D4BB /* CLMFetchOnAppForegroundFlow.m */; };
+		2A108EE0237AD15C0043D4BB /* CLMPresentingWindowHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC0237AD15B0043D4BB /* CLMPresentingWindowHelper.m */; };
+		2A108EE1237AD15C0043D4BB /* CLMTimeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC1237AD15B0043D4BB /* CLMTimeFetcher.m */; };
+		2A108EE2237AD15C0043D4BB /* CLMAlertMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC2237AD15B0043D4BB /* CLMAlertMemoryCache.m */; };
+		2A108EE3237AD15C0043D4BB /* CLMCKBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC6237AD15B0043D4BB /* CLMCKBaseOperation.m */; };
+		2A108EE4237AD15C0043D4BB /* CLMFetchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC7237AD15B0043D4BB /* CLMFetchFlow.m */; };
+		2A108EE5237AD15C0043D4BB /* CLMCKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108EC9237AD15B0043D4BB /* CLMCKConfiguration.m */; };
+		2A108EE6237AD15C0043D4BB /* CLMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECA237AD15B0043D4BB /* CLMManager.m */; };
+		2A108EE7237AD15C0043D4BB /* CLMClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECB237AD15B0043D4BB /* CLMClientInfo.m */; };
+		2A108EE8237AD15C0043D4BB /* CLMDisplayOnAppForegroundFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECC237AD15B0043D4BB /* CLMDisplayOnAppForegroundFlow.m */; };
+		2A108EE9237AD15C0043D4BB /* CLMDisplayTriggerFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECD237AD15B0043D4BB /* CLMDisplayTriggerFlow.m */; };
+		2A108EEA237AD15C0043D4BB /* CLMCKFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECE237AD15C0043D4BB /* CLMCKFetchOperation.m */; };
+		2A108EEB237AD15C0043D4BB /* CLMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ECF237AD15C0043D4BB /* CLMSettings.m */; };
+		2A108EEC237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ED1237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m */; };
+		2A108EED237AD15C0043D4BB /* CLMAlertPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ED2237AD15C0043D4BB /* CLMAlertPresenter.m */; };
+		2A108EEE237AD15C0043D4BB /* CLMAlertTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ED5237AD15C0043D4BB /* CLMAlertTranslation.m */; };
+		2A108EEF237AD15C0043D4BB /* CLMCloudInAppMessaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ED6237AD15C0043D4BB /* CLMCloudInAppMessaging.m */; };
+		2A108EF0237AD15C0043D4BB /* CLMAlertCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A108ED7237AD15C0043D4BB /* CLMAlertCampaign.m */; };
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
@@ -203,55 +204,58 @@
 		2A108D87237AB9610043D4BB /* CloudInAppMessaging_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudInAppMessaging_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A108DBC237ABB2D0043D4BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2A108E0B237ABC350043D4BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		2A108E56237AC2FA0043D4BB /* CLMAlertCampaign+CLMPresenting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLMAlertCampaign+CLMPresenting.h"; path = "../../CloudInAppMessaging/CLMAlertCampaign+CLMPresenting.h"; sourceTree = "<group>"; };
-		2A108E57237AC2FA0043D4BB /* CLMAlertPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertPresenter.m; path = ../../CloudInAppMessaging/CLMAlertPresenter.m; sourceTree = "<group>"; };
-		2A108E58237AC2FA0043D4BB /* CLMAlertTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertTranslation.h; path = ../../CloudInAppMessaging/CLMAlertTranslation.h; sourceTree = "<group>"; };
-		2A108E59237AC2FA0043D4BB /* CLMAlertTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertTranslation.m; path = ../../CloudInAppMessaging/CLMAlertTranslation.m; sourceTree = "<group>"; };
-		2A108E5A237AC2FA0043D4BB /* CLMCloudInAppMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMCloudInAppMessaging.h; path = ../../CloudInAppMessaging/CLMCloudInAppMessaging.h; sourceTree = "<group>"; };
-		2A108E5B237AC2FA0043D4BB /* CLMAlertDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertDataSource.h; path = ../../CloudInAppMessaging/CLMAlertDataSource.h; sourceTree = "<group>"; };
-		2A108E5C237AC2FA0043D4BB /* CLMCloudInAppMessaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMCloudInAppMessaging.m; path = ../../CloudInAppMessaging/CLMCloudInAppMessaging.m; sourceTree = "<group>"; };
-		2A108E5D237AC2FA0043D4BB /* CLMAlertPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertPresenter.h; path = ../../CloudInAppMessaging/CLMAlertPresenter.h; sourceTree = "<group>"; };
-		2A108E5F237AC2FA0043D4BB /* CLMStateKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMStateKeeper.m; sourceTree = "<group>"; };
-		2A108E60237AC2FA0043D4BB /* CLMFetchOnAppForegroundFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMFetchOnAppForegroundFlow.h; sourceTree = "<group>"; };
-		2A108E61237AC2FA0043D4BB /* CLMDisplayExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayExecutor.m; sourceTree = "<group>"; };
-		2A108E62237AC2FA0043D4BB /* CLMPresentingWindowHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMPresentingWindowHelper.h; sourceTree = "<group>"; };
-		2A108E63237AC2FA0043D4BB /* CLMFetchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMFetchFlow.h; sourceTree = "<group>"; };
-		2A108E64237AC2FA0043D4BB /* CLMCKBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKBaseOperation.h; sourceTree = "<group>"; };
-		2A108E65237AC2FA0043D4BB /* CLMOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMOperation.m; sourceTree = "<group>"; };
-		2A108E66237AC2FA0043D4BB /* CLMCKService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKService.m; sourceTree = "<group>"; };
-		2A108E67237AC2FA0043D4BB /* CLMAlertActionDefaultExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMAlertActionDefaultExecutor.m; sourceTree = "<group>"; };
-		2A108E68237AC2FA0043D4BB /* CLMAlertMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertMemoryCache.h; sourceTree = "<group>"; };
-		2A108E69237AC2FA0043D4BB /* CLMCKFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKFetchOperation.h; sourceTree = "<group>"; };
-		2A108E6A237AC2FA0043D4BB /* CLMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMSettings.h; sourceTree = "<group>"; };
-		2A108E6B237AC2FA0043D4BB /* CLMDisplayTriggerFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayTriggerFlow.h; sourceTree = "<group>"; };
-		2A108E6C237AC2FA0043D4BB /* CLMDisplayOnAppForegroundFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayOnAppForegroundFlow.h; sourceTree = "<group>"; };
-		2A108E6D237AC2FA0043D4BB /* CLMClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMClientInfo.h; sourceTree = "<group>"; };
-		2A108E6E237AC2FA0043D4BB /* CLMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMManager.h; sourceTree = "<group>"; };
-		2A108E6F237AC2FA0043D4BB /* CLMCKConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKConfiguration.h; sourceTree = "<group>"; };
-		2A108E70237AC2FA0043D4BB /* CLMDisplayExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayExecutor.h; sourceTree = "<group>"; };
-		2A108E71237AC2FA0043D4BB /* CLMFetchOnAppForegroundFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMFetchOnAppForegroundFlow.m; sourceTree = "<group>"; };
-		2A108E72237AC2FA0043D4BB /* CLMStateKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMStateKeeper.h; sourceTree = "<group>"; };
-		2A108E73237AC2FA0043D4BB /* CLMPresentingWindowHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMPresentingWindowHelper.m; sourceTree = "<group>"; };
-		2A108E74237AC2FA0043D4BB /* CLMAlertMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMAlertMemoryCache.m; sourceTree = "<group>"; };
-		2A108E75237AC2FA0043D4BB /* CLMAlertActionDefaultExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertActionDefaultExecutor.h; sourceTree = "<group>"; };
-		2A108E76237AC2FA0043D4BB /* CLMCKService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKService.h; sourceTree = "<group>"; };
-		2A108E77237AC2FA0043D4BB /* CLMOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMOperation.h; sourceTree = "<group>"; };
-		2A108E78237AC2FA0043D4BB /* CLMCKBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKBaseOperation.m; sourceTree = "<group>"; };
-		2A108E79237AC2FA0043D4BB /* CLMFetchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMFetchFlow.m; sourceTree = "<group>"; };
-		2A108E7A237AC2FA0043D4BB /* CLMCKConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKConfiguration.m; sourceTree = "<group>"; };
-		2A108E7B237AC2FA0043D4BB /* CLMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMManager.m; sourceTree = "<group>"; };
-		2A108E7C237AC2FA0043D4BB /* CLMClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMClientInfo.m; sourceTree = "<group>"; };
-		2A108E7D237AC2FA0043D4BB /* CLMDisplayOnAppForegroundFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayOnAppForegroundFlow.m; sourceTree = "<group>"; };
-		2A108E7E237AC2FA0043D4BB /* CLMDisplayTriggerFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayTriggerFlow.m; sourceTree = "<group>"; };
-		2A108E7F237AC2FA0043D4BB /* CLMCKFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKFetchOperation.m; sourceTree = "<group>"; };
-		2A108E80237AC2FA0043D4BB /* CLMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMSettings.m; sourceTree = "<group>"; };
-		2A108E81237AC2FA0043D4BB /* CLMKeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMKeyPath.h; sourceTree = "<group>"; };
-		2A108E82237AC2FA0043D4BB /* CloudInAppMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudInAppMessaging.h; path = ../../CloudInAppMessaging/CloudInAppMessaging.h; sourceTree = "<group>"; };
-		2A108E83237AC2FA0043D4BB /* CLMAlertCampaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertCampaign.h; path = ../../CloudInAppMessaging/CLMAlertCampaign.h; sourceTree = "<group>"; };
-		2A108E84237AC2FA0043D4BB /* CLMAlertCampaign+CLMPresenting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLMAlertCampaign+CLMPresenting.m"; path = "../../CloudInAppMessaging/CLMAlertCampaign+CLMPresenting.m"; sourceTree = "<group>"; };
-		2A108E85237AC2FA0043D4BB /* CLMAlertActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertActionExecutor.h; path = ../../CloudInAppMessaging/CLMAlertActionExecutor.h; sourceTree = "<group>"; };
-		2A108E86237AC2FA0043D4BB /* CLMAlertCampaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertCampaign.m; path = ../../CloudInAppMessaging/CLMAlertCampaign.m; sourceTree = "<group>"; };
-		2A108E87237AC2FB0043D4BB /* CLMCloudKitSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMCloudKitSerializable.h; path = ../../CloudInAppMessaging/CLMCloudKitSerializable.h; sourceTree = "<group>"; };
+		2A108EA5237AD15B0043D4BB /* CLMAlertPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertPresenter.h; path = ../../CloudInAppMessaging/CLMAlertPresenter.h; sourceTree = "<group>"; };
+		2A108EA6237AD15B0043D4BB /* CLMAlertActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertActionExecutor.h; path = ../../CloudInAppMessaging/CLMAlertActionExecutor.h; sourceTree = "<group>"; };
+		2A108EA7237AD15B0043D4BB /* CLMAlertDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertDataSource.h; path = ../../CloudInAppMessaging/CLMAlertDataSource.h; sourceTree = "<group>"; };
+		2A108EA8237AD15B0043D4BB /* CLMAlertCampaign+CLMPresenting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLMAlertCampaign+CLMPresenting.h"; path = "../../CloudInAppMessaging/CLMAlertCampaign+CLMPresenting.h"; sourceTree = "<group>"; };
+		2A108EA9237AD15B0043D4BB /* CLMCloudInAppMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMCloudInAppMessaging.h; path = ../../CloudInAppMessaging/CLMCloudInAppMessaging.h; sourceTree = "<group>"; };
+		2A108EAB237AD15B0043D4BB /* CLMStateKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMStateKeeper.m; sourceTree = "<group>"; };
+		2A108EAC237AD15B0043D4BB /* CLMFetchOnAppForegroundFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMFetchOnAppForegroundFlow.h; sourceTree = "<group>"; };
+		2A108EAD237AD15B0043D4BB /* CLMDisplayExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayExecutor.m; sourceTree = "<group>"; };
+		2A108EAE237AD15B0043D4BB /* CLMTimeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMTimeFetcher.h; sourceTree = "<group>"; };
+		2A108EAF237AD15B0043D4BB /* CLMPresentingWindowHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMPresentingWindowHelper.h; sourceTree = "<group>"; };
+		2A108EB0237AD15B0043D4BB /* CLMFetchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMFetchFlow.h; sourceTree = "<group>"; };
+		2A108EB1237AD15B0043D4BB /* CLMCKBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKBaseOperation.h; sourceTree = "<group>"; };
+		2A108EB2237AD15B0043D4BB /* CLMOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMOperation.m; sourceTree = "<group>"; };
+		2A108EB3237AD15B0043D4BB /* CLMCKService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKService.m; sourceTree = "<group>"; };
+		2A108EB4237AD15B0043D4BB /* CLMAlertActionDefaultExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMAlertActionDefaultExecutor.m; sourceTree = "<group>"; };
+		2A108EB5237AD15B0043D4BB /* CLMAlertMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertMemoryCache.h; sourceTree = "<group>"; };
+		2A108EB6237AD15B0043D4BB /* CLMCKFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKFetchOperation.h; sourceTree = "<group>"; };
+		2A108EB7237AD15B0043D4BB /* CLMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMSettings.h; sourceTree = "<group>"; };
+		2A108EB8237AD15B0043D4BB /* CLMDisplayTriggerFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayTriggerFlow.h; sourceTree = "<group>"; };
+		2A108EB9237AD15B0043D4BB /* CLMDisplayOnAppForegroundFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayOnAppForegroundFlow.h; sourceTree = "<group>"; };
+		2A108EBA237AD15B0043D4BB /* CLMClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMClientInfo.h; sourceTree = "<group>"; };
+		2A108EBB237AD15B0043D4BB /* CLMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMManager.h; sourceTree = "<group>"; };
+		2A108EBC237AD15B0043D4BB /* CLMCKConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKConfiguration.h; sourceTree = "<group>"; };
+		2A108EBD237AD15B0043D4BB /* CLMDisplayExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMDisplayExecutor.h; sourceTree = "<group>"; };
+		2A108EBE237AD15B0043D4BB /* CLMFetchOnAppForegroundFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMFetchOnAppForegroundFlow.m; sourceTree = "<group>"; };
+		2A108EBF237AD15B0043D4BB /* CLMStateKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMStateKeeper.h; sourceTree = "<group>"; };
+		2A108EC0237AD15B0043D4BB /* CLMPresentingWindowHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMPresentingWindowHelper.m; sourceTree = "<group>"; };
+		2A108EC1237AD15B0043D4BB /* CLMTimeFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMTimeFetcher.m; sourceTree = "<group>"; };
+		2A108EC2237AD15B0043D4BB /* CLMAlertMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMAlertMemoryCache.m; sourceTree = "<group>"; };
+		2A108EC3237AD15B0043D4BB /* CLMAlertActionDefaultExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertActionDefaultExecutor.h; sourceTree = "<group>"; };
+		2A108EC4237AD15B0043D4BB /* CLMCKService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMCKService.h; sourceTree = "<group>"; };
+		2A108EC5237AD15B0043D4BB /* CLMOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMOperation.h; sourceTree = "<group>"; };
+		2A108EC6237AD15B0043D4BB /* CLMCKBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKBaseOperation.m; sourceTree = "<group>"; };
+		2A108EC7237AD15B0043D4BB /* CLMFetchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMFetchFlow.m; sourceTree = "<group>"; };
+		2A108EC8237AD15B0043D4BB /* CLMAlertCampaignFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertCampaignFetcher.h; sourceTree = "<group>"; };
+		2A108EC9237AD15B0043D4BB /* CLMCKConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKConfiguration.m; sourceTree = "<group>"; };
+		2A108ECA237AD15B0043D4BB /* CLMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMManager.m; sourceTree = "<group>"; };
+		2A108ECB237AD15B0043D4BB /* CLMClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMClientInfo.m; sourceTree = "<group>"; };
+		2A108ECC237AD15B0043D4BB /* CLMDisplayOnAppForegroundFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayOnAppForegroundFlow.m; sourceTree = "<group>"; };
+		2A108ECD237AD15B0043D4BB /* CLMDisplayTriggerFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMDisplayTriggerFlow.m; sourceTree = "<group>"; };
+		2A108ECE237AD15C0043D4BB /* CLMCKFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMCKFetchOperation.m; sourceTree = "<group>"; };
+		2A108ECF237AD15C0043D4BB /* CLMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMSettings.m; sourceTree = "<group>"; };
+		2A108ED0237AD15C0043D4BB /* CLMKeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMKeyPath.h; sourceTree = "<group>"; };
+		2A108ED1237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLMAlertCampaign+CLMPresenting.m"; path = "../../CloudInAppMessaging/CLMAlertCampaign+CLMPresenting.m"; sourceTree = "<group>"; };
+		2A108ED2237AD15C0043D4BB /* CLMAlertPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertPresenter.m; path = ../../CloudInAppMessaging/CLMAlertPresenter.m; sourceTree = "<group>"; };
+		2A108ED3237AD15C0043D4BB /* CLMAlertCampaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertCampaign.h; path = ../../CloudInAppMessaging/CLMAlertCampaign.h; sourceTree = "<group>"; };
+		2A108ED4237AD15C0043D4BB /* CLMAlertTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMAlertTranslation.h; path = ../../CloudInAppMessaging/CLMAlertTranslation.h; sourceTree = "<group>"; };
+		2A108ED5237AD15C0043D4BB /* CLMAlertTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertTranslation.m; path = ../../CloudInAppMessaging/CLMAlertTranslation.m; sourceTree = "<group>"; };
+		2A108ED6237AD15C0043D4BB /* CLMCloudInAppMessaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMCloudInAppMessaging.m; path = ../../CloudInAppMessaging/CLMCloudInAppMessaging.m; sourceTree = "<group>"; };
+		2A108ED7237AD15C0043D4BB /* CLMAlertCampaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMAlertCampaign.m; path = ../../CloudInAppMessaging/CLMAlertCampaign.m; sourceTree = "<group>"; };
+		2A108ED8237AD15C0043D4BB /* CLMCloudKitSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMCloudKitSerializable.h; path = ../../CloudInAppMessaging/CLMCloudKitSerializable.h; sourceTree = "<group>"; };
+		2A108ED9237AD15C0043D4BB /* CloudInAppMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudInAppMessaging.h; path = ../../CloudInAppMessaging/CloudInAppMessaging.h; sourceTree = "<group>"; };
 		2A231892236BF6A10052A486 /* CloudMessagingAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudMessagingAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A231895236BF6A10052A486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A23189E236BF6A20052A486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -525,63 +529,66 @@
 		2A108E55237AC2CF0043D4BB /* CloudInAppMessaging_Testable */ = {
 			isa = PBXGroup;
 			children = (
-				2A108E85237AC2FA0043D4BB /* CLMAlertActionExecutor.h */,
-				2A108E83237AC2FA0043D4BB /* CLMAlertCampaign.h */,
-				2A108E86237AC2FA0043D4BB /* CLMAlertCampaign.m */,
-				2A108E56237AC2FA0043D4BB /* CLMAlertCampaign+CLMPresenting.h */,
-				2A108E84237AC2FA0043D4BB /* CLMAlertCampaign+CLMPresenting.m */,
-				2A108E5B237AC2FA0043D4BB /* CLMAlertDataSource.h */,
-				2A108E5D237AC2FA0043D4BB /* CLMAlertPresenter.h */,
-				2A108E57237AC2FA0043D4BB /* CLMAlertPresenter.m */,
-				2A108E58237AC2FA0043D4BB /* CLMAlertTranslation.h */,
-				2A108E59237AC2FA0043D4BB /* CLMAlertTranslation.m */,
-				2A108E5A237AC2FA0043D4BB /* CLMCloudInAppMessaging.h */,
-				2A108E5C237AC2FA0043D4BB /* CLMCloudInAppMessaging.m */,
-				2A108E87237AC2FB0043D4BB /* CLMCloudKitSerializable.h */,
-				2A108E82237AC2FA0043D4BB /* CloudInAppMessaging.h */,
-				2A108E5E237AC2FA0043D4BB /* Private */,
+				2A108EA6237AD15B0043D4BB /* CLMAlertActionExecutor.h */,
+				2A108ED3237AD15C0043D4BB /* CLMAlertCampaign.h */,
+				2A108ED7237AD15C0043D4BB /* CLMAlertCampaign.m */,
+				2A108EA8237AD15B0043D4BB /* CLMAlertCampaign+CLMPresenting.h */,
+				2A108ED1237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m */,
+				2A108EA7237AD15B0043D4BB /* CLMAlertDataSource.h */,
+				2A108EA5237AD15B0043D4BB /* CLMAlertPresenter.h */,
+				2A108ED2237AD15C0043D4BB /* CLMAlertPresenter.m */,
+				2A108ED4237AD15C0043D4BB /* CLMAlertTranslation.h */,
+				2A108ED5237AD15C0043D4BB /* CLMAlertTranslation.m */,
+				2A108EA9237AD15B0043D4BB /* CLMCloudInAppMessaging.h */,
+				2A108ED6237AD15C0043D4BB /* CLMCloudInAppMessaging.m */,
+				2A108ED8237AD15C0043D4BB /* CLMCloudKitSerializable.h */,
+				2A108ED9237AD15C0043D4BB /* CloudInAppMessaging.h */,
+				2A108EAA237AD15B0043D4BB /* Private */,
 			);
 			name = CloudInAppMessaging_Testable;
 			sourceTree = "<group>";
 		};
-		2A108E5E237AC2FA0043D4BB /* Private */ = {
+		2A108EAA237AD15B0043D4BB /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				2A108E75237AC2FA0043D4BB /* CLMAlertActionDefaultExecutor.h */,
-				2A108E67237AC2FA0043D4BB /* CLMAlertActionDefaultExecutor.m */,
-				2A108E68237AC2FA0043D4BB /* CLMAlertMemoryCache.h */,
-				2A108E74237AC2FA0043D4BB /* CLMAlertMemoryCache.m */,
-				2A108E64237AC2FA0043D4BB /* CLMCKBaseOperation.h */,
-				2A108E78237AC2FA0043D4BB /* CLMCKBaseOperation.m */,
-				2A108E6F237AC2FA0043D4BB /* CLMCKConfiguration.h */,
-				2A108E7A237AC2FA0043D4BB /* CLMCKConfiguration.m */,
-				2A108E69237AC2FA0043D4BB /* CLMCKFetchOperation.h */,
-				2A108E7F237AC2FA0043D4BB /* CLMCKFetchOperation.m */,
-				2A108E76237AC2FA0043D4BB /* CLMCKService.h */,
-				2A108E66237AC2FA0043D4BB /* CLMCKService.m */,
-				2A108E6D237AC2FA0043D4BB /* CLMClientInfo.h */,
-				2A108E7C237AC2FA0043D4BB /* CLMClientInfo.m */,
-				2A108E70237AC2FA0043D4BB /* CLMDisplayExecutor.h */,
-				2A108E61237AC2FA0043D4BB /* CLMDisplayExecutor.m */,
-				2A108E6C237AC2FA0043D4BB /* CLMDisplayOnAppForegroundFlow.h */,
-				2A108E7D237AC2FA0043D4BB /* CLMDisplayOnAppForegroundFlow.m */,
-				2A108E6B237AC2FA0043D4BB /* CLMDisplayTriggerFlow.h */,
-				2A108E7E237AC2FA0043D4BB /* CLMDisplayTriggerFlow.m */,
-				2A108E63237AC2FA0043D4BB /* CLMFetchFlow.h */,
-				2A108E79237AC2FA0043D4BB /* CLMFetchFlow.m */,
-				2A108E60237AC2FA0043D4BB /* CLMFetchOnAppForegroundFlow.h */,
-				2A108E71237AC2FA0043D4BB /* CLMFetchOnAppForegroundFlow.m */,
-				2A108E81237AC2FA0043D4BB /* CLMKeyPath.h */,
-				2A108E6E237AC2FA0043D4BB /* CLMManager.h */,
-				2A108E7B237AC2FA0043D4BB /* CLMManager.m */,
-				2A108E77237AC2FA0043D4BB /* CLMOperation.h */,
-				2A108E65237AC2FA0043D4BB /* CLMOperation.m */,
-				2A108E62237AC2FA0043D4BB /* CLMPresentingWindowHelper.h */,
-				2A108E73237AC2FA0043D4BB /* CLMPresentingWindowHelper.m */,
-				2A108E6A237AC2FA0043D4BB /* CLMSettings.h */,
-				2A108E80237AC2FA0043D4BB /* CLMSettings.m */,
-				2A108E72237AC2FA0043D4BB /* CLMStateKeeper.h */,
-				2A108E5F237AC2FA0043D4BB /* CLMStateKeeper.m */,
+				2A108EC3237AD15B0043D4BB /* CLMAlertActionDefaultExecutor.h */,
+				2A108EB4237AD15B0043D4BB /* CLMAlertActionDefaultExecutor.m */,
+				2A108EC8237AD15B0043D4BB /* CLMAlertCampaignFetcher.h */,
+				2A108EB5237AD15B0043D4BB /* CLMAlertMemoryCache.h */,
+				2A108EC2237AD15B0043D4BB /* CLMAlertMemoryCache.m */,
+				2A108EB1237AD15B0043D4BB /* CLMCKBaseOperation.h */,
+				2A108EC6237AD15B0043D4BB /* CLMCKBaseOperation.m */,
+				2A108EBC237AD15B0043D4BB /* CLMCKConfiguration.h */,
+				2A108EC9237AD15B0043D4BB /* CLMCKConfiguration.m */,
+				2A108EB6237AD15B0043D4BB /* CLMCKFetchOperation.h */,
+				2A108ECE237AD15C0043D4BB /* CLMCKFetchOperation.m */,
+				2A108EC4237AD15B0043D4BB /* CLMCKService.h */,
+				2A108EB3237AD15B0043D4BB /* CLMCKService.m */,
+				2A108EBA237AD15B0043D4BB /* CLMClientInfo.h */,
+				2A108ECB237AD15B0043D4BB /* CLMClientInfo.m */,
+				2A108EBD237AD15B0043D4BB /* CLMDisplayExecutor.h */,
+				2A108EAD237AD15B0043D4BB /* CLMDisplayExecutor.m */,
+				2A108EB9237AD15B0043D4BB /* CLMDisplayOnAppForegroundFlow.h */,
+				2A108ECC237AD15B0043D4BB /* CLMDisplayOnAppForegroundFlow.m */,
+				2A108EB8237AD15B0043D4BB /* CLMDisplayTriggerFlow.h */,
+				2A108ECD237AD15B0043D4BB /* CLMDisplayTriggerFlow.m */,
+				2A108EB0237AD15B0043D4BB /* CLMFetchFlow.h */,
+				2A108EC7237AD15B0043D4BB /* CLMFetchFlow.m */,
+				2A108EAC237AD15B0043D4BB /* CLMFetchOnAppForegroundFlow.h */,
+				2A108EBE237AD15B0043D4BB /* CLMFetchOnAppForegroundFlow.m */,
+				2A108ED0237AD15C0043D4BB /* CLMKeyPath.h */,
+				2A108EBB237AD15B0043D4BB /* CLMManager.h */,
+				2A108ECA237AD15B0043D4BB /* CLMManager.m */,
+				2A108EC5237AD15B0043D4BB /* CLMOperation.h */,
+				2A108EB2237AD15B0043D4BB /* CLMOperation.m */,
+				2A108EAF237AD15B0043D4BB /* CLMPresentingWindowHelper.h */,
+				2A108EC0237AD15B0043D4BB /* CLMPresentingWindowHelper.m */,
+				2A108EB7237AD15B0043D4BB /* CLMSettings.h */,
+				2A108ECF237AD15C0043D4BB /* CLMSettings.m */,
+				2A108EBF237AD15B0043D4BB /* CLMStateKeeper.h */,
+				2A108EAB237AD15B0043D4BB /* CLMStateKeeper.m */,
+				2A108EAE237AD15B0043D4BB /* CLMTimeFetcher.h */,
+				2A108EC1237AD15B0043D4BB /* CLMTimeFetcher.m */,
 			);
 			name = Private;
 			path = ../../CloudInAppMessaging/Private;
@@ -1219,32 +1226,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A108E8F237AC2FB0043D4BB /* CLMAlertActionDefaultExecutor.m in Sources */,
-				2A108E9D237AC2FB0043D4BB /* CLMAlertCampaign.m in Sources */,
-				2A108E95237AC2FB0043D4BB /* CLMCKConfiguration.m in Sources */,
 				2A108CF323740E730043D4BB /* CLMAlertCampaign+TestData.swift in Sources */,
-				2A108E9C237AC2FB0043D4BB /* CLMAlertCampaign+CLMPresenting.m in Sources */,
+				2A108EEE237AD15C0043D4BB /* CLMAlertTranslation.m in Sources */,
+				2A108EE5237AD15C0043D4BB /* CLMCKConfiguration.m in Sources */,
+				2A108EED237AD15C0043D4BB /* CLMAlertPresenter.m in Sources */,
+				2A108EDC237AD15C0043D4BB /* CLMOperation.m in Sources */,
+				2A108EE4237AD15C0043D4BB /* CLMFetchFlow.m in Sources */,
+				2A108EE9237AD15C0043D4BB /* CLMDisplayTriggerFlow.m in Sources */,
+				2A108EEB237AD15C0043D4BB /* CLMSettings.m in Sources */,
+				2A108EEC237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m in Sources */,
+				2A108EE2237AD15C0043D4BB /* CLMAlertMemoryCache.m in Sources */,
+				2A108EE8237AD15C0043D4BB /* CLMDisplayOnAppForegroundFlow.m in Sources */,
+				2A108EE3237AD15C0043D4BB /* CLMCKBaseOperation.m in Sources */,
+				2A108EE0237AD15C0043D4BB /* CLMPresentingWindowHelper.m in Sources */,
+				2A108EDA237AD15C0043D4BB /* CLMStateKeeper.m in Sources */,
+				2A108EDE237AD15C0043D4BB /* CLMAlertActionDefaultExecutor.m in Sources */,
 				2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */,
-				2A108E98237AC2FB0043D4BB /* CLMDisplayOnAppForegroundFlow.m in Sources */,
+				2A108EDD237AD15C0043D4BB /* CLMCKService.m in Sources */,
+				2A108EE1237AD15C0043D4BB /* CLMTimeFetcher.m in Sources */,
 				2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */,
-				2A108E97237AC2FB0043D4BB /* CLMClientInfo.m in Sources */,
-				2A108E94237AC2FB0043D4BB /* CLMFetchFlow.m in Sources */,
-				2A108E89237AC2FB0043D4BB /* CLMAlertTranslation.m in Sources */,
-				2A108E93237AC2FB0043D4BB /* CLMCKBaseOperation.m in Sources */,
-				2A108E8C237AC2FB0043D4BB /* CLMDisplayExecutor.m in Sources */,
-				2A108E8B237AC2FB0043D4BB /* CLMStateKeeper.m in Sources */,
-				2A108E91237AC2FB0043D4BB /* CLMPresentingWindowHelper.m in Sources */,
-				2A108E9A237AC2FB0043D4BB /* CLMCKFetchOperation.m in Sources */,
-				2A108E8D237AC2FB0043D4BB /* CLMOperation.m in Sources */,
-				2A108E99237AC2FB0043D4BB /* CLMDisplayTriggerFlow.m in Sources */,
-				2A108E88237AC2FB0043D4BB /* CLMAlertPresenter.m in Sources */,
-				2A108E8E237AC2FB0043D4BB /* CLMCKService.m in Sources */,
+				2A108EDB237AD15C0043D4BB /* CLMDisplayExecutor.m in Sources */,
+				2A108EF0237AD15C0043D4BB /* CLMAlertCampaign.m in Sources */,
+				2A108EEF237AD15C0043D4BB /* CLMCloudInAppMessaging.m in Sources */,
 				2A108D7E2379B6B50043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */,
-				2A108E96237AC2FB0043D4BB /* CLMManager.m in Sources */,
-				2A108E90237AC2FB0043D4BB /* CLMFetchOnAppForegroundFlow.m in Sources */,
-				2A108E9B237AC2FB0043D4BB /* CLMSettings.m in Sources */,
-				2A108E92237AC2FB0043D4BB /* CLMAlertMemoryCache.m in Sources */,
-				2A108E8A237AC2FB0043D4BB /* CLMCloudInAppMessaging.m in Sources */,
+				2A108EDF237AD15C0043D4BB /* CLMFetchOnAppForegroundFlow.m in Sources */,
+				2A108EE6237AD15C0043D4BB /* CLMManager.m in Sources */,
+				2A108EEA237AD15C0043D4BB /* CLMCKFetchOperation.m in Sources */,
+				2A108EE7237AD15C0043D4BB /* CLMClientInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

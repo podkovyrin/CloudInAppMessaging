@@ -23,15 +23,17 @@
 #import "CLMPresentingWindowHelper.h"
 #import "CLMSettings.h"
 #import "CLMStateKeeper.h"
+#import "CLMTimeFetcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMDisplayExecutor () <CLMAlertPresenterDelegate>
 
 @property (readonly, nonatomic, strong) CLMSettings *settings;
-@property (readonly, nonatomic, strong) CLMClientInfo *clientInfo;
+@property (readonly, nonatomic, strong) id<CLMTimeFetcher> timeFetcher;
+@property (readonly, nonatomic, strong) id<CLMClientInfo> clientInfo;
 @property (readonly, nonatomic, strong) CLMAlertMemoryCache *memoryCache;
-@property (readonly, nonatomic, strong) CLMStateKeeper *stateKeeper;
+@property (readonly, nonatomic, strong) id<CLMStateKeeper> stateKeeper;
 
 @property (nonatomic, assign) BOOL messageDisplaySuppressed;
 @property (nonatomic, assign) BOOL alertBeingDisplayed;
@@ -41,12 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation CLMDisplayExecutor
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
-                      clientInfo:(CLMClientInfo *)clientInfo
+                     timeFetcher:(id<CLMTimeFetcher>)timeFetcher
+                      clientInfo:(id<CLMClientInfo>)clientInfo
                      memoryCache:(CLMAlertMemoryCache *)memoryCache
-                     stateKeeper:(CLMStateKeeper *)stateKeeper {
+                     stateKeeper:(id<CLMStateKeeper>)stateKeeper {
     self = [super init];
     if (self) {
         _settings = settings;
+        _timeFetcher = timeFetcher;
         _clientInfo = clientInfo;
         _memoryCache = memoryCache;
         _stateKeeper = stateKeeper;
@@ -93,9 +97,9 @@ NS_ASSUME_NONNULL_BEGIN
             return;
         }
 
-        NSDate *now = [NSDate date];
+        const NSTimeInterval currentTimestamp = [self.timeFetcher currentTimestamp];
         const NSTimeInterval intervalFromLastDisplay =
-            now.timeIntervalSince1970 - self.stateKeeper.lastDisplayDate.timeIntervalSince1970;
+            currentTimestamp - self.stateKeeper.lastDisplayTimeInterval;
         const BOOL isDisplayAllowed = intervalFromLastDisplay > self.settings.fetchMinInterval;
         if (!isDisplayAllowed) {
             return;

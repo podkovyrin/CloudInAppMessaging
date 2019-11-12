@@ -19,14 +19,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class CLMStateKeeper;
-@class CLMCKService;
-@class CLMClientInfo;
+@protocol CLMAlertCampaignFetcher;
+@protocol CLMClientInfo;
+@protocol CLMStateKeeper;
+@protocol CLMTimeFetcher;
 @class CLMAlertMemoryCache;
 @class CLMSettings;
 @class CLMFetchFlow;
 
-@protocol CLMFetchFlowDelegate <NSObject>
+@protocol CLMFetchFlowDelegate
 
 - (void)fetchFlowDidFinish:(CLMFetchFlow *)fetchFlow initialAppLaunch:(BOOL)initialAppLaunch;
 
@@ -37,10 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLMFetchFlow : NSObject
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
-                 cloudKitService:(CLMCKService *)cloudKitService
-                      clientInfo:(CLMClientInfo *)clientInfo
+                     timeFetcher:(id<CLMTimeFetcher>)timeFetcher
+                    alertFetcher:(id<CLMAlertCampaignFetcher>)alertFetcher
+                      clientInfo:(id<CLMClientInfo>)clientInfo
                      memoryCache:(CLMAlertMemoryCache *)memeoryCache
-                     stateKeeper:(CLMStateKeeper *)stateKeeper
+                     stateKeeper:(id<CLMStateKeeper>)stateKeeper
                         delegate:(id<CLMFetchFlowDelegate>)delegate;
 
 - (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch;

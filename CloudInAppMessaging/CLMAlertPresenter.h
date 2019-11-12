@@ -24,9 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class CLMAlertCampaign;
 @protocol CLMAlertPresenter;
 
-
 /// A protocol describing a delegate of the CLMAlertPresenter.
-@protocol CLMAlertPresenterDelegate <NSObject>
+@protocol CLMAlertPresenterDelegate
 
 
 /// Called when the alert is dismissed. Should be called from main thread.
@@ -36,8 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
 /// A protocol describing a component that used to display Alert Campaigns.
-@protocol CLMAlertPresenter <NSObject>
+@protocol CLMAlertPresenter
 
 /// An executor of the alert action.
 @property (nullable, nonatomic, strong) id<CLMAlertActionExecutor> actionExecutor;

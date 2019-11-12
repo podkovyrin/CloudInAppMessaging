@@ -19,28 +19,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CLMTimeFetcher;
-@class CLMAlertCampaign;
+/// A protocol wrapping around function of getting timestamp.
+/// For unit testing purposes.
+@protocol CLMTimeFetcher
 
-@protocol CLMStateKeeper
-
-@property (readonly, nonatomic, assign) NSTimeInterval lastDisplayTimeInterval;
-@property (readonly, nonatomic, assign) NSTimeInterval lastFetchTimeInterval;
-@property (readonly, nonatomic, copy) NSArray<NSString *> *impressionIDs;
-
-- (void)recordAlertImpression:(CLMAlertCampaign *)alertCampaign;
-- (void)recordFetch;
+- (NSTimeInterval)currentTimestamp;
 
 @end
 
-// A wrapper around NSUserDefaults to store internal states.
-@interface CLMStateKeeper : NSObject <CLMStateKeeper>
-
-- (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults
-                         timeFetcher:(id<CLMTimeFetcher>)timeFetcher;
-
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+@interface CLMTimeFetcher : NSObject <CLMTimeFetcher>
 
 @end
 

@@ -21,10 +21,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CLMClientInfo;
+@protocol CLMStateKeeper;
+@protocol CLMTimeFetcher;
 @class CLMSettings;
-@class CLMClientInfo;
 @class CLMAlertMemoryCache;
-@class CLMStateKeeper;
 
 /// The class for checking if there are appropriate alerts to be displayed and if so, show it.
 /// There are other flows that would determine the timing for the checking and then use this class
@@ -34,9 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, strong) id<CLMAlertPresenter> alertPresenter;
 
 - (instancetype)initWithSettings:(CLMSettings *)settings
-                      clientInfo:(CLMClientInfo *)clientInfo
+                     timeFetcher:(id<CLMTimeFetcher>)timeFetcher
+                      clientInfo:(id<CLMClientInfo>)clientInfo
                      memoryCache:(CLMAlertMemoryCache *)memoryCache
-                     stateKeeper:(CLMStateKeeper *)stateKeeper;
+                     stateKeeper:(id<CLMStateKeeper>)stateKeeper;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
