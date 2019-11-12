@@ -16,6 +16,7 @@
 //
 
 // This class is heavily inspired by FIRIAMActionURLFollower from the FirebaseInAppMessaging SDK.
+// https://github.com/firebase/firebase-ios-sdk/
 
 /*
 * Copyright 2018 Google

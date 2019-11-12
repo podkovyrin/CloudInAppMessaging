@@ -3,18 +3,10 @@ platform :ios, '11.0'
 
 target 'CloudMessagingAdmin' do
   pod 'CloudInAppMessaging', :path => '../'
-
-  target 'CloudInAppMessaging_Tests' do
-    inherit! :search_paths
-    
-    pod 'CloudInAppMessaging', :path => '../'
-  end
-  
 end
 
 target 'TestApp' do
   pod 'CloudInAppMessaging', :path => '../'
-  
 end
 
 

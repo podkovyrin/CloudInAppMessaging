@@ -6,7 +6,6 @@
 //  Copyright © 2019 Andrew Podkovyrin. All rights reserved.
 //
 
-import CloudInAppMessaging
 import CloudKit
 import XCTest
 

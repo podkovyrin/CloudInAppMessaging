@@ -15,6 +15,8 @@
 //  limitations under the License.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "CLMFetchOnAppForegroundFlow.h"
 
 NS_ASSUME_NONNULL_BEGIN

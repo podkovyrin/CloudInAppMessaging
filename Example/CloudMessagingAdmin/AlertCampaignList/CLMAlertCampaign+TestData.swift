@@ -15,7 +15,12 @@
 //  limitations under the License.
 //
 
-import CloudInAppMessaging
+// This file is shared among the Admin App and Tests target
+// For the Test target CloudInAppMessaging code imported directly
+#if !TEST
+    import CloudInAppMessaging
+#endif // TEST
+
 import Foundation
 
 extension CLMAlertCampaign {
