@@ -70,13 +70,8 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
 }
 
 - (BOOL)alertDisplayedOnTrigger:(CLMAlertCampaignTrigger)trigger {
-    NSAssert(self.trigger, @"Trigger is invalid");
-
-    if (self.trigger) {
-        return [self.trigger isEqualToString:trigger];
-    }
-
-    return YES;
+    // If the trigger is nil, consider this Alert Campaign as WIP and don't allow to display it
+    return [self.trigger isEqualToString:trigger];
 }
 
 #pragma mark - NSObject

@@ -71,6 +71,7 @@ extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 @property (nullable, nonatomic, copy) NSString *minOSVersion;
 
 // Scheduling
+
 /// A start date of Alert Campaign. When `startDate` is not specified Alert Campaign starts immediately.
 @property (nullable, nonatomic, strong) NSDate *startDate;
 /// An end date of Alert Campaign. When `endDate` is not specified Alert Campaign lasts forever.

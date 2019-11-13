@@ -97,7 +97,7 @@
 		2A231896236BF6A10052A486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A231895236BF6A10052A486 /* AppDelegate.swift */; };
 		2A23189F236BF6A20052A486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A23189E236BF6A20052A486 /* Assets.xcassets */; };
 		2A2318A2236BF6A20052A486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2318A0236BF6A20052A486 /* LaunchScreen.storyboard */; };
-		2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318AF236BF8150052A486 /* CloudInAppMessagingTests.swift */; };
+		2A2318B0236BF8150052A486 /* AlertCampaignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318AF236BF8150052A486 /* AlertCampaignTests.swift */; };
 		2A2318D1236BFD290052A486 /* FormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318BA236BFD290052A486 /* FormCellModel.swift */; };
 		2A2318D2236BFD290052A486 /* TitledFormCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318BC236BFD290052A486 /* TitledFormCellModel.swift */; };
 		2A2318D4236BFD290052A486 /* GroupedSelectorFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2318BE236BFD290052A486 /* GroupedSelectorFormTableViewCell.swift */; };
@@ -126,6 +126,11 @@
 		2A6AB241236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */; };
 		2A6AB243236CC31500165A6E /* TextInputFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB242236CC31500165A6E /* TextInputFormTableViewCell.swift */; };
 		2A6AB245236CC5F900165A6E /* TextFieldFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6AB244236CC5F900165A6E /* TextFieldFormTableViewCell.swift */; };
+		2A814079237AFD50009A64CC /* FetchFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814078237AFD50009A64CC /* FetchFlowTests.swift */; };
+		2A81407D237B053C009A64CC /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81407C237B053C009A64CC /* Mocks.swift */; };
+		2A814081237BD7B8009A64CC /* StateKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814080237BD7B8009A64CC /* StateKeeperTests.swift */; };
+		2A814088237C3DCC009A64CC /* DisplayExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */; };
+		2A81408A237C4C89009A64CC /* AlertActionDefaultExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814089237C4C89009A64CC /* AlertActionDefaultExecutorTests.swift */; };
 		2A9140A3236DBD0600A9E616 /* SearchSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */; };
 		2A9140A7236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A6236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m */; };
 		2ADF56A3236C1370009917D1 /* AlertCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A2236C1370009917D1 /* AlertCampaignModel.swift */; };
@@ -262,7 +267,7 @@
 		2A2318A1236BF6A20052A486 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A2318A3236BF6A20052A486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A2318AD236BF8150052A486 /* CloudInAppMessaging_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudInAppMessaging_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A2318AF236BF8150052A486 /* CloudInAppMessagingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudInAppMessagingTests.swift; sourceTree = "<group>"; };
+		2A2318AF236BF8150052A486 /* AlertCampaignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignTests.swift; sourceTree = "<group>"; };
 		2A2318B1236BF8150052A486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A2318BA236BFD290052A486 /* FormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCellModel.swift; sourceTree = "<group>"; };
 		2A2318BC236BFD290052A486 /* TitledFormCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledFormCellModel.swift; sourceTree = "<group>"; };
@@ -292,6 +297,12 @@
 		2A6AB23E236CAC3000165A6E /* GroupedDatePickerFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedDatePickerFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB242236CC31500165A6E /* TextInputFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormTableViewCell.swift; sourceTree = "<group>"; };
 		2A6AB244236CC5F900165A6E /* TextFieldFormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormTableViewCell.swift; sourceTree = "<group>"; };
+		2A814078237AFD50009A64CC /* FetchFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFlowTests.swift; sourceTree = "<group>"; };
+		2A81407C237B053C009A64CC /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		2A814080237BD7B8009A64CC /* StateKeeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateKeeperTests.swift; sourceTree = "<group>"; };
+		2A814084237BE0EF009A64CC /* CLMAlertMemoryCache+Testable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLMAlertMemoryCache+Testable.h"; sourceTree = "<group>"; };
+		2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayExecutorTests.swift; sourceTree = "<group>"; };
+		2A814089237C4C89009A64CC /* AlertActionDefaultExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionDefaultExecutorTests.swift; sourceTree = "<group>"; };
 		2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSelectorViewController.swift; sourceTree = "<group>"; };
 		2A9140A4236DC3B200A9E616 /* CloudMessagingAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudMessagingAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A9140A5236DC3B300A9E616 /* NSAttributedString+DWHighlightText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+DWHighlightText.h"; sourceTree = "<group>"; };
@@ -638,9 +649,15 @@
 			isa = PBXGroup;
 			children = (
 				2A108E55237AC2CF0043D4BB /* CloudInAppMessaging_Testable */,
-				2A2318AF236BF8150052A486 /* CloudInAppMessagingTests.swift */,
+				2A2318AF236BF8150052A486 /* AlertCampaignTests.swift */,
+				2A814078237AFD50009A64CC /* FetchFlowTests.swift */,
+				2A814080237BD7B8009A64CC /* StateKeeperTests.swift */,
+				2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */,
+				2A81407C237B053C009A64CC /* Mocks.swift */,
+				2A814084237BE0EF009A64CC /* CLMAlertMemoryCache+Testable.h */,
 				2A108D87237AB9610043D4BB /* CloudInAppMessaging_Tests-Bridging-Header.h */,
 				2A2318B1236BF8150052A486 /* Info.plist */,
+				2A814089237C4C89009A64CC /* AlertActionDefaultExecutorTests.swift */,
 			);
 			path = CloudInAppMessaging_Tests;
 			sourceTree = "<group>";
@@ -844,6 +861,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A2318B6236BF8150052A486 /* Build configuration list for PBXNativeTarget "CloudInAppMessaging_Tests" */;
 			buildPhases = (
+				2A814082237BD7EB009A64CC /* Swift Format */,
+				2A814083237BD803009A64CC /* Swift Lint */,
 				2A2318A9236BF8150052A486 /* Sources */,
 				2A2318AA236BF8150052A486 /* Frameworks */,
 				2A2318AB236BF8150052A486 /* Resources */,
@@ -1063,6 +1082,42 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat CloudMessagingAdmin\n    swiftformat TestApp\n    swiftformat CloudInAppMessaging_Tests\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
+		2A814082237BD7EB009A64CC /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat CloudMessagingAdmin\n    swiftformat TestApp\n    swiftformat CloudInAppMessaging_Tests\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		2A814083237BD803009A64CC /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		9B4EC4A332FB000EE4069433 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1238,21 +1293,26 @@
 				2A108EE2237AD15C0043D4BB /* CLMAlertMemoryCache.m in Sources */,
 				2A108EE8237AD15C0043D4BB /* CLMDisplayOnAppForegroundFlow.m in Sources */,
 				2A108EE3237AD15C0043D4BB /* CLMCKBaseOperation.m in Sources */,
+				2A814088237C3DCC009A64CC /* DisplayExecutorTests.swift in Sources */,
 				2A108EE0237AD15C0043D4BB /* CLMPresentingWindowHelper.m in Sources */,
 				2A108EDA237AD15C0043D4BB /* CLMStateKeeper.m in Sources */,
 				2A108EDE237AD15C0043D4BB /* CLMAlertActionDefaultExecutor.m in Sources */,
-				2A2318B0236BF8150052A486 /* CloudInAppMessagingTests.swift in Sources */,
+				2A2318B0236BF8150052A486 /* AlertCampaignTests.swift in Sources */,
 				2A108EDD237AD15C0043D4BB /* CLMCKService.m in Sources */,
 				2A108EE1237AD15C0043D4BB /* CLMTimeFetcher.m in Sources */,
 				2A108CF0237407570043D4BB /* AlertCampaignValidator.swift in Sources */,
+				2A814081237BD7B8009A64CC /* StateKeeperTests.swift in Sources */,
 				2A108EDB237AD15C0043D4BB /* CLMDisplayExecutor.m in Sources */,
 				2A108EF0237AD15C0043D4BB /* CLMAlertCampaign.m in Sources */,
 				2A108EEF237AD15C0043D4BB /* CLMCloudInAppMessaging.m in Sources */,
 				2A108D7E2379B6B50043D4BB /* CloudMessagingAdminConfiguration.swift in Sources */,
 				2A108EDF237AD15C0043D4BB /* CLMFetchOnAppForegroundFlow.m in Sources */,
+				2A814079237AFD50009A64CC /* FetchFlowTests.swift in Sources */,
 				2A108EE6237AD15C0043D4BB /* CLMManager.m in Sources */,
 				2A108EEA237AD15C0043D4BB /* CLMCKFetchOperation.m in Sources */,
+				2A81408A237C4C89009A64CC /* AlertActionDefaultExecutorTests.swift in Sources */,
 				2A108EE7237AD15C0043D4BB /* CLMClientInfo.m in Sources */,
+				2A81407D237B053C009A64CC /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

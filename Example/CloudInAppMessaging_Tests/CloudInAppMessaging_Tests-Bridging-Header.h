@@ -26,4 +26,6 @@
 #import "CLMSettings.h"
 #import "CLMStateKeeper.h"
 
+#import "CLMAlertMemoryCache+Testable.h"
+
 #endif /* CloudInAppMessaging_Tests_Bridging_Header */

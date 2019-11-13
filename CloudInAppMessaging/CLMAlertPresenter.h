@@ -27,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// A protocol describing a delegate of the CLMAlertPresenter.
 @protocol CLMAlertPresenterDelegate
 
-
 /// Called when the alert is dismissed. Should be called from main thread.
 /// @param alertPresenter A presenter of the alert.
 /// @param alertCampaign An alert that was dismissed.
@@ -41,7 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// An executor of the alert action.
 @property (nullable, nonatomic, strong) id<CLMAlertActionExecutor> actionExecutor;
-/// A delegate to notify about presentation events
+/// A delegate to notify about presentation events. CLMAlertPresenter *must* call delegate's method
+/// when presentation is finished.
+/// This property is used internally and should not be used by clients.
 @property (nullable, nonatomic, weak) id<CLMAlertPresenterDelegate> delegate;
 
 /// Presents the given Alert Campaign to the user.

@@ -58,11 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-- (void)setAlertPresenter:(nullable id<CLMAlertPresenter>)alertPresenter {
-    _alertPresenter = alertPresenter;
-    alertPresenter.delegate = self;
-}
-
 - (void)checkAndDisplayNextAppLaunchAlert {
     [self checkAndDisplayNextForTrigger:CLMAlertCampaignTriggerOnAppLaunch];
 }
@@ -98,8 +93,8 @@ NS_ASSUME_NONNULL_BEGIN
         }
 
         const NSTimeInterval currentTimestamp = [self.timeFetcher currentTimestamp];
-        const NSTimeInterval intervalFromLastDisplay =
-            currentTimestamp - self.stateKeeper.lastDisplayTimeInterval;
+        const NSTimeInterval lastDisplayTimeInterval = self.stateKeeper.lastDisplayTimeInterval;
+        const NSTimeInterval intervalFromLastDisplay = currentTimestamp - lastDisplayTimeInterval;
         const BOOL isDisplayAllowed = intervalFromLastDisplay > self.settings.fetchMinInterval;
         if (!isDisplayAllowed) {
             return;
@@ -121,11 +116,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)displayAlert:(CLMAlertCampaign *)alertCampaign {
     NSAssert([NSThread isMainThread], @"Main thread is assumed here");
     NSParameterAssert(self.alertPresenter);
+    NSAssert(self.alertPresenter.delegate == self || self.alertPresenter.delegate == nil,
+             @"Setting `delegate` property of CLMAlertPresenter object is prohibited");
 
     UIWindow *window = [CLMPresentingWindowHelper UIWindowForPresenting];
     UIViewController *rootController = [[UIViewController alloc] init];
     window.rootViewController = rootController;
     [window setHidden:NO];
+
+    self.alertPresenter.delegate = self;
 
     NSArray<NSString *> *preferredLanguages = self.clientInfo.preferredLanguages;
     [self.alertPresenter presentAlert:alertCampaign

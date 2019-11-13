@@ -17,12 +17,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CLMAlertCampaignFetcher.h"
+#import "CLMClientInfo.h"
+#import "CLMStateKeeper.h"
+#import "CLMTimeFetcher.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CLMAlertCampaignFetcher;
-@protocol CLMClientInfo;
-@protocol CLMStateKeeper;
-@protocol CLMTimeFetcher;
 @class CLMAlertMemoryCache;
 @class CLMSettings;
 @class CLMFetchFlow;
@@ -41,9 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
                      timeFetcher:(id<CLMTimeFetcher>)timeFetcher
                     alertFetcher:(id<CLMAlertCampaignFetcher>)alertFetcher
                       clientInfo:(id<CLMClientInfo>)clientInfo
-                     memoryCache:(CLMAlertMemoryCache *)memeoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memoryCache
                      stateKeeper:(id<CLMStateKeeper>)stateKeeper
-                        delegate:(id<CLMFetchFlowDelegate>)delegate;
+                        delegate:(id<CLMFetchFlowDelegate>)delegate
+    NS_SWIFT_NAME(init(settings:timeFetcher:alertFetcher:clientInfo:memoryCache:stateKeeper:delegate:));
 
 - (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch;
 

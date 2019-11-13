@@ -18,11 +18,7 @@
 #import "CLMFetchFlow.h"
 
 #import "CLMAlertMemoryCache.h"
-#import "CLMCKService.h"
-#import "CLMClientInfo.h"
 #import "CLMSettings.h"
-#import "CLMStateKeeper.h"
-#import "CLMTimeFetcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,7 +37,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 @property (readonly, nonatomic, strong) id<CLMTimeFetcher> timeFetcher;
 @property (readonly, nonatomic, strong) id<CLMAlertCampaignFetcher> alertFetcher;
 @property (readonly, nonatomic, strong) id<CLMClientInfo> clientInfo;
-@property (readonly, nonatomic, strong) CLMAlertMemoryCache *memeoryCache;
+@property (readonly, nonatomic, strong) CLMAlertMemoryCache *memoryCache;
 @property (readonly, nonatomic, strong) id<CLMStateKeeper> stateKeeper;
 @property (nullable, nonatomic, weak) id<CLMFetchFlowDelegate> delegate;
 
@@ -53,7 +49,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
                      timeFetcher:(id<CLMTimeFetcher>)timeFetcher
                     alertFetcher:(id<CLMAlertCampaignFetcher>)alertFetcher
                       clientInfo:(id<CLMClientInfo>)clientInfo
-                     memoryCache:(CLMAlertMemoryCache *)memeoryCache
+                     memoryCache:(CLMAlertMemoryCache *)memoryCache
                      stateKeeper:(id<CLMStateKeeper>)stateKeeper
                         delegate:(id<CLMFetchFlowDelegate>)delegate {
     self = [super init];
@@ -62,7 +58,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
         _timeFetcher = timeFetcher;
         _alertFetcher = alertFetcher;
         _clientInfo = clientInfo;
-        _memeoryCache = memeoryCache;
+        _memoryCache = memoryCache;
         _stateKeeper = stateKeeper;
         _delegate = delegate;
     }
@@ -72,7 +68,8 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 
 - (void)checkAndFetchForInitialAppLaunch:(BOOL)initialAppLaunch {
     const NSTimeInterval currentTimestamp = [self.timeFetcher currentTimestamp];
-    const NSTimeInterval intervalFromLastFetch = currentTimestamp - self.stateKeeper.lastFetchTimeInterval;
+    const NSTimeInterval lastFetchTimeInterval = self.stateKeeper.lastFetchTimeInterval;
+    const NSTimeInterval intervalFromLastFetch = currentTimestamp - lastFetchTimeInterval;
     const BOOL isFetchAllowed = intervalFromLastFetch > self.settings.fetchMinInterval;
     if (!isFetchAllowed) {
         [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
@@ -117,7 +114,7 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
     }
 
     dispatch_group_notify(dispatchGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.memeoryCache setAlertsData:matchedAlertCampaigns];
+        [self.memoryCache setAlertsData:matchedAlertCampaigns];
 
         [self.delegate fetchFlowDidFinish:self initialAppLaunch:initialAppLaunch];
     });
@@ -130,7 +127,6 @@ static NSString *CLMNormalizeVersionString(NSString *version) {
 - (BOOL)alertMatches:(CLMAlertCampaign *)alertCampaign
           appVersion:(NSString *)appVersion
            osVersion:(NSString *)osVersion {
-
     NSString *maxAppVersion = alertCampaign.maxAppVersion;
     if (maxAppVersion.length > 0) {
         maxAppVersion = CLMNormalizeVersionString(maxAppVersion);
