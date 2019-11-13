@@ -22,7 +22,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Andrew Podkovyrin/CloudInAppMessaging.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/podkovyr'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'CloudInAppMessaging/**/*'
   s.public_header_files = 'CloudInAppMessaging/*.h'

@@ -1260,43 +1260,6 @@
 			};
 			name = Release;
 		};
-		3DBA1533478A47BA2428FF2ED1EDF05F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EC8A3D4942302B26651813856B1D145 /* CloudInAppMessaging.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging.modulemap";
-				PRODUCT_MODULE_NAME = CloudInAppMessaging;
-				PRODUCT_NAME = CloudInAppMessaging;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		6018D5232C5DF488A3D2EC676D679EC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD73C308F9058020B035EEF0A5847DB4 /* Pods-CloudInAppMessaging_Tests.release.xcconfig */;
@@ -1336,6 +1299,43 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		6B160FB8BDD728E849B303A12380E8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EC8A3D4942302B26651813856B1D145 /* CloudInAppMessaging.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging.modulemap";
+				PRODUCT_MODULE_NAME = CloudInAppMessaging;
+				PRODUCT_NAME = CloudInAppMessaging;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		7116C92C068F911AC76B04CC809C9541 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1455,6 +1455,44 @@
 			};
 			name = Release;
 		};
+		BEFF0E1785D555762C9AD240B95387C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EC8A3D4942302B26651813856B1D145 /* CloudInAppMessaging.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging.modulemap";
+				PRODUCT_MODULE_NAME = CloudInAppMessaging;
+				PRODUCT_NAME = CloudInAppMessaging;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CACBBCDECDEC257572E3974A57059A0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48035A91E84CBC0A87E55C264B0A9D35 /* Pods-CloudMessagingAdmin.release.xcconfig */;
@@ -1559,44 +1597,6 @@
 			};
 			name = Debug;
 		};
-		FE433887D33F328AB2F0F09E8756F96F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EC8A3D4942302B26651813856B1D145 /* CloudInAppMessaging.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CloudInAppMessaging/CloudInAppMessaging.modulemap";
-				PRODUCT_MODULE_NAME = CloudInAppMessaging;
-				PRODUCT_NAME = CloudInAppMessaging;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1648,8 +1648,8 @@
 		CF1B4DFE8CE83B7F1A6EF655618F7BED /* Build configuration list for PBXNativeTarget "CloudInAppMessaging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3DBA1533478A47BA2428FF2ED1EDF05F /* Debug */,
-				FE433887D33F328AB2F0F09E8756F96F /* Release */,
+				6B160FB8BDD728E849B303A12380E8FB /* Debug */,
+				BEFF0E1785D555762C9AD240B95387C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

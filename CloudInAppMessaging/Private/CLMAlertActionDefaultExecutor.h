@@ -15,7 +15,7 @@
 //  limitations under the License.
 //
 
-#import "CLMAlertActionExecutor.h"
+#import "../CLMAlertActionExecutor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
