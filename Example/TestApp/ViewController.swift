@@ -15,14 +15,6 @@
 //  limitations under the License.
 //
 
-import CloudInAppMessaging
 import UIKit
 
-class ViewController: UIViewController {
-    let clm = CLMCloudInAppMessaging.setup(with: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-}
+class ViewController: UIViewController {}

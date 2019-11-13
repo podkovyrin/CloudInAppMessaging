@@ -15,6 +15,7 @@
 //  limitations under the License.
 //
 
+import CloudInAppMessaging
 import UIKit
 
 @UIApplicationMain
@@ -22,8 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+        -> Bool {
+        // Setup CloudInAppMessaging SDK with CloudKit Container Identifier.
+        // It can be found in Target's settings on Signing & Capabilities tab under iCloud capability section.
+        // Or pass `nil` to use a default CloudKit container.
+        CLMCloudInAppMessaging.setup(with: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
+
         return true
     }
 }
