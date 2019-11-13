@@ -25,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// It will return either `CLMAlertCampaign` itself if a `defultLang` matches one of `preferredLanguages`
 /// or one of the Alert Translations.
 /// If nothing matches any of `preferredLanguages` `CLMAlertCampaign` is used.
-- (id<CLMAlertDataSource>)clm_dataSourceForPreferredLanguages:(NSArray<NSString *> *)preferredLanguages;
+- (id<CLMAlertDataSource>)clm_dataSourceForPreferredLanguages:(NSArray<NSString *> *)preferredLanguages
+    NS_SWIFT_NAME(dataSource(forPreferredLanguages:));
 
 @end
 

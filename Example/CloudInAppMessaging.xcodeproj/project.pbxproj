@@ -131,6 +131,7 @@
 		2A814081237BD7B8009A64CC /* StateKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814080237BD7B8009A64CC /* StateKeeperTests.swift */; };
 		2A814088237C3DCC009A64CC /* DisplayExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */; };
 		2A81408C237C57ED009A64CC /* CLMAlertActionDefaultExecutorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A81408B237C57ED009A64CC /* CLMAlertActionDefaultExecutorTests.m */; };
+		2A814091237C69B8009A64CC /* AlertCampaignPresentingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A814090237C69B8009A64CC /* AlertCampaignPresentingTests.swift */; };
 		2A9140A3236DBD0600A9E616 /* SearchSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */; };
 		2A9140A7236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9140A6236DC3B300A9E616 /* NSAttributedString+DWHighlightText.m */; };
 		2ADF56A3236C1370009917D1 /* AlertCampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADF56A2236C1370009917D1 /* AlertCampaignModel.swift */; };
@@ -304,6 +305,7 @@
 		2A814084237BE0EF009A64CC /* CLMAlertMemoryCache+Testable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLMAlertMemoryCache+Testable.h"; sourceTree = "<group>"; };
 		2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayExecutorTests.swift; sourceTree = "<group>"; };
 		2A81408B237C57ED009A64CC /* CLMAlertActionDefaultExecutorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMAlertActionDefaultExecutorTests.m; sourceTree = "<group>"; };
+		2A814090237C69B8009A64CC /* AlertCampaignPresentingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCampaignPresentingTests.swift; sourceTree = "<group>"; };
 		2A9140A2236DBD0600A9E616 /* SearchSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSelectorViewController.swift; sourceTree = "<group>"; };
 		2A9140A4236DC3B200A9E616 /* CloudMessagingAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudMessagingAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A9140A5236DC3B300A9E616 /* NSAttributedString+DWHighlightText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+DWHighlightText.h"; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				2A814078237AFD50009A64CC /* FetchFlowTests.swift */,
 				2A814080237BD7B8009A64CC /* StateKeeperTests.swift */,
 				2A814087237C3DCC009A64CC /* DisplayExecutorTests.swift */,
+				2A814090237C69B8009A64CC /* AlertCampaignPresentingTests.swift */,
 				2A81407C237B053C009A64CC /* Mocks.swift */,
 				2A81408B237C57ED009A64CC /* CLMAlertActionDefaultExecutorTests.m */,
 				2A814084237BE0EF009A64CC /* CLMAlertMemoryCache+Testable.h */,
@@ -1336,6 +1339,7 @@
 				2A108EED237AD15C0043D4BB /* CLMAlertPresenter.m in Sources */,
 				2A108EDC237AD15C0043D4BB /* CLMOperation.m in Sources */,
 				2A108EE4237AD15C0043D4BB /* CLMFetchFlow.m in Sources */,
+				2A814091237C69B8009A64CC /* AlertCampaignPresentingTests.swift in Sources */,
 				2A108EE9237AD15C0043D4BB /* CLMDisplayTriggerFlow.m in Sources */,
 				2A108EEB237AD15C0043D4BB /* CLMSettings.m in Sources */,
 				2A108EEC237AD15C0043D4BB /* CLMAlertCampaign+CLMPresenting.m in Sources */,
