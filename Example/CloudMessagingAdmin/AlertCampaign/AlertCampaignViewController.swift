@@ -322,7 +322,7 @@ final class AlertCampaignViewController: UIViewController {
 
     private var startDate: DatePickerFormCellModel {
         let cellModel = DatePickerFormCellModel()
-        cellModel.title = "Start Date (GMT +0)"
+        cellModel.title = "Start Date"
         cellModel.date = model.alertCampaign.startDate
         cellModel.minDate = Date()
         cellModel.placeholder = "Starts Now"
@@ -336,7 +336,7 @@ final class AlertCampaignViewController: UIViewController {
 
     private var endDate: DatePickerFormCellModel {
         let cellModel = DatePickerFormCellModel()
-        cellModel.title = "End Date (GMT +0)"
+        cellModel.title = "End Date"
         cellModel.date = model.alertCampaign.endDate
         cellModel.minDate = Date()
         cellModel.placeholder = "No End Date"
@@ -395,7 +395,9 @@ final class AlertCampaignViewController: UIViewController {
         targetingSection.header = "Targeting"
 
         let schedulingSection = FormSectionModel([startDate, endDate, trigger])
-        schedulingSection.header = "Scheduling"
+        let timezone = TimeZone.current
+        let timezoneInfo = timezone.abbreviation() ?? timezone.identifier
+        schedulingSection.header = "Scheduling (\(timezoneInfo))"
 
         let maintenanceSection = FormSectionModel([validate])
         maintenanceSection.header = "– Maintenance –"
