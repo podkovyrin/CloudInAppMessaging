@@ -17,7 +17,7 @@
   },
   "social_media_url": "https://twitter.com/podkovyr",
   "platforms": {
-    "ios": "11.0"
+    "ios": "10.0"
   },
   "source_files": "CloudInAppMessaging/**/*",
   "public_header_files": "CloudInAppMessaging/*.h",

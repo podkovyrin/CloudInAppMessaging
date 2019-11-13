@@ -1,6 +1,0 @@
-framework module CloudInAppMessaging {
-  umbrella header "CloudInAppMessaging-umbrella.h"
-
-  export *
-  module * { export * }
-}
