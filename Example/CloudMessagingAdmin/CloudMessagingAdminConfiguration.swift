@@ -17,4 +17,5 @@
 
 import Foundation
 
+/// This constant is used in the test Alert Campaign
 let DefaultBundleIdentifier = "com.podkovyrin.CloudInAppMessaging.testApp"

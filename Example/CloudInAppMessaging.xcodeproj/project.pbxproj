@@ -381,7 +381,6 @@
 				2A108CE523730B170043D4BB /* Views */,
 				2A108C3F2372CAAF0043D4BB /* AlertCampaignListViewController.swift */,
 				2A108C462372D1100043D4BB /* AlertCampaignListModel.swift */,
-				2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */,
 			);
 			path = AlertCampaignList;
 			sourceTree = "<group>";
@@ -647,6 +646,7 @@
 				2A2318A3236BF6A20052A486 /* Info.plist */,
 				2A108C432372CF190043D4BB /* CloudMessagingAdmin.entitlements */,
 				2A9140A4236DC3B200A9E616 /* CloudMessagingAdmin-Bridging-Header.h */,
+				2A108CF123740E420043D4BB /* CLMAlertCampaign+TestData.swift */,
 				2A108D7C2379AC470043D4BB /* CloudMessagingAdminConfiguration.swift */,
 			);
 			path = CloudMessagingAdmin;
