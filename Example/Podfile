@@ -9,6 +9,9 @@ target 'TestApp' do
   pod 'CloudInAppMessaging', :path => '../'
 end
 
+target 'CloudInAppMessaging_Tests' do
+  pod 'OCMock'
+end
 
 # Fixes indexing error: "Could not build module 'Foundation'"
 # https://stackoverflow.com/questions/25999754/could-not-build-module-foundation

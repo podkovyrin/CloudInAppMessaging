@@ -1,8 +1,14 @@
 PODS:
   - CloudInAppMessaging (0.1.0)
+  - OCMock (3.4.3)
 
 DEPENDENCIES:
   - CloudInAppMessaging (from `../`)
+  - OCMock
+
+SPEC REPOS:
+  trunk:
+    - OCMock
 
 EXTERNAL SOURCES:
   CloudInAppMessaging:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CloudInAppMessaging: b7b9e2fc2f96d5b8c3c33d3406553558933359ee
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
 
-PODFILE CHECKSUM: 250f8f23e82fdfd85954f88ca7708eeb754825a4
+PODFILE CHECKSUM: cb39ccb7d0e57b5a3dfea4ea9a8619ef0c2d0e8b
 
 COCOAPODS: 1.8.4

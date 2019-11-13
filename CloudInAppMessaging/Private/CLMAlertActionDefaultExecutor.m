@@ -54,30 +54,36 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation CLMAlertActionDefaultExecutor
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
-        NSMutableArray<NSString *> *customSchemeURLs = [[NSMutableArray alloc] init];
+    NSMutableArray<NSString *> *customSchemeURLs = [[NSMutableArray alloc] init];
 
-        // Reading the custom url list from the environment.
-        NSBundle *appBundle = [NSBundle mainBundle];
-        if (appBundle) {
-            id URLTypesID = [appBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
-            if ([URLTypesID isKindOfClass:[NSArray class]]) {
-                NSArray *urlTypesArray = (NSArray *)URLTypesID;
+    // Reading the custom url list from the environment.
+    NSBundle *appBundle = [NSBundle mainBundle];
+    if (appBundle) {
+        id URLTypesID = [appBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+        if ([URLTypesID isKindOfClass:[NSArray class]]) {
+            NSArray *urlTypesArray = (NSArray *)URLTypesID;
 
-                for (id nextURLType in urlTypesArray) {
-                    if ([nextURLType isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *nextURLTypeDict = (NSDictionary *)nextURLType;
-                        id nextSchemeArray = nextURLTypeDict[@"CFBundleURLSchemes"];
-                        if (nextSchemeArray && [nextSchemeArray isKindOfClass:[NSArray class]]) {
-                            [customSchemeURLs addObjectsFromArray:nextSchemeArray];
-                        }
+            for (id nextURLType in urlTypesArray) {
+                if ([nextURLType isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *nextURLTypeDict = (NSDictionary *)nextURLType;
+                    id nextSchemeArray = nextURLTypeDict[@"CFBundleURLSchemes"];
+                    if (nextSchemeArray && [nextSchemeArray isKindOfClass:[NSArray class]]) {
+                        [customSchemeURLs addObjectsFromArray:nextSchemeArray];
                     }
                 }
             }
         }
+    }
 
-        UIApplication *application = UIApplication.sharedApplication;
+    UIApplication *application = UIApplication.sharedApplication;
+
+    return [self initWithCustomSchemeURLs:customSchemeURLs application:application];
+}
+
+- (instancetype)initWithCustomSchemeURLs:(NSArray<NSString *> *)customSchemeURLs
+                             application:(UIApplication *)application {
+    self = [super init];
+    if (self) {
         _appCustomURLSchemesSet = [NSSet setWithArray:customSchemeURLs];
         _mainApplication = application;
         _appDelegate = application.delegate;
