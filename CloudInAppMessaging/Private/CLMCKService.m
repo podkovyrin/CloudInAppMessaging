@@ -124,7 +124,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSPredicate *)alertCampaignsPredicateForClient:(id<CLMClientInfo>)clientInfo {
-    CLMAlertCampaign *alert = nil;
+    __unused CLMAlertCampaign *alert = nil;
 
     NSMutableArray<NSPredicate *> *predicates = [NSMutableArray array];
 
