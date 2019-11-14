@@ -29,7 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 #if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
         if (@available(iOS 13.0, *)) {
             UIWindowScene *foregroundedScene = [[self class] foregroundedScene];
-            UIWindowForPresenting = [[UIWindow alloc] initWithWindowScene:foregroundedScene];
+            if (foregroundedScene != nil) {
+                UIWindowForPresenting = [[UIWindow alloc] initWithWindowScene:foregroundedScene];
+            }
+            else {
+                UIWindowForPresenting = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            }
         }
         else {
 #endif // defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
@@ -46,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Private
 
 #if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
-+ (UIWindowScene *)foregroundedScene API_AVAILABLE(ios(13.0)) {
++ (nullable UIWindowScene *)foregroundedScene API_AVAILABLE(ios(13.0)) {
     for (UIWindowScene *connectedScene in [UIApplication sharedApplication].connectedScenes) {
         if (connectedScene.activationState == UISceneActivationStateForegroundActive) {
             return connectedScene;

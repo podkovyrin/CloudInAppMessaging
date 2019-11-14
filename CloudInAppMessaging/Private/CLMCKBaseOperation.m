@@ -48,7 +48,7 @@ static NSInteger const kMaxRetryCount = 1;
     }
 
     NSNumber *retryAfter = error.userInfo[CKErrorRetryAfterKey];
-    if (retryAfter) {
+    if (retryAfter != nil) {
         NSTimeInterval retryAfterSeconds = retryAfter.doubleValue;
         dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(retryAfterSeconds * NSEC_PER_SEC));
         dispatch_after(when, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

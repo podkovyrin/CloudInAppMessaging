@@ -190,7 +190,9 @@
     if (!self.hasFinishedAlready) {
         self.hasFinishedAlready = YES;
 
-        _internalErrors = [self.internalErrors arrayByAddingObjectsFromArray:errors];
+        if (errors != nil) {
+            _internalErrors = [self.internalErrors arrayByAddingObjectsFromArray:errors];
+        }
 
         self.state = CLMOperationStateFinished;
     }
