@@ -32,9 +32,13 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
 @implementation CLMAlertCampaign
 
 - (instancetype)init {
+    return [self initWithIdentifier:[NSUUID UUID].UUIDString];
+}
+
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     self = [super init];
     if (self) {
-        _identifier = [NSUUID UUID].UUIDString;
+        _identifier = [identifier copy];
         _buttonActionURLs = [NSArray array];
         _buttonTitles = [NSArray array];
         _translations = [NSArray array];
@@ -209,6 +213,36 @@ NSString *const CLMAlertCampaignRecordType = @"AlertCampaign";
             self.startDate.hash ^
             self.endDate.hash ^
             self.trigger.hash);
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    typeof(self) copy = [[self.class alloc] initWithIdentifier:self.identifier];
+
+    copy.title = self.title;
+    copy.message = self.message;
+
+    copy.buttonActionURLs = self.buttonActionURLs;
+    copy.buttonTitles = self.buttonTitles;
+
+    copy.defaultLangCode = self.defaultLangCode;
+    // we need only one level of copying, so it's enough
+    copy.translations = [[NSArray alloc] initWithArray:self.translations copyItems:YES];
+
+    copy.bundleIdentifier = self.bundleIdentifier;
+    copy.countries = self.countries;
+    copy.languages = self.languages;
+    copy.maxAppVersion = self.maxAppVersion;
+    copy.maxOSVersion = self.maxOSVersion;
+    copy.minAppVersion = self.minAppVersion;
+    copy.minOSVersion = self.minOSVersion;
+
+    copy.startDate = self.startDate;
+    copy.endDate = self.endDate;
+    copy.trigger = self.trigger;
+
+    return copy;
 }
 
 #pragma mark - CLMCloudKitSerializable

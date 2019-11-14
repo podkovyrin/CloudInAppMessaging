@@ -208,4 +208,18 @@ class AlertCampaignTests: XCTestCase {
         translationDict[translation2] = "new translation"
         XCTAssertTrue(translationDict.count == 1)
     }
+
+    func testNSCopying() {
+        let alert = CLMAlertCampaign.testAlertCampaign()
+        let copy = alert.copy() as! CLMAlertCampaign
+
+        XCTAssertFalse(alert === copy)
+        XCTAssertEqual(alert, copy)
+
+        let translation = alert.translations.first!
+        let translationCopy = copy.translations.first!
+
+        XCTAssertFalse(translation === translationCopy)
+        XCTAssertEqual(translation, translationCopy)
+    }
 }

@@ -34,13 +34,18 @@ NSString *const CLMAlertCampaignReferenceKey = @"alertCampaign";
 @implementation CLMAlertTranslation
 
 - (instancetype)initWithAlertCampaign:(CLMAlertCampaign *)alertCampaign {
+    return [self initWithIdentifier:[NSUUID UUID].UUIDString alertCampaignRecordID:[alertCampaign recordID]];
+}
+
+- (instancetype)initWithIdentifier:(NSString *)identifier
+             alertCampaignRecordID:(CKRecordID *)alertCampaignRecordID {
     self = [super init];
     if (self) {
-        _alertCampaignRecordID = [alertCampaign recordID];
-
-        _identifier = [NSUUID UUID].UUIDString;
+        _identifier = [identifier copy];
+        _alertCampaignRecordID = alertCampaignRecordID;
         _buttonTitles = [NSArray array];
     }
+
     return self;
 }
 
@@ -97,6 +102,22 @@ NSString *const CLMAlertCampaignReferenceKey = @"alertCampaign";
             self.title.hash ^
             self.message.hash ^
             self.buttonTitles.hash);
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    typeof(self) copy = [[self.class alloc] initWithIdentifier:self.identifier
+                                         alertCampaignRecordID:self.alertCampaignRecordID];
+
+    copy.langCode = self.langCode;
+
+    copy.title = self.title;
+    copy.message = self.message;
+
+    copy.buttonTitles = self.buttonTitles;
+
+    return copy;
 }
 
 #pragma mark - CLMCloudKitSerializable

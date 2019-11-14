@@ -37,7 +37,7 @@ extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnForeground;
 extern CLMAlertCampaignTrigger const CLMAlertCampaignTriggerOnAppLaunch;
 
 /// Definition of an Alert Campaign
-@interface CLMAlertCampaign : NSObject <CLMCloudKitSerializable, CLMAlertDataSource>
+@interface CLMAlertCampaign : NSObject <NSCopying, CLMCloudKitSerializable, CLMAlertDataSource>
 
 /// Unique identifier of an Alert Campaign
 @property (readonly, nonatomic, copy) NSString *identifier;

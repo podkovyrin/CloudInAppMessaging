@@ -28,7 +28,7 @@ extern NSString *const CLMAlertTranslationRecordType NS_SWIFT_NAME(CLMAlertTrans
 extern NSString *const CLMAlertCampaignReferenceKey NS_SWIFT_NAME(CLMAlertCampaign.ReferenceKey);
 
 /// Definition of an Alert Translation object
-@interface CLMAlertTranslation : NSObject <CLMCloudKitSerializable, CLMAlertDataSource>
+@interface CLMAlertTranslation : NSObject <NSCopying, CLMCloudKitSerializable, CLMAlertDataSource>
 
 /// Unique identifier of an Alert Translation
 @property (readonly, nonatomic, copy) NSString *identifier;

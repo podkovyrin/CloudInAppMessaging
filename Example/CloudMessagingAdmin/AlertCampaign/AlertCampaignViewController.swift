@@ -39,8 +39,10 @@ final class AlertCampaignViewController: UIViewController {
 
     init(alertCampaign: CLMAlertCampaign?, service: AlertCampaignCloudKitService) {
         if let alertCampaign = alertCampaign {
-            model = AlertCampaignModel(alertCampaign: alertCampaign,
+            // swiftlint:disable force_cast
+            model = AlertCampaignModel(alertCampaign: alertCampaign.copy() as! CLMAlertCampaign,
                                        service: service)
+            // swiftlint:enable force_cast
         }
         else {
             model = AlertCampaignModel(service: service)

@@ -155,6 +155,8 @@ class DisplayExecutorTests: XCTestCase {
     // MARK: Private
 
     private func performDisplayingTest(trigger: CLMAlertCampaignTrigger) {
+        UserDefaults.standard.removePersistentDomain(forName: "clm.displayExecutorTest")
+
         timeFetcher.timeInterval = TimeInterval.random(in: 300 ... 400)
 
         let presentingAlert = alertCampaign()
