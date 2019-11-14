@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-// A wrapper around NSUserDefaults to store internal states.
+/// A wrapper around NSUserDefaults to store internal states.
 @interface CLMStateKeeper : NSObject <CLMStateKeeper>
 
 - (instancetype)initWithUserDefaults:(NSUserDefaults *)userDefaults

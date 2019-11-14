@@ -17,6 +17,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "../CLMAlertCampaign.h"
 #import "../CLMAlertPresenter.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -45,10 +46,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setMessageDisplaySuppressed:(BOOL)messageDisplaySuppressed;
 
-// Check and display next in-app alert eligible for app launch trigger
+/// Check and display next in-app alert eligible for app launch trigger.
 - (void)checkAndDisplayNextAppLaunchAlert;
-// Check and display next in-app alert eligible for app open trigger
+/// Check and display next in-app alert eligible for app open trigger.
 - (void)checkAndDisplayNextAppForegroundAlert;
+/// Check and display next in-app alert eligible for a given trigger.
+- (void)checkAndDisplayNextAlertForTrigger:(CLMAlertCampaignTrigger)trigger;
 
 @end
 

@@ -17,6 +17,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "../CLMAlertCampaign.h"
 #import "../CLMAlertPresenter.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -39,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)resume;
 - (void)pause;
+
+/// Check and display next in-app alert eligible for a given trigger (such as custom analytics event).
+- (void)checkAndDisplayNextAlertForTrigger:(CLMAlertCampaignTrigger)trigger;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

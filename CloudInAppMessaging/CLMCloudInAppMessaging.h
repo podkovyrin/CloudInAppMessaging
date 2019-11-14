@@ -44,6 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)setupWithCloudKitContainerIdentifier:(nullable NSString *)containerIdentifier NS_SWIFT_NAME(setup(with:));
 + (instancetype)sharedInstance NS_SWIFT_NAME(shared());
 
+/// Check and display next in-app alert eligible for analytics event trigger with given event name.
+- (void)checkAndDisplayAlertForAnalyticsEventName:(NSString *)eventName;
+
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 

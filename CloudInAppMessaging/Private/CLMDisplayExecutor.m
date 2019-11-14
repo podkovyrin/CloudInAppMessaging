@@ -59,30 +59,14 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)checkAndDisplayNextAppLaunchAlert {
-    [self checkAndDisplayNextForTrigger:CLMAlertCampaignTriggerOnAppLaunch];
+    [self checkAndDisplayNextAlertForTrigger:CLMAlertCampaignTriggerOnAppLaunch];
 }
 
 - (void)checkAndDisplayNextAppForegroundAlert {
-    [self checkAndDisplayNextForTrigger:CLMAlertCampaignTriggerOnForeground];
+    [self checkAndDisplayNextAlertForTrigger:CLMAlertCampaignTriggerOnForeground];
 }
 
-#pragma mark - CLMAlertPresenterDelegate
-
-- (void)alertPresenter:(id<CLMAlertPresenter>)alertPresenter didFinishPresentingAlert:(CLMAlertCampaign *)alertCampaign {
-    NSAssert([NSThread isMainThread], @"Main thread is assumed here");
-
-    UIWindow *window = [CLMPresentingWindowHelper UIWindowForPresenting];
-    window.hidden = YES;
-    window.rootViewController = nil;
-
-    @synchronized(self) {
-        self.alertBeingDisplayed = NO;
-    }
-}
-
-#pragma mark - Private
-
-- (void)checkAndDisplayNextForTrigger:(CLMAlertCampaignTrigger)trigger {
+- (void)checkAndDisplayNextAlertForTrigger:(CLMAlertCampaignTrigger)trigger {
     @synchronized(self) {
         if (self.messageDisplaySuppressed) {
             return;
@@ -112,6 +96,22 @@ NS_ASSUME_NONNULL_BEGIN
         }
     }
 }
+
+#pragma mark - CLMAlertPresenterDelegate
+
+- (void)alertPresenter:(id<CLMAlertPresenter>)alertPresenter didFinishPresentingAlert:(CLMAlertCampaign *)alertCampaign {
+    NSAssert([NSThread isMainThread], @"Main thread is assumed here");
+
+    UIWindow *window = [CLMPresentingWindowHelper UIWindowForPresenting];
+    window.hidden = YES;
+    window.rootViewController = nil;
+
+    @synchronized(self) {
+        self.alertBeingDisplayed = NO;
+    }
+}
+
+#pragma mark - Private
 
 - (void)displayAlert:(CLMAlertCampaign *)alertCampaign {
     NSAssert([NSThread isMainThread], @"Main thread is assumed here");

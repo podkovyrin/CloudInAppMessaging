@@ -85,6 +85,10 @@ static CLMCloudInAppMessaging *_sharedInstance = nil;
     self.manager.alertPresenter = alertPresenter;
 }
 
+- (void)checkAndDisplayAlertForAnalyticsEventName:(NSString *)eventName {
+    [self.manager checkAndDisplayNextAlertForTrigger:eventName];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

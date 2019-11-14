@@ -124,6 +124,10 @@ NS_ASSUME_NONNULL_BEGIN
     self.displayExecutor.alertPresenter = alertPresenter ?: [self defaultAlertPresenter];
 }
 
+- (void)checkAndDisplayNextAlertForTrigger:(CLMAlertCampaignTrigger)trigger {
+    [self.displayExecutor checkAndDisplayNextAlertForTrigger:trigger];
+}
+
 #pragma mark - Private
 
 - (void)start {
