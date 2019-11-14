@@ -78,6 +78,7 @@ final class GroupedDatePickerFormTableViewCell: UITableViewCell, DatePickerFormT
         textField.adjustsFontForContentSizeCategory = true
         textField.delegate = self
         textField.textAlignment = .right
+        textField.clearButtonMode = .whileEditing
         contentView.addSubview(textField)
 
         datePicker.addTarget(self, action: #selector(datePickerValueDidChange), for: .valueChanged)
@@ -134,6 +135,7 @@ extension GroupedDatePickerFormTableViewCell: UITextFieldDelegate {
     }
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return false
+        model?.date = nil
+        return true
     }
 }
