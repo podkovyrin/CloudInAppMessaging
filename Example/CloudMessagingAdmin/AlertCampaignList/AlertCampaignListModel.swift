@@ -22,6 +22,10 @@ import Foundation
 final class AlertCampaignListModel {
     private(set) var alerts = [CLMAlertCampaign]()
 
+    var canUpdate: Bool {
+        service.isConfigured
+    }
+
     let service: AlertCampaignCloudKitService
 
     init(service: AlertCampaignCloudKitService) {

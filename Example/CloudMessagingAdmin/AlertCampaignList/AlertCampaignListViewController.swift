@@ -120,7 +120,7 @@ final class AlertCampaignListViewController: UITableViewController {
 
     @objc
     private func refreshAction(_ sender: Any) {
-        update()
+        update(forced: true)
     }
 
     @objc
@@ -150,7 +150,11 @@ final class AlertCampaignListViewController: UITableViewController {
 
     // MARK: Private
 
-    private func update() {
+    private func update(forced: Bool = false) {
+        if !forced && !model.canUpdate {
+            return
+        }
+
         refreshControl?.beginRefreshing()
 
         model.update { [weak self] errors in

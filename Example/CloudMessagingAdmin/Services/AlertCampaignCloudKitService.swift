@@ -26,6 +26,15 @@ final class AlertCampaignCloudKitService {
         return storage
     }()
 
+    private(set) var isConfigured: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: "clm.admin-app-configured")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "clm.admin-app-configured")
+        }
+    }
+
     func fetch(completion: @escaping ([CLMAlertCampaign], [Error]) -> Void) {
         let query = CKQuery(recordType: CLMAlertCampaign.RecordType, predicate: NSPredicate(value: true))
 
@@ -51,9 +60,13 @@ final class AlertCampaignCloudKitService {
         recordsToSave.append(alertRecord)
         recordsToSave.append(contentsOf: translationRecords)
 
-        cloudKitStorage.save(recordsToSave: recordsToSave,
-                             recordIDsToDelete: [],
-                             completion: completion)
+        cloudKitStorage.save(recordsToSave: recordsToSave, recordIDsToDelete: []) { errors in
+            if errors.isEmpty {
+                self.isConfigured = true
+            }
+
+            completion(errors)
+        }
     }
 
     func delete(_ alertCampaign: CLMAlertCampaign, completion: @escaping ([Error]) -> Void) {
