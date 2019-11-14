@@ -11,7 +11,7 @@ which allows you to engage active app users with contextual messages.
   s.homepage         = 'https://github.com/podkovyrin/CloudInAppMessaging'
   s.license          = 'MIT'
   s.author           = { 'Andrew Podkovyrin' => 'podkovyrin@gmail.com' }
-  s.source           = { :git => 'https://github.com/Andrew Podkovyrin/CloudInAppMessaging.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/podkovyrin/CloudInAppMessaging.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/podkovyr'
 
   s.ios.deployment_target = '10.0'

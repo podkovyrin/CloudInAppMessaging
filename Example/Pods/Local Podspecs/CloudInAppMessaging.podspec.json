@@ -1,18 +1,15 @@
 {
   "name": "CloudInAppMessaging",
   "version": "0.1.0",
-  "summary": "A short description of CloudInAppMessaging.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Andrew Podkovyrin/CloudInAppMessaging",
-  "license": {
-    "type": "MIT",
-    "file": "LICENSE"
-  },
+  "summary": "Send In-App Messages via CloudKit without a hassle.",
+  "description": "CloudInAppMessaging is CloudKit-powered SDK \nwhich allows you to engage active app users with contextual messages.",
+  "homepage": "https://github.com/podkovyrin/CloudInAppMessaging",
+  "license": "MIT",
   "authors": {
     "Andrew Podkovyrin": "podkovyrin@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Andrew Podkovyrin/CloudInAppMessaging.git",
+    "git": "https://github.com/podkovyrin/CloudInAppMessaging.git",
     "tag": "0.1.0"
   },
   "social_media_url": "https://twitter.com/podkovyr",
