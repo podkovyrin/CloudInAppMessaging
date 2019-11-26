@@ -64,14 +64,15 @@ In order to create and modify Alert Campaigns, you need to use either CloudKit D
 1. To run Admin App, clone the repo, and run `pod install` from the Example directory first.
 2. Setup target's App Bundle Identifier in `CloudMessagingAdminConfiguration.swift`
 3. Similar to SDK setup, set the same CloudKit Container Identifier ("iCloud.com.example.myapp") for Admin App.
-4. Run Admin App on your device or Simulator (notice that you can write to the database only from device which is signed into iCloud account).
-5. Since CloudKit schema is usually defined by creating new records, run the Admin App and create a test Alert Campaign from the Debug menu.
-6. After successful creation the app will try to fetch current Alert Campaigns and end up with an error: "Field 'recordName' is not marked querable". Unfortunately, it's not allowed to create indexes programmatically and it needs to be done via [CloudKit Dashboard](https://icloud.developer.apple.com/dashboard/):
+4. Setup CloudKit Container Identifier in `CloudMessagingAdminConfiguration.swift`
+5. Run Admin App on your device or Simulator (notice that you can write to the database only from device which is signed into iCloud account).
+6. Since CloudKit schema is usually defined by creating new records, run the Admin App and create a test Alert Campaign from the Debug menu.
+7. After successful creation the app will try to fetch current Alert Campaigns and end up with an error: "Field 'recordName' is not marked querable". Unfortunately, it's not allowed to create indexes programmatically and it needs to be done via [CloudKit Dashboard](https://icloud.developer.apple.com/dashboard/):
 - Select your CloudKit Container and navigate to the "Schema" settings.
 - From the drop-down "Records Type" menu select "Indexes".
 - For the AlertCampaign record add a new index with "QUERYABLE" type for the "recordName" field and press "Save Changes".
-7. After creating the index pull to refresh the list to see newly created Alert Campaign.
-8. Don't forget to deploy your development schema to production in CloudKit Dashboard before releasing your app.
+8. After creating the index pull to refresh the list to see newly created Alert Campaign.
+9. Don't forget to deploy your development schema to production in CloudKit Dashboard before releasing your app.
 
 ## Installation
 

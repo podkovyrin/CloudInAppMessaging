@@ -17,5 +17,9 @@
 
 import Foundation
 
-/// This constant is used in the test Alert Campaign
+/// This is Bundle ID of the target app
 let DefaultBundleIdentifier = "com.podkovyrin.CloudInAppMessaging.testApp"
+
+/// CloudKit Container Identifier
+/// This container is shared between Admin and Target app
+let CloudKitContainerIdentifier = "iCloud.com.podkovyrin.CloudInAppMessaging.test"

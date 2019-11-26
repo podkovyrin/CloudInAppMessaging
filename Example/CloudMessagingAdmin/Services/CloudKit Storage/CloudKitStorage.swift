@@ -27,7 +27,7 @@ protocol CloudKitStorageDelegate: AnyObject {
 final class CloudKitStorage {
     weak var delegate: CloudKitStorageDelegate?
 
-    private let container = CKContainer(identifier: "iCloud.com.podkovyrin.CloudInAppMessaging.test")
+    private let container = CKContainer(identifier: CloudKitContainerIdentifier)
     private let database: CKDatabase
     private let operationQueue = ANOperationQueue()
 
