@@ -34,6 +34,8 @@ final class AlertCampaignModel {
         alertCampaign.buttonTitles = ["OK"]
         alertCampaign.buttonActionURLs = [CLMAlertCampaign.ButtonURLNoAction]
 
+        alertCampaign.bundleIdentifier = DefaultBundleIdentifier
+
         alertCampaign.trigger = .onForeground
 
         let localeCodes = LocaleCodes()
