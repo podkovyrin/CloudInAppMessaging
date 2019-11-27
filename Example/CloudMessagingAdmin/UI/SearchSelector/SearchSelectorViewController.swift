@@ -22,12 +22,16 @@ protocol SearchSelectorItem {
 }
 
 protocol SearchSelectorModel: AnyObject {
-    associatedtype Item: SearchSelectorItem
+    associatedtype Item: SearchSelectorItem, Hashable
 
     var items: [Item] { get }
-    var selectedIndexes: Set<Int> { get set }
+    var selectedItems: Set<Item> { get }
+    var allowsMultiSelection: Bool { get }
 
     func filterItems(searchQuery: String)
+
+    func toggleSelection(for item: Item)
+    func toggleAllSelection()
 }
 
 final class SearchSelectorTableViewCell: UITableViewCell {
@@ -38,8 +42,6 @@ final class SearchSelectorTableViewCell: UITableViewCell {
 }
 
 final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewController, UISearchResultsUpdating {
-    var multiSelection = false
-
     private let model: T
     private let selectionChanged: ([T.Item]) -> Void
 
@@ -78,7 +80,7 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
         let cell = SearchSelectorTableViewCell.self
         tableView.register(cell, forCellReuseIdentifier: String(describing: cell))
 
-        if multiSelection {
+        if model.allowsMultiSelection {
             let barButton = UIBarButtonItem(title: "",
                                             style: .plain,
                                             target: self,
@@ -106,8 +108,8 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let selectedIndex = model.selectedIndexes.first {
-            let indexPath = IndexPath(row: selectedIndex, section: 0)
+        if let selectItem = model.selectedItems.first, let index = model.items.firstIndex(of: selectItem) {
+            let indexPath = IndexPath(row: index, section: 0)
             tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         }
     }
@@ -127,7 +129,7 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
 
         let index = indexPath.row
         let item = model.items[index]
-        let selected = model.selectedIndexes.contains(index)
+        let selected = model.selectedItems.contains(item)
         cell.configure(with: item, selected: selected)
 
         return cell
@@ -139,25 +141,13 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
         tableView.deselectRow(at: indexPath, animated: true)
 
         let index = indexPath.row
+        let item = model.items[index]
+        model.toggleSelection(for: item)
 
-        if multiSelection {
-            if model.selectedIndexes.contains(index) {
-                model.selectedIndexes.remove(index)
-            }
-            else {
-                model.selectedIndexes.insert(index)
-            }
+        tableView.reloadRows(at: [indexPath], with: .none)
+        updateSelectionButtonTitle()
 
-            tableView.reloadRows(at: [indexPath], with: .none)
-            updateSelectionButtonTitle()
-        }
-        else {
-            model.selectedIndexes.removeAll()
-            model.selectedIndexes.insert(index)
-        }
-
-        let selectedItems = model.selectedIndexes.map { model.items[$0] }
-        selectionChanged(selectedItems)
+        selectionChanged(Array(model.selectedItems))
     }
 
     // MARK: UISearchResultsUpdating
@@ -167,6 +157,8 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
         let trimmedQuery = searchQuery.trimmingCharacters(in: .whitespaces)
         model.filterItems(searchQuery: trimmedQuery)
 
+        navigationItem.rightBarButtonItem?.isEnabled = trimmedQuery.isEmpty
+
         tableView.reloadData()
     }
 
@@ -174,27 +166,19 @@ final class SearchSelectorViewController<T: SearchSelectorModel>: UITableViewCon
 
     @objc
     func uncheckAllButtonAction() {
-        let selectedItems: [T.Item]
-        if model.selectedIndexes.isEmpty {
-            model.selectedIndexes = Set(0 ..< model.items.count)
-            selectedItems = model.items
-        }
-        else {
-            model.selectedIndexes.removeAll()
-            selectedItems = []
-        }
+        model.toggleAllSelection()
 
         updateSelectionButtonTitle()
         tableView.reloadData()
 
-        selectionChanged(selectedItems)
+        selectionChanged(Array(model.selectedItems))
     }
 
     // MARK: Private
 
     func updateSelectionButtonTitle() {
         let title: String
-        if model.selectedIndexes.isEmpty {
+        if model.selectedItems.isEmpty {
             title = "Check All"
         }
         else {

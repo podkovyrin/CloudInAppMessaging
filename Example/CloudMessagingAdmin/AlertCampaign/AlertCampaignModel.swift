@@ -49,55 +49,30 @@ final class AlertCampaignModel {
     }
 
     func defaultLanguageModel() -> LocaleSelectorModel {
-        var selectedIndexes = Set<Int>()
-        if let defaultLangCode = alertCampaign.defaultLangCode,
-            let selectedIndex = localeCodes.languageCodes.firstIndex(of: defaultLangCode) {
-            selectedIndexes.insert(selectedIndex)
-        }
-
-        let model = LocaleSelectorModel(codes: localeCodes.languageCodes,
-                                        localizeCode: {
-                                            locale.localizedString(forLanguageCode: $0) ?? ""
-                                        },
-                                        selectedIndexes: selectedIndexes)
-
-        return model
+        let selectedCodes = alertCampaign.defaultLangCode.flatMap { Set([$0]) } ?? Set()
+        return LocaleSelectorModel(codes: localeCodes.languageCodes,
+                                   localizeCode: {
+                                       locale.localizedString(forLanguageCode: $0) ?? ""
+                                   },
+                                   selectedCodes: selectedCodes)
     }
 
     func countriesModel() -> LocaleSelectorModel {
-        var selectedIndexes = Set<Int>()
-        for country in alertCampaign.countries {
-            guard let index = localeCodes.countryCodes.firstIndex(of: country) else {
-                fatalError("Invalid country")
-            }
-            selectedIndexes.insert(index)
-        }
-
-        let model = LocaleSelectorModel(codes: localeCodes.countryCodes,
-                                        localizeCode: {
-                                            locale.localizedString(forRegionCode: $0) ?? ""
-                                        },
-                                        selectedIndexes: selectedIndexes)
-
-        return model
+        return LocaleSelectorModel(codes: localeCodes.countryCodes,
+                                   localizeCode: {
+                                       locale.localizedString(forRegionCode: $0) ?? ""
+                                   },
+                                   selectedCodes: Set(alertCampaign.countries),
+                                   allowsMultiSelection: true)
     }
 
     func languagesModel() -> LocaleSelectorModel {
-        var selectedIndexes = Set<Int>()
-        for language in alertCampaign.languages {
-            guard let index = localeCodes.languageCodes.firstIndex(of: language) else {
-                fatalError("Invalid country")
-            }
-            selectedIndexes.insert(index)
-        }
-
-        let model = LocaleSelectorModel(codes: localeCodes.languageCodes,
-                                        localizeCode: {
-                                            locale.localizedString(forLanguageCode: $0) ?? ""
-                                        },
-                                        selectedIndexes: selectedIndexes)
-
-        return model
+        return LocaleSelectorModel(codes: localeCodes.languageCodes,
+                                   localizeCode: {
+                                       locale.localizedString(forLanguageCode: $0) ?? ""
+                                   },
+                                   selectedCodes: Set(alertCampaign.languages),
+                                   allowsMultiSelection: true)
     }
 
     func save(_ alertCampaign: CLMAlertCampaign, completion: @escaping ([Error]) -> Void) {

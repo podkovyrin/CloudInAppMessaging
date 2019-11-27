@@ -48,18 +48,11 @@ final class AlertTranslationsModel {
     }
 
     func languageModel(for translation: CLMAlertTranslation) -> LocaleSelectorModel {
-        var selectedIndexes = Set<Int>()
-        if let langCode = translation.langCode,
-            let selectedIndex = languageCodes.firstIndex(of: langCode) {
-            selectedIndexes.insert(selectedIndex)
-        }
-
-        let model = LocaleSelectorModel(codes: languageCodes,
-                                        localizeCode: {
-                                            locale.localizedString(forLanguageCode: $0) ?? ""
-                                        },
-                                        selectedIndexes: selectedIndexes)
-
-        return model
+        let selectedCodes = translation.langCode.flatMap { Set([$0]) } ?? Set()
+        return LocaleSelectorModel(codes: languageCodes,
+                                   localizeCode: {
+                                       locale.localizedString(forLanguageCode: $0) ?? ""
+                                   },
+                                   selectedCodes: selectedCodes)
     }
 }

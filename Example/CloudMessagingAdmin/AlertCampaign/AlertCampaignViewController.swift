@@ -203,14 +203,15 @@ final class AlertCampaignViewController: UIViewController {
     private var countries: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Countries"
+        let allCount = model.localeCodes.countryCodes.count
         let countries = model.alertCampaign.countries
-        if countries == model.localeCodes.countryCodes {
+        let count = countries.count
+        if allCount == count {
             cellModel.detail = "All Countries"
         }
         else {
-            let count = countries.count
             if count > MaxDisplayedDetailItems {
-                cellModel.detail = "\(count) / \(model.localeCodes.countryCodes.count)"
+                cellModel.detail = "\(count) / \(allCount)"
             }
             else {
                 cellModel.detail = countries.joined(separator: ", ")
@@ -228,14 +229,15 @@ final class AlertCampaignViewController: UIViewController {
     private var languages: SelectorFormCellModel {
         let cellModel = SelectorFormCellModel()
         cellModel.title = "Languages"
+        let allCount = model.localeCodes.languageCodes.count
         let languages = model.alertCampaign.languages
-        if languages == model.localeCodes.languageCodes {
+        let count = languages.count
+        if allCount == count {
             cellModel.detail = "All Languages"
         }
         else {
-            let count = languages.count
             if count > MaxDisplayedDetailItems {
-                cellModel.detail = "\(count) / \(model.localeCodes.languageCodes.count)"
+                cellModel.detail = "\(count) / \(allCount)"
             }
             else {
                 cellModel.detail = languages.joined(separator: ", ")
@@ -516,7 +518,6 @@ final class AlertCampaignViewController: UIViewController {
             self.reloadData()
         }
         controller.title = "🎯 Countries"
-        controller.multiSelection = true
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -530,7 +531,6 @@ final class AlertCampaignViewController: UIViewController {
             self.reloadData()
         }
         controller.title = "🎯 Languages"
-        controller.multiSelection = true
         navigationController?.pushViewController(controller, animated: true)
     }
 

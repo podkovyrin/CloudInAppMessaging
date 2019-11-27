@@ -73,22 +73,32 @@ final class LocaleSelectorModel: SearchSelectorModel {
         }
     }
 
-    var selectedIndexes = Set<Int>()
+    private(set) var selectedItems: Set<LocaleItem>
+
+    let allowsMultiSelection: Bool
 
     private var allItems: [LocaleItem]
     private var searchQuery = ""
     private var filteredItems = [LocaleItem]()
 
-    init(codes: [String], localizeCode: (String) -> (String), selectedIndexes: Set<Int>) {
+    init(codes: [String],
+         localizeCode: (String) -> (String),
+         selectedCodes: Set<String>,
+         allowsMultiSelection: Bool = false) {
         var items = [LocaleItem]()
+        var selectedItems = Set<LocaleItem>()
         for code in codes {
             let localizedCode = localizeCode(code)
             let localeItem = LocaleItem(code: code, localizedCode: localizedCode)
             items.append(localeItem)
+
+            if selectedCodes.contains(code) {
+                selectedItems.insert(localeItem)
+            }
         }
         allItems = items
-
-        self.selectedIndexes = selectedIndexes
+        self.selectedItems = selectedItems
+        self.allowsMultiSelection = allowsMultiSelection
     }
 
     func filterItems(searchQuery: String) {
@@ -97,6 +107,30 @@ final class LocaleSelectorModel: SearchSelectorModel {
         let predicate = searchPredicate(for: searchQuery)
         filteredItems = allItems.filter { predicate.evaluate(with: $0) }
         allItems.forEach { $0.updateAttributedTitle(with: searchQuery) }
+    }
+
+    func toggleSelection(for item: LocaleItem) {
+        if !allowsMultiSelection {
+            selectedItems.removeAll()
+        }
+
+        if selectedItems.contains(item) {
+            selectedItems.remove(item)
+        }
+        else {
+            selectedItems.insert(item)
+        }
+    }
+
+    func toggleAllSelection() {
+        assert(allowsMultiSelection)
+
+        if selectedItems.isEmpty {
+            selectedItems = Set(allItems)
+        }
+        else {
+            selectedItems = Set()
+        }
     }
 
     // MARK: Private
