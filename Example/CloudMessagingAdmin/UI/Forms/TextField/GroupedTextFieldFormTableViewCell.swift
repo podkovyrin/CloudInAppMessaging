@@ -59,6 +59,9 @@ final class GroupedTextFieldFormTableViewCell: UITableViewCell, TextFieldFormTab
         titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.numberOfLines = 0
+        titleLabel.minimumScaleFactor = 0.5
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.setContentHuggingPriority(.defaultLow + 1, for: .horizontal)
         contentView.addSubview(titleLabel)
 
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +72,7 @@ final class GroupedTextFieldFormTableViewCell: UITableViewCell, TextFieldFormTab
         textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.adjustsFontForContentSizeCategory = true
         textField.delegate = self
-        textField.textAlignment = .right
+        textField.textAlignment = .left
         contentView.addSubview(textField)
 
         NSLayoutConstraint.activate([
@@ -78,6 +81,7 @@ final class GroupedTextFieldFormTableViewCell: UITableViewCell, TextFieldFormTab
             titleLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                                constant: -Styles.Sizes.minPadding),
+            titleLabel.widthAnchor.constraint(greaterThanOrEqualTo: contentView.widthAnchor, multiplier: 0.28),
 
             textField.topAnchor.constraint(equalTo: contentView.topAnchor,
                                            constant: Styles.Sizes.minPadding),
@@ -85,8 +89,6 @@ final class GroupedTextFieldFormTableViewCell: UITableViewCell, TextFieldFormTab
             textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                               constant: -Styles.Sizes.minPadding),
             textField.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-
-            textField.widthAnchor.constraint(equalTo: titleLabel.widthAnchor),
         ])
     }
 
